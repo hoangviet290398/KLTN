@@ -1,0 +1,1 @@
+<a href="/topic/{{$value->_id}}" class="dropdown-item"><small>{{htmlspecialchars($value->_source->title)}}</small></a>

@@ -13,21 +13,23 @@
 import pandas as pd
 import numpy as np
 import spacy
-
+#pd.set_option('display.max_colwidth', -1)
+#pd.set_option('display.max_columns', None)
 EN = spacy.load('en_core_web_sm')
 df = pd.read_csv('data/Original_data.csv')
 # print(df.head())
 # print('Datebase shape:' + str(df.shape))
 
 aggregations = {
-    'answers':{
-        'combined_answers': lambda x: "\n".join(x)
-    },
-    'score':{
-        'combined_score': 'sum'
-    }
+    'answers':[lambda x: "\n".join(x)],
+    'score':['sum']
 }
 grouped = df.groupby(['id','title', 'body','tags'],as_index=False).agg(aggregations)
+
+
+print('Test df')
+print(grouped)
+
 deduped_df = pd.DataFrame(grouped)
 print(deduped_df.head())
 print('Max score before: ')

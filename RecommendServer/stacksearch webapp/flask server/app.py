@@ -31,7 +31,7 @@ def multitask_loss(y_true, y_pred):
 
 def load_tag_encoder():
     data = pd.read_csv('../../data/Preprocessed_data.csv')
-    
+
     # Make a dict having tag frequencies
     data.tags = data.tags.apply(lambda x: x.split('|'))
     tag_freq_dict = {}
@@ -79,7 +79,7 @@ with open('../../models/tokenizer.pickle', 'rb') as handle:
     tokenizer = pickle.load(handle)
 keras.losses.multitask_loss = multitask_loss
 global graph
-graph = tf.get_default_graph()
+graph = tf.compat.v1.get_default_graph()
 model = load_model('../../models/Tag_predictor.h5')
 
 # Flask API Routes
@@ -97,9 +97,9 @@ def getsearchresults():
 
     query = params["query"]
     query = preprocess_text(query)
-    tags = list(predict_tags(query))
+    #tags = list(predict_tags(query))
     results = searchresults(query, params["num_results"])
-    return jsonify({'tags': tags, 'results': results})
+    return jsonify({'results': results})
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(threaded=False)

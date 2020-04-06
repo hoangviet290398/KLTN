@@ -164,7 +164,7 @@ def multitask_loss(y_true, y_pred):
 
 
 # Build Model
-import keras 
+import keras
 
 model = Sequential()
 model.add(Embedding(vocab_size+1, W2V_SIZE, weights=[embedding_matrix], input_length=MAX_SEQUENCE_LENGTH, trainable=False))
@@ -173,7 +173,7 @@ model.add(Dense(units = 10000,
                      kernel_initializer = 'glorot_uniform',
                      activation = 'relu'
                     )
-              )  
+              )
 model.add(Dropout(0.35))
 model.add(Dense(units = 1150,
                      kernel_initializer = 'glorot_uniform',
@@ -198,67 +198,67 @@ from keras.callbacks import ReduceLROnPlateau, EarlyStopping
 callbacks = [ ReduceLROnPlateau(monitor='val_loss', patience=5, cooldown=0),
               EarlyStopping(monitor='val_acc', min_delta=1e-4, patience=5)]
 
-BATCH_SIZE = 1024
-history = model.fit(X_train_padded, y_train,
-                    batch_size=BATCH_SIZE,
-                    epochs=15,
-                    validation_split=0.1,
-                    verbose=1,
-                    callbacks=callbacks)
+# BATCH_SIZE = 1024
+# history = model.fit(X_train_padded, y_train,
+#                     batch_size=BATCH_SIZE,
+#                     epochs=15,
+#                     validation_split=0.1,
+#                     verbose=1,
+#                     callbacks=callbacks)
 
 # Save model
 model.save('models/Tag_predictor.h5')
 
 # Helper function to save the training history for plotting purposes
 
-import json,codecs
-import numpy as np
-def saveHist(path,history):
-
-    new_hist = {}
-    for key in list(history.history.keys()):
-        if type(history.history[key]) == np.ndarray:
-            new_hist[key] == history.history[key].tolist()
-        elif type(history.history[key]) == list:
-            if  type(history.history[key][0]) == np.float64:
-                new_hist[key] = list(map(float, history.history[key]))
-
-    print(new_hist)
-    with codecs.open(path, 'w', encoding='utf-8') as f:
-        json.dump(new_hist, f, separators=(',', ':'), sort_keys=True, indent=4)
-
-def loadHist(path):
-    with codecs.open(path, 'r', encoding='utf-8') as f:
-        n = json.loads(f.read())
-    return n
-
-
-from keras.models import load_model
-import keras.losses
-
-keras.losses.multitask_loss = multitask_loss
-model = load_model('models/Tag_predictor.h5')
-history = loadHist('train_history.json')
-
-# Evaluation
-import matplotlib.pyplot as plt
-
-X_test_padded = tokenizer.texts_to_sequences(X_test)
-X_test_padded = pad_sequences(X_test_padded, maxlen=MAX_SEQUENCE_LENGTH)
-score = model.evaluate(X_test_padded, y_test, batch_size=512)
-print("LOSS:", score)
-
-loss = history['loss']
-val_loss = history['val_loss']
-
-epochs = range(len(loss))
-
-plt.plot(epochs, loss, 'b', label='Training loss')
-plt.plot(epochs, val_loss, 'r', label='Validation loss')
-plt.title('Training and validation loss')
-plt.legend()
-
-plt.show()
+# import json,codecs
+# import numpy as np
+# def saveHist(path,history):
+#
+#     new_hist = {}
+#     for key in list(history.history.keys()):
+#         if type(history.history[key]) == np.ndarray:
+#             new_hist[key] == history.history[key].tolist()
+#         elif type(history.history[key]) == list:
+#             if  type(history.history[key][0]) == np.float64:
+#                 new_hist[key] = list(map(float, history.history[key]))
+#
+#     print(new_hist)
+#     with codecs.open(path, 'w', encoding='utf-8') as f:
+#         json.dump(new_hist, f, separators=(',', ':'), sort_keys=True, indent=4)
+#
+# def loadHist(path):
+#     with codecs.open(path, 'r', encoding='utf-8') as f:
+#         n = json.loads(f.read())
+#     return n
+#
+#
+# from keras.models import load_model
+# import keras.losses
+#
+# keras.losses.multitask_loss = multitask_loss
+# model = load_model('models/Tag_predictor.h5')
+# history = loadHist('train_history.json')
+#
+# # Evaluation
+# import matplotlib.pyplot as plt
+#
+# X_test_padded = tokenizer.texts_to_sequences(X_test)
+# X_test_padded = pad_sequences(X_test_padded, maxlen=MAX_SEQUENCE_LENGTH)
+# score = model.evaluate(X_test_padded, y_test, batch_size=512)
+# print("LOSS:", score)
+#
+# loss = history['loss']
+# val_loss = history['val_loss']
+#
+# epochs = range(len(loss))
+#
+# plt.plot(epochs, loss, 'b', label='Training loss')
+# plt.plot(epochs, val_loss, 'r', label='Validation loss')
+# plt.title('Training and validation loss')
+# plt.legend()
+#
+# plt.show()
 
 # A wrapper function in order to predict the tags for any given input
 

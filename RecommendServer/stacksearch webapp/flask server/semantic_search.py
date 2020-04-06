@@ -30,7 +30,7 @@ def searchresults(search_string, num_results):
 
     cosine_similarities = pd.Series(cosine_similarity(search_vect, all_title_embeddings)[0])
 
-    cosine_similarities = cosine_similarities*(1 + 0.4*data.overall_scores_norm + 0.1*(data.sentiment_polarity))
+    cosine_similarities = cosine_similarities*(1 + 0.4*data.overall_scores + 0.1*(data.sentiment_polarity))
 
     for i,j in cosine_similarities.nlargest(int(num_results)).iteritems():
         output = ''

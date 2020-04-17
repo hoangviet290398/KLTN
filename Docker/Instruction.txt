@@ -1,0 +1,44 @@
+Directory tree:
+
++ Docker
+   + .env.example
+   + laradock
+   	+ .env.example
+	+ docker-compose.yml
+
+
+Follow these steps to deploy project locally:
+1. Rename all .env.example in 'Docker' folder to .env
+2. Clone laradock to Laravel project, make sure it follows the directory tree as below:
+
+Clone command: git submodule add https://github.com/Laradock/laradock.git
+
+   + project-name
+	+ laradock
+
+3. Copy file .env in this path 'Docker/.env' to Laravel project 
+   + project-name
+	+ .env
+
+4. Copy folder 'laradock' to Laravel project (replace original .env and docker-compose.yml file)
+   + project-name
+	+ .env
+	+ laradock
+	   +.env
+	   + docker-compose.yml
+
+5. Open 'cmd' and change directory to /KLTN/laradock/
+
+6. Type commmand: 'docker-compose build apache2 mongo' (wait until it's finished, command without ' ')
+
+7. Type commannd: 'docker-compose up -d apache2 mongo' (wait until it's finished, could take up to 15 mins)
+
+8. Type command: 'docker-compose exec workspace bash' (to access Linux bash)
+
+9. in Linux bash, type: 'composer install' then 'composer require jenssegers/mongodb'
+
+10. Type 'php artisan key:generate' to generate key
+
+11. Type 'php artisan migrate' to migrate database from local to host, or type 'php artisan db:seed' to generate a new database.
+
+12. Go to browser, type 'localhost' to access the website.

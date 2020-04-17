@@ -29,6 +29,8 @@ Clone command: git submodule add https://github.com/Laradock/laradock.git
 
 5. Open 'cmd' and change directory to /KLTN/laradock/
 
+Type 'docker volume create --name=mongo_data'
+
 6. Type commmand: 'docker-compose build apache2 mongo' (wait until it's finished, command without ' ')
 
 7. Type commannd: 'docker-compose up -d apache2 mongo' (wait until it's finished, could take up to 15 mins)

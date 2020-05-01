@@ -24,9 +24,13 @@ Route::get('signup','SignUpController@index')->name('signUp');
 Route::post('signup','SignUpController@store')->name('signUpStore');
 Route::get('validEmail','SignUpController@validEmail')->name('validEmail');
 
-//QuyTran add 10 Nov, 2019
+//QuyTran add 1st May, 2020
+
+//Messages system
+Route::get('/messages', 'MessagesHomeController@index')->name('messages');
 
 //QuyTran end add
+
 Route::get('signin',[
 	'as' => 'signInIndex',
 	'uses' => 'SignInController@view'

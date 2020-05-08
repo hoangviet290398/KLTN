@@ -173,7 +173,7 @@ return [
          */
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
-        // App\Providers\BroadcastServiceProvider::class,
+        App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Jenssegers\Mongodb\MongodbServiceProvider::class,
@@ -232,7 +232,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Es' => Elasticquent\ElasticquentElasticsearchFacade::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
-
+        'Pusher' => Pusher\Pusher::class,
     ],
 
 ];

@@ -28,6 +28,8 @@ Route::get('validEmail','SignUpController@validEmail')->name('validEmail');
 
 //Messages system
 Route::get('/messages', 'MessagesHomeController@index')->name('messages');
+Route::get('/messages/{id}','MessagesHomeController@getMessage');
+Route::post('/messages','MessagesHomeController@sendMessage');
 
 //QuyTran end add
 

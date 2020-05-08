@@ -7,7 +7,7 @@ use App\Question;
 use App\Answer;
 use App\LikeDislike;
 use App\Notification;
-use App\user;
+use App\User;
 use App\Category;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;

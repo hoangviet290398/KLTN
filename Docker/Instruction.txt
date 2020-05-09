@@ -8,7 +8,7 @@ Directory tree:
 
 
 Follow these steps to deploy project locally:
-1. Rename all .env.example in 'Docker' folder to .env
+1. Rename all .env.example in 'Docker' folder to .env (copy to somewhere and rename in order to update these files again with future github commits)
 2. Clone laradock to Laravel project, make sure it follows the directory tree as below:
 
 Clone command: git submodule add https://github.com/Laradock/laradock.git

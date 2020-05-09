@@ -33,11 +33,11 @@ Type 'docker volume create --name=mongo_data'
 
 6. Type commmand: 'docker-compose build apache2 mongo' (wait until it's finished, command without ' ')
 
-7. Type commannd: 'docker-compose up -d apache2 mongo' (wait until it's finished, could take up to 15 mins)
+7. Type commannd: 'docker-compose up -d apache2 mongo' (wait until it's finished, could take up to 30 mins)
 
 8. Type command: 'docker-compose exec workspace bash' (to access Linux bash)
 
-9. in Linux bash, type: 'composer install' then 'composer require jenssegers/mongodb'
+9. in Linux bash, type: 'composer install', 'composer require jenssegers/mongodb' and 'composer require pusher/pusher-php-server'
 
 10. Type 'php artisan key:generate' to generate key
 

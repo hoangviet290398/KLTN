@@ -16,15 +16,41 @@ class MessagesHomeController extends Controller
 	{
 		//$messages=Message::all();
 		$user = Auth::user();
-		$users = User::where('_id','!=',$user->id)->get();
 
 		// count how many message are unread from the selected user
 		// $users = DB::select("select users._id, users.fullname, users.avatar, users.email, count(is_read) as unread 
 		// from users LEFT  JOIN  messages ON users._id = messages.from_user and is_read = 0 and messages.to_user = " . $user->id . "
 		// where users._id != " . $user->id . " 
-		// group by users._id, users.fullname, users.avatar, users.email");
-		$messages=Message::all();
-		return view('messages.messages',compact('users','messages'));
+        // group by users._id, users.fullname, users.avatar, users.email");
+        
+        if(Auth::check())
+        {
+            $users = User::where('_id','!=',$user->id)->get();
+            $messages=Message::all();
+            $userProfile=User::where('_id','=',$user->id)->get();
+            
+            //
+            //$my_id=$user->id;
+            
+            // $receiverIDs = array();
+            // foreach($users->_id as $receiver_id) {
+            //     $receiverIDs[] = $receiver_id;
+            // }
+
+            //echo($users);
+            // $latestMessage = Message::where(function ($query) use ($user_id, $my_id) {
+            //     $query->where('from_user', $user_id)->where('to_user', $my_id);
+            // })->oRwhere(function ($query) use ($user_id, $my_id) {
+            //     $query->where('from_user', $my_id)->where('to_user', $user_id);
+            // })->orderBy('created_at', 'desc')->get()->take(1);
+
+		    return view('messages.messages',compact('users','messages','userProfile'));
+        }
+        else
+        {
+            return view('log.signin');
+        }
+		
 	}
  
 	public function getMessage($user_id)
@@ -36,10 +62,17 @@ class MessagesHomeController extends Controller
         })->oRwhere(function ($query) use ($user_id, $my_id) {
             $query->where('from_user', $my_id)->where('to_user', $user_id);
 		})->get();
-		
+        
+
+        
 		return view('messages.chatbox',compact('messages'));
 	}
 
+    public function getProfile($user_id)
+    {
+        $userProfile=User::where('_id','=',$user_id)->get();
+		return view('messages.user_profile',compact('userProfile'));
+    }
 	public function sendMessage(Request $request)
     {
 		$user=Auth::user();
@@ -70,4 +103,5 @@ class MessagesHomeController extends Controller
         $data = ['from_user' => $from_user, 'to_user' => $to_user]; // sending from and to user id when pressed enter
         $pusher->trigger('my-channel', 'my-event', $data);
     }
+    
 }

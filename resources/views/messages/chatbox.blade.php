@@ -1,4 +1,4 @@
-    <div id="messages">
+    <div id="messages" >
         <div class="bg-gray px-4 py-2 bg-white border-bottom">
             <!-- Receiver name -->
             <div class="row">
@@ -42,21 +42,24 @@
                 <input id="typing-area" type="text" placeholder="Type a message" aria-describedby="button-addon2"
                     autofocus class="form-control rounded-0 border-0 py-4 bg-light">
                 <div class="input-group-append pl-1">
-                    <button id="button-addon2" type="submit" class="btn btn-link"onClick="sendMessageOnClick();"><i
-                            class="fa fa-paper-plane" ></i></button>
+                    <button id="button-addon2" type="submit" class="btn btn-link" onClick="sendMessageOnClick();"><i
+                            class="fa fa-paper-plane"></i></button>
                 </div>
             </div>
         </form>
 
     </div>
 
+
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment.min.js">
 
     </script>
     <script>
 // make a function to scroll down auto
-var objDiv = document.getElementById("chat-box");
-objDiv.scrollTop = objDiv.scrollHeight;
+// var objDiv = document.getElementById("chat-box");
+// objDiv.scrollTop = objDiv.scrollHeight;
+
 
 $(document).on("keypress", function() {
     $("#typing-area").focus();

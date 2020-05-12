@@ -5,11 +5,14 @@
 * ==========================================
 *
 */
+@import url(https://fonts.googleapis.com/css?family=Raleway:300,700);
+
 body {
     
-  
-    max-height: 95vh;
+    min-height: 83vh;
+    max-height: 83vh;
     overflow-x:hidden;
+    font-family: 'Raleway', sans-serif;
   }
   
   ::-webkit-scrollbar {
@@ -28,11 +31,17 @@ body {
     border-radius: 1rem;
   }
   
+  
   .text-small {
-    font-size: 0.9rem;
+    font-size: 1.2rem;
   }
   
-  .messages-box,
+  .messages-box
+  {
+    min-height:91.75vh;
+    max-height:91.75vh;
+    overflow-y: scroll;
+  }
   .chat-box {
     min-height:83vh;
     max-height:83vh;

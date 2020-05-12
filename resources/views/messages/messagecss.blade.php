@@ -20,3 +20,4 @@
     rel="stylesheet">
 <!-- Custom styles for this template-->
 <link href="{{ asset('messagespublic/css/msgui.css')}}" rel="stylesheet">
+<link href="{{ asset('messagespublic/css/welcometomessage.css')}}" rel="stylesheet">

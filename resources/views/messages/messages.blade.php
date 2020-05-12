@@ -13,7 +13,7 @@
     <style>
     .pending {
         position: absolute;
-        left: 13px;
+        left:65px;
         top: 9px;
         background: #FF6347;
         margin: 0;
@@ -37,8 +37,10 @@
 
                     <div class="px-4 py-2  ">
                         <div class="row px-2 align-center">
+                            <a href="/" style="color:#0275d8"><i class="fa fa-arrow-left fa-2x pr-2 pt-2"></i></a>
+                            
                             <img src="https://res.cloudinary.com/mhmd/image/upload/v1564960395/avatar_usae7z.svg"
-                                alt="user" width="60" class="rounded-circle">
+                                alt="user" width="50" class="rounded-circle">
                             <p class="h4 mb-0 px-2 py-3">{{Auth::user()->fullname}} (you)</p>
                         </div>
 
@@ -50,15 +52,16 @@
                             <a id="{{$user->id}}" data-receiverName="{{$user->fullname}}" href="#"
                                 class="list-group-item list-group-item-action list-group-item-light rounded-0">
 
-                                <span class="pending">1</span>
+                                <span id="messageNotification" class="pending">0</span>
                                 <div class="media"><img
                                         src="https://res.cloudinary.com/mhmd/image/upload/v1564960395/avatar_usae7z.svg"
-                                        alt="user" width="50" class="rounded-circle">
+                                        alt="user" width="65" class="rounded-circle">
                                     <div class="media-body ml-4">
                                         <div id="userInboxName"
                                             class="d-flex align-items-center justify-content-between mb-1">
-                                            <h6 class="mb-0">{{$user->fullname}}</h6>
-                                            <small class="small font-weight-bold">14 Dec</small>
+                                            <h6 class="mb-0 " style="font-size:1.4rem"><strong>{{$user->fullname}}</strong></h6>
+                                            <!--Date-->
+                                            <small class="small font-weight-bold"></small>
                                         </div>
                                         <p class="font-italic mb-0 text-small">{{$user->email}}</p>
                                     </div>
@@ -73,20 +76,17 @@
                 </div>
             </div>
             <!-- Chat Box-->
-            <div class="col-6 px-0 border-right">
+
+            <div id="UserChatBox" style="display:none" class="col-6 px-0 border-right">
                 @include('messages.chatbox')
 
-                <!-- Right side bar -->
             </div>
-            <div class="col-3 px-0 ">
-                <div class="bg-white">
+            <div id="UserProfile" class="col-3" style="display:none">
+                @include('messages.user_profile')
+            </div>
+            <div id="welcomeToMessage" style="display:block" class="col-9">
+                @include('messages.welcome')
 
-                    <div class="bg-gray px-2 py-2 bg-light">
-                        <p class="h5 mb-0 py-1">Recent</p>
-                    </div>
-
-
-                </div>
             </div>
         </div>
 
@@ -125,7 +125,47 @@
                 $('#messages').html(data);
                 //appear current receiver 
                 replace = document.getElementById("target_name");
-                replace.innerHTML = receiver_name;
+                replace.innerHTML = "<strong>" + receiver_name + "</strong>";
+                //show chatbox
+                var isChatBoxDisplayed = document.getElementById("UserChatBox");
+                if (isChatBoxDisplayed.style.display === "none") {
+                    isChatBoxDisplayed.style.display = "block";
+
+                }
+                //show user profile
+                var isProfileDisplayed = document.getElementById("UserProfile");
+                if (isProfileDisplayed.style.display === "none") {
+                    isProfileDisplayed.style.display = "block";
+
+                }
+                //hide welcome msg
+                var isWelcomeDisplayed = document.getElementById("welcomeToMessage");
+                if (isWelcomeDisplayed.style.display === "block") {
+                    isWelcomeDisplayed.style.display = "none";
+
+                }
+                // make a function to scroll down auto
+
+                var objDiv = document.getElementById("chat-box");
+                objDiv.scrollTop = objDiv.scrollHeight;
+            }
+        });
+
+
+
+    });
+
+    $('.list-group-item').click(function() {
+
+        $.ajax({
+            type: "GET",
+            url: "profile/" + receiver_id,
+            data: "",
+            cache: false,
+            success: function(data) {
+                //alert(data);
+                $('#userProfile').html(data);
+
             }
         });
     });
@@ -137,7 +177,7 @@
         } else if (receiver_id == '') {
             alert('Choose a receiver to send message!');
 
-        } else if(message !='' && receiver_id!='') {
+        } else if (message != '' && receiver_id != '') {
             alert(message);
             $('.input-group input').val(''); // while pressed enter text box will be empty
 
@@ -198,9 +238,12 @@
                 $('#' + data.from_user).click();
             } else {
                 // if receiver is not seleted, add notification for that user
+                var isDisplayed = document.getElementById("messageNotification");
+
                 var pending = parseInt($('#' + data.from_user).find('.pending').html());
                 if (pending) {
                     $('#' + data.from_user).find('.pending').html(pending + 1);
+
                 } else {
                     $('#' + data.from_user).append('<span class="pending">1</span>');
                 }

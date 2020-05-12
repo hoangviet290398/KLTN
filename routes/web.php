@@ -30,6 +30,7 @@ Route::get('validEmail','SignUpController@validEmail')->name('validEmail');
 Route::get('/messages', 'MessagesHomeController@index')->name('messages');
 Route::get('/messages/{id}','MessagesHomeController@getMessage');
 Route::post('/messages','MessagesHomeController@sendMessage');
+Route::get('/profile/{id}','MessagesHomeController@getProfile');
 
 //QuyTran end add
 

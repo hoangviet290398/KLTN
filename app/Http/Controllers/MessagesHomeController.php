@@ -29,22 +29,25 @@ class MessagesHomeController extends Controller
             $messages=Message::all();
             $userProfile=User::where('_id','=',$user->id)->get();
             
-            //
-            //$my_id=$user->id;
             
-            // $receiverIDs = array();
-            // foreach($users->_id as $receiver_id) {
-            //     $receiverIDs[] = $receiver_id;
-            // }
+            $my_id=$user->id;
+            
+            
+            foreach($users as $receiver) {
+                $receiver_id=$receiver->_id;
+                $latestMessage = Message::where(function ($query) use ($receiver_id, $my_id) {
+                $query->where('from_user', $receiver_id)->where('to_user', $my_id);
+                })->oRwhere(function ($query) use ($receiver_id, $my_id) {
+                $query->where('from_user', $my_id)->where('to_user', $receiver_id);
+                })->orderBy('created_at', 'desc')->get()->take(1);      
+            
+                $json_merge[]=array(json_decode($latestMessage,true));
+            }
 
-            //echo($users);
-            // $latestMessage = Message::where(function ($query) use ($user_id, $my_id) {
-            //     $query->where('from_user', $user_id)->where('to_user', $my_id);
-            // })->oRwhere(function ($query) use ($user_id, $my_id) {
-            //     $query->where('from_user', $my_id)->where('to_user', $user_id);
-            // })->orderBy('created_at', 'desc')->get()->take(1);
-
-		    return view('messages.messages',compact('users','messages','userProfile'));
+            $latestUserMessages=$json_merge;
+                
+            
+		    return view('messages.messages',compact('users','messages','userProfile','latestUserMessages'));
         }
         else
         {
@@ -52,7 +55,7 @@ class MessagesHomeController extends Controller
         }
 		
 	}
- 
+    
 	public function getMessage($user_id)
 	{
 		$user=Auth::user();

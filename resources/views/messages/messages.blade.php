@@ -13,7 +13,7 @@
     <style>
     .pending {
         position: absolute;
-        left:65px;
+        left: 65px;
         top: 9px;
         background: #FF6347;
         margin: 0;
@@ -38,14 +38,14 @@
                     <div class="px-4 py-2  ">
                         <div class="row px-2 align-center">
                             <a href="/" style="color:#0275d8"><i class="fa fa-arrow-left fa-2x pr-2 pt-2"></i></a>
-                            
+
                             <img src="https://res.cloudinary.com/mhmd/image/upload/v1564960395/avatar_usae7z.svg"
                                 alt="user" width="50" class="rounded-circle">
                             <p class="h4 mb-0 px-2 py-3">{{Auth::user()->fullname}} (you)</p>
                         </div>
 
                     </div>
-                    <div class="messages-box">
+                    <div id="usersBox" class="messages-box">
                         <div class="list-group rounded-0">
 
                             @foreach($users as $user)
@@ -59,11 +59,38 @@
                                     <div class="media-body ml-4">
                                         <div id="userInboxName"
                                             class="d-flex align-items-center justify-content-between mb-1">
-                                            <h6 class="mb-0 " style="font-size:1.4rem"><strong>{{$user->fullname}}</strong></h6>
+                                            <h6 class="mb-0" style="font-size:1.5rem">{{$user->fullname}}</h6>
                                             <!--Date-->
-                                            <small class="small font-weight-bold"></small>
                                         </div>
-                                        <p class="font-italic mb-0 text-small">{{$user->email}}</p>
+                                        <div id="messagePreview">
+
+                                            @foreach($latestUserMessages as $nestedArray1)
+                                            @foreach($nestedArray1 as $nestedArray2)
+                                            @foreach($nestedArray2 as $latestMessage)
+                                            @if(($user->id == $latestMessage['from_user'] || $user->id ==
+                                            $latestMessage['to_user']) && $user->id != Auth::user()->id)
+
+                                            <div class="row pt-1 pb-2">
+                                                @if($user->id != $latestMessage['from_user'] &&
+                                                $latestMessage['from_user'] == Auth::user()->id)
+                                                <p id="singleMessagePreview"
+                                                    class="truncateLongTexts col-9 mb-0 text-small  "
+                                                    data-latestMessage="" style="font-size:1.15rem">You:
+                                                    {{$latestMessage['message']}}</p>
+
+                                                @else
+                                                <p id="singleMessagePreview"
+                                                    class="truncateLongTexts col-9 mb-0 text-small  "
+                                                    style="font-size:1.15rem">{{$latestMessage['message']}}</p>
+                                                @endif
+                                                <p class="col-3 mb-0 text-small">
+                                                    {{date("F d", strtotime($latestMessage['created_at']))}}</p>
+                                            </div>
+                                            @endif
+                                            @endforeach
+                                            @endforeach
+                                            @endforeach
+                                        </div>
                                     </div>
                                 </div>
                             </a>
@@ -98,7 +125,7 @@
 
     var receiver_name = '';
     var message = '';
-
+    var latestMessage = '';
     // ajax setup form csrf token
     $.ajaxSetup({
         headers: {
@@ -123,6 +150,7 @@
             success: function(data) {
                 //alert(data);
                 $('#messages').html(data);
+
                 //appear current receiver 
                 replace = document.getElementById("target_name");
                 replace.innerHTML = "<strong>" + receiver_name + "</strong>";
@@ -191,11 +219,16 @@
                 error: function(jqXHR, status, err) {},
                 complete: function() {
                     //scrollToBottomFunc();
+                    updateLatestMessage();
                 }
             })
         }
 
     }
+
+
+
+
     $(document).on('keyup', '.input-group input', function(e) {
         message = $(this).val();
         // check if enter key is pressed and message is not null also receiver is selected
@@ -213,11 +246,25 @@
                 error: function(jqXHR, status, err) {},
                 complete: function() {
                     //scrollToBottomFunc();
+                    updateLatestMessage();
+
                 }
             })
         }
     });
 
+    function updateLatestMessage() {
+        // // latestMessage = $("p").data("latestMessage");
+        // // alert(latestMessage);
+
+        // //$("#messagePreview").load(window.location.href + " #messagePreview>*");
+        // // replace = document.getElementById("singleMessagePreview");
+        // //  replace.innerHTML = 
+        // replace = document.getElementById("singleMessagePreview");
+        // //alert(message);
+        // replace.innerHTML = "<strong>" + latestMessage + "</strong>";
+
+    }
     // Enable pusher logging - don't include this in production
     Pusher.logToConsole = true;
 
@@ -232,10 +279,14 @@
 
         if (my_id == data.from_user) {
             $('#' + data.to_user).click();
+            updateLatestMessage();
+
         } else if (my_id == data.to_user) {
             if (receiver_id == data.from_user) {
                 // if receiver is selected, reload the selected user ...
                 $('#' + data.from_user).click();
+                updateLatestMessage();
+
             } else {
                 // if receiver is not seleted, add notification for that user
                 var isDisplayed = document.getElementById("messageNotification");

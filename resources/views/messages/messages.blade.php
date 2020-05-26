@@ -9,17 +9,29 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment.min.js"></script>
     <script src="https://js.pusher.com/6.0/pusher.min.js"></script>
 
+    <script>
+    //show unread message notification
+    function unreadMessage(id) {
+        //isMessageRead = $("#messageNotification").attr('data-userId');
+        if ($('#' + id + 'messageNotification').length != 0) {
+            $('#' + id).addClass('font-weight-bold');
+            $('#' + id + 'name').addClass('font-weight-bold');
+
+        }
+        console.log(id);
+    };
+    </script>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <style>
     .pending {
         position: absolute;
-        left: 65px;
-        top: 9px;
-        background: #FF6347;
+        right: 15px;
+        top: 43px;
+        background: #0275d8;
         margin: 0;
         border-radius: 50%;
-        width: 18px;
-        height: 18px;
+        width: 12px;
+        height: 12px;
         line-height: 18px;
         padding-left: 5px;
         color: #ffffff;
@@ -50,16 +62,17 @@
 
                             @foreach($users as $user)
                             <a id="{{$user->id}}" data-receiverName="{{$user->fullname}}" href="#"
-                                class="list-group-item list-group-item-action list-group-item-light rounded-0">
+                                class="list-group-item list-group-item-action rounded-0">
 
-                                <span id="messageNotification" class="pending">0</span>
+
                                 <div class="media"><img
                                         src="https://res.cloudinary.com/mhmd/image/upload/v1564960395/avatar_usae7z.svg"
                                         alt="user" width="65" class="rounded-circle">
                                     <div class="media-body ml-4">
                                         <div id="userInboxName"
                                             class="d-flex align-items-center justify-content-between mb-1">
-                                            <h6 class="mb-0" style="font-size:1.5rem">{{$user->fullname}}</h6>
+                                            <h6 id="{{$user->id}}name" class="mb-0" style="font-size:1.5rem">
+                                                {{$user->fullname}}</h6>
                                             <!--Date-->
                                         </div>
                                         <div id="messagePreview">
@@ -74,16 +87,26 @@
                                                 @if($user->id != $latestMessage['from_user'] &&
                                                 $latestMessage['from_user'] == Auth::user()->id)
                                                 <p id="singleMessagePreview"
-                                                    class="truncateLongTexts col-9 mb-0 text-small  "
+                                                    class="truncateLongTexts col-8 mb-0 text-small  "
                                                     data-latestMessage="" style="font-size:1.15rem">You:
                                                     {{$latestMessage['message']}}</p>
 
                                                 @else
                                                 <p id="singleMessagePreview"
-                                                    class="truncateLongTexts col-9 mb-0 text-small  "
-                                                    style="font-size:1.15rem">{{$latestMessage['message']}}</p>
+                                                    class="truncateLongTexts col-8 mb-0 text-small  "
+                                                    style="font-size:1.15rem"
+                                                    data-isMessageRead="{{$latestMessage['is_read']}}">
+                                                    {{$latestMessage['message']}}</p>
+                                                <!--message notification-->
+                                                @if($latestMessage['is_read']==0)
+                                                <span id="{{$latestMessage['from_user']}}messageNotification"
+                                                    class="pending"></span>
+                                                <script>
+                                                unreadMessage("{{$user->id}}");
+                                                </script>
                                                 @endif
-                                                <p class="col-3 mb-0 text-small">
+                                                @endif
+                                                <p class="col-3 mb-0 text-small ">
                                                     {{date("F d", strtotime($latestMessage['created_at']))}}</p>
                                             </div>
                                             @endif
@@ -126,6 +149,7 @@
     var receiver_name = '';
     var message = '';
     var latestMessage = '';
+    var isMessageRead = '';
     // ajax setup form csrf token
     $.ajaxSetup({
         headers: {
@@ -137,7 +161,6 @@
     $('.list-group-item').click(function() {
         $('.list-group-item').removeClass('active list-group-item-light');
         receiver_name = $(this).attr('data-receiverName');
-
 
         $(this).addClass('active');
 
@@ -172,6 +195,10 @@
                     isWelcomeDisplayed.style.display = "none";
 
                 }
+                //remove unread message notification
+                $('#' + receiver_id + 'messageNotification').removeClass('pending');
+                $('#' + receiver_id).removeClass('font-weight-bold');
+                $('#' + receiver_id + 'name').removeClass('font-weight-bold');
                 // make a function to scroll down auto
 
                 var objDiv = document.getElementById("chat-box");
@@ -187,7 +214,7 @@
 
         $.ajax({
             type: "GET",
-            url: "profile/" + receiver_id,
+            url: "getProfile/" + receiver_id,
             data: "",
             cache: false,
             success: function(data) {
@@ -198,6 +225,7 @@
         });
     });
 
+
     function sendMessageOnClick() {
         if (message == '') {
 
@@ -206,7 +234,7 @@
             alert('Choose a receiver to send message!');
 
         } else if (message != '' && receiver_id != '') {
-            alert(message);
+            //alert(message);
             $('.input-group input').val(''); // while pressed enter text box will be empty
 
             var datastr = "receiver_id=" + receiver_id + "&message=" + message;
@@ -219,7 +247,6 @@
                 error: function(jqXHR, status, err) {},
                 complete: function() {
                     //scrollToBottomFunc();
-                    updateLatestMessage();
                 }
             })
         }
@@ -233,7 +260,7 @@
         message = $(this).val();
         // check if enter key is pressed and message is not null also receiver is selected
         if (e.keyCode == 13 && message != '' && receiver_id != '') {
-            alert(message);
+            //alert(message);
             $(this).val(''); // while pressed enter text box will be empty
 
             var datastr = "receiver_id=" + receiver_id + "&message=" + message;
@@ -246,25 +273,13 @@
                 error: function(jqXHR, status, err) {},
                 complete: function() {
                     //scrollToBottomFunc();
-                    updateLatestMessage();
 
                 }
             })
         }
     });
 
-    function updateLatestMessage() {
-        // // latestMessage = $("p").data("latestMessage");
-        // // alert(latestMessage);
 
-        // //$("#messagePreview").load(window.location.href + " #messagePreview>*");
-        // // replace = document.getElementById("singleMessagePreview");
-        // //  replace.innerHTML = 
-        // replace = document.getElementById("singleMessagePreview");
-        // //alert(message);
-        // replace.innerHTML = "<strong>" + latestMessage + "</strong>";
-
-    }
     // Enable pusher logging - don't include this in production
     Pusher.logToConsole = true;
 
@@ -276,28 +291,26 @@
     var channel = pusher.subscribe('my-channel');
     channel.bind('my-event', function(data) {
         //alert(JSON.stringify(data));
-
+        console.log(data.from_user);
         if (my_id == data.from_user) {
             $('#' + data.to_user).click();
-            updateLatestMessage();
 
         } else if (my_id == data.to_user) {
             if (receiver_id == data.from_user) {
                 // if receiver is selected, reload the selected user ...
                 $('#' + data.from_user).click();
-                updateLatestMessage();
 
             } else {
                 // if receiver is not seleted, add notification for that user
                 var isDisplayed = document.getElementById("messageNotification");
 
-                var pending = parseInt($('#' + data.from_user).find('.pending').html());
-                if (pending) {
-                    $('#' + data.from_user).find('.pending').html(pending + 1);
+                // var pending = parseInt($('#' + data.from_user).find('.pending').html());
+                // if (pending) {
+                //     $('#' + data.from_user).find('.pending').html(pending + 1);
 
-                } else {
-                    $('#' + data.from_user).append('<span class="pending">1</span>');
-                }
+                // } else {
+                //     $('#' + data.from_user).append('<span class="pending">1</span>');
+                // }
             }
         }
     });

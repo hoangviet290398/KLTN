@@ -59,7 +59,11 @@ class MessagesHomeController extends Controller
 	public function getMessage($user_id)
 	{
 		$user=Auth::user();
-		$my_id=$user->id;
+        $my_id=$user->id;
+        
+        //update message has been read
+        Message::where(['from_user'=>$user_id,'to_user'=>$my_id])->update(['is_read'=>1]);    
+        //
 		$messages = Message::where(function ($query) use ($user_id, $my_id) {
             $query->where('from_user', $user_id)->where('to_user', $my_id);
         })->oRwhere(function ($query) use ($user_id, $my_id) {

@@ -18,7 +18,8 @@
     @yield('js')
 
     <script>
-      
+    
+    jQuery(document).ready(function(){
 
        $('#search').keyup(function () {
         var keyword = $(this).val();
@@ -130,6 +131,33 @@
         }
     });
 
+    $('#title').keyup(function () {
+        var keyword = $(this).val();
+        console.log(keyword);
+        if (keyword != '') {
+            $.ajax({
+                url: "{{ route('similarQuestions') }}",
+                method: "GET",
+                data: {
+                    keyword
+                },
+                success: function (data) {
+                  if(data!=""){
+                    $('#similar_questions_list').empty();
+                    $('#similar_questions_list').html(data);
+                    $('#similar_questions_list').show();
+                }
+                else{
+                    $('#similar_questions_list').hide();
+                    }
+                }
+            });
+        }
+        else{
+            $('#similar_questions_list').hide();
+        }
+    });
+
 
        function submit_search(){
         if($('#search').val()!='') $('#searchform').submit();
@@ -144,6 +172,7 @@
         $("#unread_notification").remove();
     }
     @endif
+});
 
 
 </script>

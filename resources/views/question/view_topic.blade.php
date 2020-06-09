@@ -283,10 +283,7 @@ use App\LikeDislike;
 
                 </div>
                 <div>
-                    <small class="text-muted" style="color:#5488c7;" data-toggle="tooltip" title="{{$question->created_at->toDayDateTimeString()}}">
-                        <i class="fa fa-clock-o" aria-hidden="true"> </i>
-                        {{$question->created_at->diffForHumans()}}
-                    </small>
+                   <!-- Asked date goes here-->
                 </div>
                 <br>
             </div>
@@ -306,7 +303,7 @@ use App\LikeDislike;
 
             <!-- Start Question Content Block -->
             <div class="col-sm-12 px-3" id="big">
-                <div class="image-markdown">{!! $question->content !!}</div>
+                <div class="image-markdown">{!! html_entity_decode($question->content) !!}</div>
                 @if($question->attachment_path)
                 <b class="badge badge-warning">Attachment:</b>
                 <a

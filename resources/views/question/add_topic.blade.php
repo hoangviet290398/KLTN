@@ -45,7 +45,14 @@
 					<label for="title">Topic title</label>
 					<input type="text" class="form-control" id="title" name="title" required
 					placeholder="Subject of your topic (limit of 100 characters)" maxlength="100">
+					<div id="similar_questions_list" class="scrollbar scrollbar-lady-lips dropdown-menu">
+                	</div>
 				</div>
+				<div class="form-group">
+					<div id="similar_questions_list" class="scrollbar scrollbar-lady-lips dropdown-menu">
+                	</div>
+				</div>
+				
 				<!-- End topic title-->
 
 				<!-- Category -->

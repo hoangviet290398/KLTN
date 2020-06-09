@@ -8,6 +8,7 @@ use App\Answer;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\AddTopicRequest;
 use Illuminate\Support\Facades\Storage;
+use GuzzleHttp\Client;
 
 class QuestionController extends Controller
 {
@@ -107,5 +108,19 @@ class QuestionController extends Controller
 		if(empty($question)) return 'Question not found';
 
 		$question->delete();
+	}
+
+	public function similarQuestions(Request $request){
+		$keyword = $request->keyword;
+		$client = new Client();
+		$res = $client->get('http://172.17.0.1:5000/getsearchresults?query='.$keyword.'&num_results=5');
+		$response =json_decode($res->getBody()->getContents('results'));
+		
+		$similar_questions = $response->results;
+
+		foreach($similar_questions as $key => $value){
+			//$question = json_decode($value);
+			echo view('layout.similar_questions_list',compact('value'));
+		}
 	}
 }

@@ -48,6 +48,11 @@ Route::get('ajaxsearch',[
 	'uses' => 'HomeController@ajaxSearch'
 ]);
 
+Route::get('similarquestions',[
+	'as' => 'similarQuestions',
+	'uses' => 'QuestionController@similarQuestions'
+]);
+
 Route::get('ajaxsearchusers',[
 	'as' => 'ajaxSearchUsers',
 	'uses' => 'HomeController@ajaxAllUsers'

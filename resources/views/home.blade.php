@@ -51,9 +51,7 @@
                         <a href="/personalinfomation/{{ $question->user->_id }}" class="text-decoration-none">
                             <small class="font-weight-bold" style="color:#5488c7;">{{$question->user->fullname}}</small>
                         </a>
-                        <small class="text-muted pl-4" style="color:#5488c7;" data-toggle="tooltip" title="{{$question->created_at->toDayDateTimeString()}}">asked:
-                            {{$question->created_at->diffForHumans()}}
-                        </small>
+                        <!-- Asked date goes here-->
                         <br>
                         <div class="row">
                             <div class="col-12">

@@ -1,0 +1,9 @@
+1. Copy 'Dockerfile' to Flask API folder by this path '/KLTN/KLTN/RecommendServer/stacksearchwebapp/flaskserver/'.
+
+2. Open cmd and cd to the directory path above.
+
+3. In cmd, type 'docker build -t flaskapp:latest .' to build the image and wait until it's finished (could take up to 45 minutes).
+
+4. After building, 
+type 'docker run -it -d -v D:/MyGithub/KLTN/KLTN/RecommendServer/stacksearchwebapp/flaskserver/:/app/flaskapi/ -p 5000:5000 flaskapp' 
+to start the container (change the path if necessarry).

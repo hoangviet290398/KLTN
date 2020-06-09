@@ -1,4 +1,4 @@
-_id,title,content,total_like,tags
+_id,title,content,user_id,category_id,total_like,tags
 29761266,Should Image.fromarray(pixels) and np.array(img) leave the data unchanged?,"<p>I am trying to generate PNGs using the Image.fromarray() function from PIL but not getting the expected images.</p>
 
 <pre><code>arr=np.random.randint(0,256,5*5)
@@ -29,12 +29,12 @@ new_arr=np.array(img)
  [  0   0   0   0   0]
  [  0 168   0   0   0]
  [  0   0   0   0 221]]
-</code></pre>",1,python|numpy|python-imaging-library
+</code></pre>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f85,1,python|numpy|python-imaging-library
 29985319,How to create a shared counter in Celery?,"<p>Is there a way to have a shared counter (shared between workers) in Celery? I am also open to other ideas on how to solve my problem, but would like to stick to Celery. Here is my problem:</p>
 
 <p>I have a task that is dependent on an index passed to it. These tasks could pass or fail, but I need to target a number of passed tasks. If a job fails it should kick off a new job with the next available index.</p>
 
-<p>I can of course do this through a function that tracks the active jobs and initiates the new jobs, but if there was something built in that'd be great.</p>",1,python|celery|celery-task
+<p>I can of course do this through a function that tracks the active jobs and initiates the new jobs, but if there was something built in that'd be great.</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f86,1,python|celery|celery-task
 30047328,How to override Pyqt combobox ItemText method so it returns default python string instead of QString?,"<p>When ever I do</p>
 
 <pre><code>resos = [_ui.ComboBox.itemText(i) for i in range(_ui.ComboBox.count())]
@@ -46,7 +46,7 @@ new_arr=np.array(img)
 PyQt4.QtCore.QString(u'1920x1080 from 1.316'),]  
 </code></pre>
 
-<p>how would it be possible to override ComboBox's itemText method so that it only returns python string ? instead of doing string conversion in the list comprehension above !</p>",1,python|list|combobox|pyqt|pyqt4
+<p>how would it be possible to override ComboBox's itemText method so that it only returns python string ? instead of doing string conversion in the list comprehension above !</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f87,1,python|list|combobox|pyqt|pyqt4
 30175518,IPython qtconsole custom banner,"<p>I'm trying to set a custom banner for the IPython qtconsole (v3.0.0). In my profile configuration, I set <code>c.IPythonWidget.banner = u'Custom Banner'</code>, and then launch <code>ipython qtconsole --profile=myprof</code>. What I get is my custom banner pre-pended to the regular banner:</p>
 
 <pre><code>Custom BannerPython 2.7.5 (default, Mar  9 2014, 22:15:05) 
@@ -73,10 +73,10 @@ IPython profile: myprof
 In [1]: 
 </code></pre>
 
-<p>Thanks.</p>",2,python|ipython|jupyter
+<p>Thanks.</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f88,2,python|ipython|jupyter
 30017991,check if an object supports the buffer protocol python,"<p>I am looking for the Python equivalent of the Python C-API PyObject_CheckBuffer.</p>
 
-<p>I.e. I would like to check if an object supports the buffer protocol, but from Python.</p>",12,python
+<p>I.e. I would like to check if an object supports the buffer protocol, but from Python.</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f89,12,python
 30116107,Django-axes not working with custom login view,"<p>I have followed the below links before asking this question as it seems like a duplicate, but of no use. So I'm asking again.</p>
 
 <p><a href=""https://stackoverflow.com/questions/25760023/django-login-with-django-axes"">Django login with django-axes</a></p>
@@ -133,10 +133,10 @@ url(r'^login/$', watch_login(user_login), {'template_name': 'app/login.html'}),
 <p>I think I made the question clear.</p>
 
 <p>Any help is appreciated.
-Thanks</p>",0,python|django|django-urls|django-authentication
+Thanks</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f90,0,python|django|django-urls|django-authentication
 30076583,How to use swig with compiled dll and header file only,"<p>I have read some docs from <a href=""http://www.swig.org/Doc1.3/SWIGPlus.html"" rel=""nofollow"">SWIG documentation</a> (related to c++ code), but can't figure out if it is possible to genereate Python extension module in case I have <em>compiled dll</em> (no source code provided) and <em>header file</em> with all functions declared in dll.
 <br>If someone has the same problem and solve it, could you provide some useful example?
-<br>Thanks in advance.</p>",4,python|c++|dll|wrapper|swig
+<br>Thanks in advance.</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f91,4,python|c++|dll|wrapper|swig
 29794052,"How could one disable new account creation with django-allauth, but still allow existing users to sign in?","<p>We've been running a site for a while which uses <a href=""https://github.com/pennersr/django-allauth"" rel=""noreferrer""><code>django-allauth</code></a> for authentication using any of:</p>
 
 <ul>
@@ -181,7 +181,7 @@ ACCOUNT_EMAIL_VERIFICATION = ""mandatory""
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_USERNAME_REQUIRED = True
 SOCIALACCOUNT_AUTO_SIGNUP = True
-</code></pre>",10,python|django|authentication|django-allauth
+</code></pre>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f92,10,python|django|authentication|django-allauth
 29930110,"Calculating the averages for each KEY in a Pairwise (K,V) RDD in Spark with Python","<p>I want to share this particular Apache Spark with Python solution because documentation for it is quite poor.</p>
 
 <p>I wanted to calculate the average value of K/V pairs (stored in a Pairwise RDD), by KEY. Here is what the sample data looks like:</p>
@@ -210,7 +210,7 @@ SOCIALACCOUNT_AUTO_SIGNUP = True
    (u'2013-10-07', 23.39500642456595),
    ... snip ...
   ]
-</code></pre>",29,python|apache-spark|aggregate|average|rdd
+</code></pre>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f93,29,python|apache-spark|aggregate|average|rdd
 29768601,Ipython notebook on remote server doesnot display folders in current directories in the browser,"<p>I have installed Ipython based on <a href=""http://calebmadrigal.com/ipython-notebook-vps/"" rel=""nofollow noreferrer"">tutorial</a> in my Digital Ocean server.</p>
 
 <p>However, when I try to access via browser, it displays the current directory files as specified in the ipython_notebook_config.py file. It does not show any folders in that directory.</p>
@@ -219,7 +219,7 @@ SOCIALACCOUNT_AUTO_SIGNUP = True
 
 <p>I know a similar <a href=""https://stackoverflow.com/questions/11021853/multiple-directories-and-or-subdirectories-in-ipython-notebook-session"">question</a> was raised earlier. I guess it had already implemented in the current version.</p>
 
-<p>I'm running Ubuntu 14.04, python 2.7, ipython 1.2.1</p>",1,python|ipython|ipython-notebook
+<p>I'm running Ubuntu 14.04, python 2.7, ipython 1.2.1</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f94,1,python|ipython|ipython-notebook
 29924114,Can't use GeoMipMap in Panda3D,"<p>I'm on to a very new 3D video Game project using Panda3D, and i try to understand the basics of terrain loading, that's why i tried the Panda3D tutorial ( <a href=""https://www.panda3d.org/manual/index.php/Geometrical_MipMapping"" rel=""nofollow"">https://www.panda3d.org/manual/index.php/Geometrical_MipMapping</a>), telling to type this in Python : </p>
 
 <pre><code>terrain = GeoMipTerrain(""mySimpleTerrain"")
@@ -234,10 +234,10 @@ terrain.generate()
 <pre><code>Name Error : Name "" GeoMipTerrain "" is not defined 
 </code></pre>
 
-<p>It is said in the Panda3D manual that GeoMipMap is included in Panda3D since 1.5.1 so i should be juste fine, they just don't say if we must import a specific module or what. That's why i tried to look what module or thing was necessary to load before requesting such a command, but i found no result, that's why i require your help. </p>",0,python|video|panda3d
+<p>It is said in the Panda3D manual that GeoMipMap is included in Panda3D since 1.5.1 so i should be juste fine, they just don't say if we must import a specific module or what. That's why i tried to look what module or thing was necessary to load before requesting such a command, but i found no result, that's why i require your help. </p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f95,0,python|video|panda3d
 29852919,Different PyCharm and IDLE Python versions,"<p>I have installed Python 2.7.9 64 and 32 bit versions. I have also installed PyCharm for better easing with the learning (I just recently started learning Python).
 The problem is that Pycharm and IDLE show different Python versions when usng <em>sys.version</em>, even though they use the same path for the .exe.
-How can I solve this? Thank you!</p>",1,python|pycharm|versions
+How can I solve this? Thank you!</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f96,1,python|pycharm|versions
 29972074,"Try to init a Repo using the G cloud, for an existing project","<p>There is an existing project I am a developer on with ID: placingliterature</p>
 
 <p>I am attempting to run the command gcloud init placingliterature</p>
@@ -261,7 +261,7 @@ ERROR: Unable to initialize project [placingliterature], cleaning up [C:\Program
 e].
 ERROR: (gcloud.init) Unable to initialize project [placingliterature].</p>
 
-<p>Anyone know why this is happening?</p>",0,git|command-line|gcloud|google-cloud-python|gcloud-python
+<p>Anyone know why this is happening?</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f97,0,git|command-line|gcloud|google-cloud-python|gcloud-python
 30094179,wxPython - checking for empty text dialogs,"<p>I have some python code, using wxpython, that will do the following:</p>
 
 <ol>
@@ -305,7 +305,7 @@ ERROR: (gcloud.init) Unable to initialize project [placingliterature].</p>
 <li>if the user leaves the number or name dialog entry blank, I want to ask them for that info again</li>
 </ul>
 
-<p>I cant seem to find out how wxpython handles the X button in dialog boxes. Currently, if the user leaves a default value in the first (number) box, and then X's, the second box (name) will still show up</p>",0,python|textbox|dialog|wxpython
+<p>I cant seem to find out how wxpython handles the X button in dialog boxes. Currently, if the user leaves a default value in the first (number) box, and then X's, the second box (name) will still show up</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f98,0,python|textbox|dialog|wxpython
 29772684,Python Writing 'N' bytes data to Binary file,"<p>I have following data in Excel sheet, 
 1st column is number of bytes, 2nd column is its data (dat is in decimal,hex,ip address format) </p>
 
@@ -346,7 +346,7 @@ ERROR: (gcloud.init) Unable to initialize project [placingliterature].</p>
         for n in range(0, num_cols):
             cell = first_sheet.cell(m,n)
             print 'cell value %d',cell.value
-</code></pre>",1,python|excel|struct|binary
+</code></pre>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f99,1,python|excel|struct|binary
 29885695,Writing out comma separated values in a single cell in spreadsheet,"<p>I am cataloging attribute fields for each feature class in the input list, below, and then I am writing the output to a spreadsheet for the occurance of the attribute in one or more of the feature classes. </p>
 
 <pre><code>import arcpy,collections,re  
@@ -374,7 +374,7 @@ for keys, vals in mydict.items():
 f.close()  
 </code></pre>
 
-<p>This code gets me 90% of the way to the intended solution. I still cannot get the feature classes(values) to separate by a comma within the same cell(being comma delimited it shifts each value over to the next column as I mentioned). In this particular code the ""v"" on line 20(feature class names) are output to the spreadsheet, separated by a space("" "") in the same cell. Not a huge deal because the replace "" "" with "","" can be done very quickly in the spreadsheet itself but it would be nice to work this into the code to improve reusability.</p>",0,python|csv
+<p>This code gets me 90% of the way to the intended solution. I still cannot get the feature classes(values) to separate by a comma within the same cell(being comma delimited it shifts each value over to the next column as I mentioned). In this particular code the ""v"" on line 20(feature class names) are output to the spreadsheet, separated by a space("" "") in the same cell. Not a huge deal because the replace "" "" with "","" can be done very quickly in the spreadsheet itself but it would be nice to work this into the code to improve reusability.</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f100,0,python|csv
 29911202,Priority Queue using a Max-Heap Data Structure,"<p>I am implementing a priority queue using a max-heap data structure in Python. I'm using several names that have numbers associated with them as their priority (9 being the highest and 1 being the lowest). The issue I am facing is that when I dequeue an item from the priority queue, it does not dequeue the item with highest priority. I assume this means there is a problem with my enqueue and it is not inserting the items into the correct position in the heap based on their priority. If anyone could help me fix this, it would be greatly appreciated.</p>
 
 <p>My priority queue code:</p>
@@ -584,7 +584,7 @@ class Heap(object):
             self.heap.append(None)
             item = self.delete_max()
             self.heap[sorted_size - i] = item
-</code></pre>",0,python|insert|heap|priority-queue|max-heap
+</code></pre>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f101,0,python|insert|heap|priority-queue|max-heap
 29985322,Error while loading excel file with Openpyxl,"<p>I am trying yo load an excel file using Openpyxl in Python. </p>
 
 <pre><code>   from openpyxl import load_workbook 
@@ -607,7 +607,7 @@ BadZipfile: File is not a zip file
 </code></pre>
 
 <p>This is exactly like their Documentation. <a href=""https://openpyxl.readthedocs.org/en/latest/tutorial.html"" rel=""nofollow"">https://openpyxl.readthedocs.org/en/latest/tutorial.html</a>
-Is their any better package to do this.</p>",1,python|excel|openpyxl
+Is their any better package to do this.</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f102,1,python|excel|openpyxl
 30083872,How to pass arrays into Scipy Interpolate RectBivariateSpline?,"<p>I am creating a Scipy Interpolate RectBivariateSpline as follows:</p>
 
 <pre><code>import numpy as np
@@ -645,8 +645,8 @@ ValueError: Error code returned by bispev: 10
 
 <p>This error is remedied when I pass in the grid=False parameter to the method.</p>
 
-<p>My impression from the <a href=""http://docs.scipy.org/doc/scipy/reference/generated/scipy.interpolate.RectBivariateSpline.__call__.html#scipy.interpolate.RectBivariateSpline.__call__"" rel=""noreferrer"">documentation</a> was that if the input grid coordinates form a regular grid, then the grid parameter should be True. Is there something I am missing?</p>",6,python|numpy|scipy|interpolation
-29882079,cache-control headers on openshift,<p>How can I setup cache-control headers on openshift apache server? I using python 2.7 cartridge (with wsgi and django) and I can't find how can modify apache settings. Thanks for any help!</p>,0,python|apache|openshift|wsgi
+<p>My impression from the <a href=""http://docs.scipy.org/doc/scipy/reference/generated/scipy.interpolate.RectBivariateSpline.__call__.html#scipy.interpolate.RectBivariateSpline.__call__"" rel=""noreferrer"">documentation</a> was that if the input grid coordinates form a regular grid, then the grid parameter should be True. Is there something I am missing?</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f103,6,python|numpy|scipy|interpolation
+29882079,cache-control headers on openshift,<p>How can I setup cache-control headers on openshift apache server? I using python 2.7 cartridge (with wsgi and django) and I can't find how can modify apache settings. Thanks for any help!</p>,5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f104,0,python|apache|openshift|wsgi
 30145635,Cleaning raw price data from an API that's received in dictionary format (Python),"<p>Using the <a href=""https://github.com/veox/python2-krakenex"" rel=""nofollow"">Krakenex</a> Python module, I am pulling in prices from the Kraken <a href=""https://www.kraken.com/help/api#get-ticker-info"" rel=""nofollow"">API</a> and it arrives in the following format:</p>
 
 <pre><code>{u'result': {u'XXBTZEUR': {u'a': [u'214.79000', u'3'], u'c': [u'214.79416', u'2.27789000'], u'b': [u'214.15262', u'7'], u'h': [u'217.36000', u'217.36000'], u'l': [u'210.99999', u'210.99999'], u'o': u'214.01000', u'p': [u'213.77705', u'213.51830'], u't': [1360, 1499], u'v': [u'872.87753147', u'1036.51819483']}}, u'error': []}
@@ -718,7 +718,7 @@ x =  [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 y =  [u'214.79416', u'214.79416', u'214.79416', u'214.79416', u'214.79416', u'214.79416', u'214.79416', u'214.79416', u'214.79416', u'214.79416']
 </code></pre>
 
-<p>Why does a list bring back the u'? I have even tried removing the first two characters from each price but this removes the first two digits, not the u'. Thoughts?</p>",2,python|api|dictionary|bitcoin|ticker
+<p>Why does a list bring back the u'? I have even tried removing the first two characters from each price but this removes the first two digits, not the u'. Thoughts?</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f105,2,python|api|dictionary|bitcoin|ticker
 30165465,Not able to timeout using python eventlet library (eventlet.timeout.Timeout),"<p>I am looping over a list and performing some action on each member of the list.
 If a member takes too much time (1 sec in this case), I intend to pass it. However the block inside the <code>try</code> statement is always being processed and is <strong>never timing out</strong>. I don't understand why.</p>
 
@@ -736,10 +736,10 @@ If a member takes too much time (1 sec in this case), I intend to pass it. Howev
             pass
         finally:
             t.cancel()
-</code></pre>",1,python|python-3.x|timeout|try-catch|eventlet
+</code></pre>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f106,1,python|python-3.x|timeout|try-catch|eventlet
 29801968,Running Hadoop jar using Luigi python,"<p>I need to run a Hadoop jar job using <a href=""https://github.com/spotify/luigi"" rel=""nofollow"">Luigi</a> from python. I searched and found examples of writing mapper and reducer in Luigi but nothing to directly run a Hadoop jar. </p>
 
-<p>I need to run a Hadoop jar compiled directly. How can I do it? </p>",4,python|hadoop|pipeline|luigi
+<p>I need to run a Hadoop jar compiled directly. How can I do it? </p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f107,4,python|hadoop|pipeline|luigi
 29954045,Tailable cursor in pymongo seems to have stopped working,"<p>I have successfully been using tailable cursors in Pymongo for 2 years without a hitch, but all of a sudden, today, my identical code is throwing an ""unexpected keyword"" error:</p>
 
 <p><img src=""https://i.stack.imgur.com/onFq6.png"" alt=""enter image description here""></p>
@@ -784,7 +784,7 @@ while cursor.alive:
         if not runThreads:
             print(""Exiting handleRefRequests thread"")
             break
-</code></pre>",1,python|mongodb|pymongo
+</code></pre>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f108,1,python|mongodb|pymongo
 30104748,pip unexpectedly not installing latest version of git package with branch/commit pinning,"<p>I have a requirements.txt file with the following line (among others):</p>
 
 <pre><code>git+https://github.com/lead-ratings/sexmachine.git@master#egg=SexMachine
@@ -804,7 +804,7 @@ while cursor.alive:
 
 <p>It doesn't work either if I specify a commit in the pinning or use the <code>--no-cache-dir</code> flag. I'm using pip 6.1.1.</p>
 
-<p>If I use the <code>--upgrade</code> flag then it works. But then what is the point of the pinning? Why does it say ""Requirement already satisfied"" if it really isn't?</p>",7,python|git|pip
+<p>If I use the <code>--upgrade</code> flag then it works. But then what is the point of the pinning? Why does it say ""Requirement already satisfied"" if it really isn't?</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f109,7,python|git|pip
 29883518,Does asyncio.wait return only after all done_callbacks were called?,"<p>Imagine the following code:</p>
 
 <pre><code>import asyncio
@@ -839,7 +839,7 @@ Wait returned
 
 <p>Is this guaranteed behavior? I did not find anything in documentation about this.</p>
 
-<p>Is this possible situation when <code>done_callback</code> called after <code>wait</code> returned?</p>",2,python|python-3.x|python-asyncio
+<p>Is this possible situation when <code>done_callback</code> called after <code>wait</code> returned?</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f110,2,python|python-3.x|python-asyncio
 30084399,Python - Group duplicates in a list of lists by index,"<p>I've seen a lot of questions about removing duplicates from a list and counting them. But I'm trying to find the best way to group them - for a list of lists. </p>
 
 <p>Given this example I want to group by the third field:</p>
@@ -858,7 +858,7 @@ Wait returned
   [3, ""text"", ""name2"", ""text""]]]
 </code></pre>
 
-<p>I can think of the naive way by looping through and just keeping track of what is found (O(n^2)). But I would assume there's a better way.</p>",3,python|list
+<p>I can think of the naive way by looping through and just keeping track of what is found (O(n^2)). But I would assume there's a better way.</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f111,3,python|list
 30009948,How to reorder indexed rows based on a list in Pandas data frame,"<p>I have a data frame that looks like this:</p>
 
 <pre><code>company  Amazon  Apple  Yahoo
@@ -887,7 +887,7 @@ C           173      0      0
 A             0    130      0
 </code></pre>
 
-<p>How can I achieve that?</p>",57,python|pandas
+<p>How can I achieve that?</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f112,57,python|pandas
 29997635,Selecting Multiple Selectors for increased specificity in Selenium Using Python,"<pre><code>&lt;input class=""radio-field"" type=""radio"" checked=""checked"" value=""0"" name=""value(WoundCareDone)""&gt;
 </code></pre>
 
@@ -895,7 +895,7 @@ A             0    130      0
 
 <p>I want to select the xpath of name. It would go like this //input[@name=""value(WoundCareDone)""] right?</p>
 
-<p>so how I want to include the value 0 in the xpath because only using the above xpath yields 2 results. how do we include value=""0"" in the xpath?</p>",1,python|selenium|xpath
+<p>so how I want to include the value 0 in the xpath because only using the above xpath yields 2 results. how do we include value=""0"" in the xpath?</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f113,1,python|selenium|xpath
 30038852,pexpect: unable to run command on multi-hopped node using namespace,"<p>I had posted this problem earlier <a href=""https://stackoverflow.com/questions/29794260/python-fabric-multi-hop-ssh-to-run-cmd-on-remote-host-using"">https://stackoverflow.com/questions/29794260/python-fabric-multi-hop-ssh-to-run-cmd-on-remote-host-using</a> and since I was unable to find a fix I adopted pexpect to implement. However I am unable to achieve the intent of running command on the end machine:</p>
 
 <pre><code>TestMachine -- connected---Node1--(namespace ssh)--Node2(run cmd on Node2)
@@ -932,7 +932,7 @@ child.expect('$')
 print child.before
 </code></pre>
 
-<p>The script does not error out, however it does not seem to access Node2 as no output on print is seen. Any help much appreciated</p>",0,python|pexpect
+<p>The script does not error out, however it does not seem to access Node2 as no output on print is seen. Any help much appreciated</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f114,0,python|pexpect
 30049253,Modifying diagonals in multidimensional numpy arrays,"<p>I have a multidimensional numpy array of shape (7, 3, 7, 3) and I would like to modify the generalized diagonal in which axis 0 and axis 2 coincide. This generalized diagonal would be defined as those elements of the array whose 0th and 2nd index coincide, and would have shape (3, 3, 7).</p>
 
 <p>Doing:</p>
@@ -946,7 +946,7 @@ print child.before
 
 <p>Alternatively, I have tried indexing the diagonal elements directly [with input taken from numpy.indices((7, 3, 7, 3))], but with no success.</p>
 
-<p>How could I access the elements of the generalized diagonal to modify the original array in numpy 1.8.2?</p>",2,python|arrays|numpy|multidimensional-array|diagonal
+<p>How could I access the elements of the generalized diagonal to modify the original array in numpy 1.8.2?</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f115,2,python|arrays|numpy|multidimensional-array|diagonal
 29887159,Python/tkinter: elapsed time in label/updating a label constantly?,"<p>So im trying to write code to display the playback time of an audio file, by constantly looping and updating the label text from pyglet's elapsed time method. I can get the time to appear, but it does not update. was wondering how to update the label on the GUI to show the elapsed time? The loop for time is near the bottom, i provided all the code just in case though.</p>
 
 <pre><code>from tkinter import *
@@ -1042,7 +1042,7 @@ def ReadOut():
 
 ReadOut()
 app.mainloop() # keep at the end
-</code></pre>",0,python|loops|audio|tkinter|label
+</code></pre>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f116,0,python|loops|audio|tkinter|label
 29867175,Nested options with argparse,"<p>I'd like to have my python script take variable number of arguments depending on a particular choice. For example:</p>
 
 <p><code>python run.py foo</code></p>
@@ -1059,7 +1059,7 @@ argparser.add_argument(""test"", choices=['foo', 'bar'], help=""You may choose f
 ...
 </code></pre>
 
-<p>But how can I specify additional arguments required by <code>bar</code>? P.S. I'm working with Python 2.7, so if a solution requires Python 3, it won't be much help in my case.</p>",2,python|python-2.7|argparse
+<p>But how can I specify additional arguments required by <code>bar</code>? P.S. I'm working with Python 2.7, so if a solution requires Python 3, it won't be much help in my case.</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f117,2,python|python-2.7|argparse
 30117684,How can I optimize DAL web2py query?,"<pre><code>result = db((db.company.location.belongs(locations)) &amp;
             (db.company.emp_id.belongs(employee_ids)) &amp;
             (db.company.type.belongs(types))).select()
@@ -1071,12 +1071,12 @@ argparser.add_argument(""test"", choices=['foo', 'bar'], help=""You may choose f
 
 <p><code>types = ['General', 'office', 'e-commerce']</code></p>
 
-<p>This query return 60,000 records and takes 1 minute to complete. How can I optimize it or split it?</p>",0,python|mysql|web2py|database-abstraction
+<p>This query return 60,000 records and takes 1 minute to complete. How can I optimize it or split it?</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f118,0,python|mysql|web2py|database-abstraction
 29871461,Return existing primary key ID upon constraint failure in sqlite3,"<p>I have <code>UNIQUE</code> constraint on two columns of a table in SQLite.</p>
 
 <p>If I insert a record with a duplicate on these two columns into the table, I will get an exception (<code>sqlite3.IntegrityError</code>).</p>
 
-<p>Is it possible to retrieve the primary key ID of this record upon such a violation, without doing an additional <code>SELECT</code>?</p>",0,python|python-3.x|sqlite|unique-constraint
+<p>Is it possible to retrieve the primary key ID of this record upon such a violation, without doing an additional <code>SELECT</code>?</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f119,0,python|python-3.x|sqlite|unique-constraint
 30106783,Django - Get query parameter list,"<p>I've an endpoint </p>
 
 <pre><code>http://127.0.0.1:8000/auction/?status=['omn','aad']
@@ -1094,7 +1094,7 @@ argparser.add_argument(""test"", choices=['foo', 'bar'], help=""You may choose f
 
 <p>which is a list of string of list.</p>
 
-<p>I then use ast.literal_eval to convert string of list to list. Is there a direct method to get the list of status?</p>",6,python|django
+<p>I then use ast.literal_eval to convert string of list to list. Is there a direct method to get the list of status?</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f120,6,python|django
 29930201,how to get full list of keys from a collection in mongodb,"<p>How do I get a list of all the keys used in a mongodb collection?</p>
 
 <p>I'm trying to create a csv file in python using the following:</p>
@@ -1120,7 +1120,7 @@ with open('userWtihAgentProp.csv','w+') as f:
 
 <p>I think this is because <code>userAgentProp_list[0]</code> doesn't have all the same fields as the other documents in the collection.</p>
 
-<p>How can I get a list of the all the keys used in the collection?</p>",3,python|mongodb|pymongo
+<p>How can I get a list of the all the keys used in the collection?</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f121,3,python|mongodb|pymongo
 30137950,Passing result of mrjob step to next step as parameter,"<p>I am writing a multi-step mrjob. The first step does some pre-processing and ends with the following reducer:</p>
 
 <pre><code>def some_reducer(self, key, values):
@@ -1130,7 +1130,7 @@ with open('userWtihAgentProp.csv','w+') as f:
 </code></pre>
 
 <p>I've tried going through the documentation and experimented with adding passthrough options or adding values to self.jobconf(), but I couldn't figure it out.
-Any help would be appreciated.</p>",2,python|mapreduce|mrjob
+Any help would be appreciated.</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f122,2,python|mapreduce|mrjob
 29879404,Web.py not serving static files,"<p>Running on the devel server, I can render 0.0.0.0:8080/index.html without CSS fine, but no static files load.  0.0.0.0:8080/static results in ""Not found"" and 0.0.0.0:8080/static/style.css gets a 404.   </p>
 
 <p>All I've googled quotes or links to <a href=""http://webpy.org/cookbook/staticfiles"" rel=""nofollow"">http://webpy.org/cookbook/staticfiles</a>, which I feel like I've followed to point.  </p>
@@ -1173,7 +1173,7 @@ if __name__ == ""__main__"":
 ...
 </code></pre>
 
-<p>Would appreciate any help!  </p>",0,python|web.py
+<p>Would appreciate any help!  </p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f123,0,python|web.py
 30139978,Using lambda function to multiply columns of a pandas dataframe by a different value for each column,"<p>I have the following code:</p>
 
 <pre><code>    data_keys = data.keys()
@@ -1212,7 +1212,7 @@ if __name__ == ""__main__"":
 
 <p>I cannot paste my current output because stack overflow doesn't like the format but what is currently happening is the multiplication is not occurring and the numbers are iteratively being spliced i.e. first element = 240.8856716, second = 240.8856716240.8856716 and this continues.</p>
 
-<p>This is obviously not what I want. Does anybody know a way to do this? </p>",0,python|pandas|lambda
+<p>This is obviously not what I want. Does anybody know a way to do this? </p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f124,0,python|pandas|lambda
 30007109,Error: AttributeError: file <maya console> line 65: 'OptionsWindow' object has no attribute 'int_offset' #,"<p>I'm getting this error for line 65 of my Python code in Maya within the pasteTheseKeys method:</p>
 
 <pre><code>self.offsetVal = mc.intFieldGrp(self.int_offset, q=True, value1=True)
@@ -1351,7 +1351,7 @@ else:
     pprint.pprint(channels(sel))
 </code></pre>
 
-<p>I've been combing through the other entries here on Attribute errors and instance attributes vs. class attributes but am still quite confused as to why I'm getting this error.</p>",0,python|maya|attributeerror
+<p>I've been combing through the other entries here on Attribute errors and instance attributes vs. class attributes but am still quite confused as to why I'm getting this error.</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f125,0,python|maya|attributeerror
 30034163,Arranging size of a frame in tkinter,"<p>I am making a simple toolbox for my app. I have used the class method, which inherits <code>Frame</code> as its super class. In my main file I import this class.</p>
 
 <p>It will be a main window which all widgets will be in it. But there is a problem, here is the source code:</p>
@@ -1386,7 +1386,7 @@ tl.ToolBox(frame).pack()
 root.mainloop()
 </code></pre>
 
-<p>Main window, which is the <code>root</code> who has the <code>frame</code>, must be 400 in widht and height. But it appears in dimensions of my toolbox. I want the toolbox to be in the main window. How can I solve this?</p>",0,python-3.x|tkinter
+<p>Main window, which is the <code>root</code> who has the <code>frame</code>, must be 400 in widht and height. But it appears in dimensions of my toolbox. I want the toolbox to be in the main window. How can I solve this?</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f126,0,python-3.x|tkinter
 30116141,python selenium webdriver open new window handle wait,"<p>When I click a button open new window 
 How do I know window open finished?</p>
 
@@ -1395,7 +1395,7 @@ How do I know window open finished?</p>
 <pre><code>wait.until(EC.frame_to_be_available_and_switch_to_it(driver.find_element_by_name('newframe')))
 </code></pre>
 
-<p>in new window?</p>",0,python|selenium-webdriver
+<p>in new window?</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f127,0,python|selenium-webdriver
 29753592,Pyenv shim not created when installing package using setup.py,"<p>When I install a package into a pyenv environment by using <code>./setup.py install</code>, the package's script is not added to pyenv's shim directory.  As a result, the script is not in my PATH and cannot be executed normally.</p>
 
 <p>My package is using setuptools.  My package's <code>setup.py</code> specifies a script that should be installed.</p>
@@ -1446,7 +1446,7 @@ ls: cannot access /home/wayne/.pyenv/shims/olio_msg_send_test_messages: No such 
 <ul>
 <li>pyenv 20141118</li>
 <li>python 2.6.7</li>
-</ul>",6,python|setuptools|pyenv
+</ul>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f128,6,python|setuptools|pyenv
 29763360,Accurate color blending in Matplotlib-Venn,"<p>With the following code:</p>
 
 <pre><code>from matplotlib import pyplot as plt
@@ -1484,7 +1484,7 @@ Notice that the result of the blending is <strong>brown</strong>.</p>
 
 <p><img src=""https://i.stack.imgur.com/Egzdw.jpg"" alt=""enter image description here""></p>
 
-<p>How can I achieve that correctly?</p>",3,python|matplotlib|venn-diagram|matplotlib-venn
+<p>How can I achieve that correctly?</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f129,3,python|matplotlib|venn-diagram|matplotlib-venn
 30197943,'numpy.ndarray' object has no attribute 'remove',"<p>I have an array of arrays and I'm trying to find the lowest non-zero value among them all.</p>
 
 <pre><code>minima = []
@@ -1502,7 +1502,7 @@ print min(minima)
 <pre><code>AttributeError: 'numpy.ndarray' object has no attribute 'remove'
 </code></pre>
 
-<p>I thought <code>array.remove()</code> was the way to remove an element. What am I doing wrong?</p>",8,python|numpy|multidimensional-array|floating-point
+<p>I thought <code>array.remove()</code> was the way to remove an element. What am I doing wrong?</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f130,8,python|numpy|multidimensional-array|floating-point
 29957444,java.lang.IncompatibleClassChangeError When submitting spark example code for hbase,"<p>i'm trying to submit the python code of hbase in spark exmaples folder. can anyone help to give me a solution in details, thanks a lot!</p>
 
 <h3>Environment</h3>
@@ -1570,7 +1570,7 @@ py4j.protocol.Py4JJavaError: An error occurred while calling z:org.apache.spark.
     at py4j.commands.CallCommand.execute(CallCommand.java:79)
     at py4j.GatewayConnection.run(GatewayConnection.java:207)
     at java.lang.Thread.run(Thread.java:745)
-</code></pre>",1,python|apache-spark|hbase
+</code></pre>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f131,1,python|apache-spark|hbase
 30074756,How to set parent process' shell env from child process,"<p>The child process has a value which must be passed onto the parent process. I am using python's <code>subprocess.Popen</code> to do that, but child process's <code>TEMP_VAR</code> is not visible from the parent's shell?</p>
 
 <pre><code>import subprocess
@@ -1583,7 +1583,7 @@ subprocess.Popen('echo $TEMP_VAR', shell=True)
 //prints empty string
 </code></pre>
 
-<p>Is there a way to do this interprocess communication without using <code>queues</code> (or) Popen's - <code>stdout/stdin</code> keyword args.</p>",1,python|shell|subprocess|inter-process-communicat
+<p>Is there a way to do this interprocess communication without using <code>queues</code> (or) Popen's - <code>stdout/stdin</code> keyword args.</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f132,1,python|shell|subprocess|inter-process-communicat
 30096501,Django Grappelli Autocomplete issue,"<p>I am using the following code. I tried everything as per docs, but can't find any way. Am I missing something. The models.py contains the following code.</p>
 
 <pre class=""lang-python prettyprint-override""><code>from django.db import models
@@ -1631,7 +1631,7 @@ class ListingOptions(admin.ModelAdmin):
     }
 </code></pre>
 
-<p>I am using Django version 1.8.1</p>",1,python|django|django-grappelli
+<p>I am using Django version 1.8.1</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f133,1,python|django|django-grappelli
 30116780,How many connections will open in mongodb in python?,"<p>I am working with mongodb and python, for accessing the database I am doing  this:</p>
 
 <pre><code>#pymongo connection settings
@@ -1650,7 +1650,7 @@ db = connection['MyDB']
 <pre><code>db_data = db.mycollection.find()
 </code></pre>
 
-<p>When I am creating multiple users or getting <code>mycollection</code> details for multiple times how many conections will open in mongodb. Do I need to close any open connection before returning result?</p>",1,python|mongodb
+<p>When I am creating multiple users or getting <code>mycollection</code> details for multiple times how many conections will open in mongodb. Do I need to close any open connection before returning result?</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f134,1,python|mongodb
 29921007,python crosstab function in a loop,"<p>I am working in python for quiet a time, but stuck at simple problem.I have to run crosstab functions for different variables with same ID variable(masteruserid)</p>
 
 <pre><code>pd.crosstab(data['MasterUserId'],visittime_cat)
@@ -1665,7 +1665,7 @@ pd.crosstab(data['MasterUserId'],week_cat)
         'crosstab_{ }'.format(i)=pd.crosstab(id_col,i)
 </code></pre>
 
-<p>I want to generate datasets such as crosstab_visittime_cat,crosstab_week_cat or as crosstab_1, crosstab_2 and so on.</p>",1,python|pandas|crosstab
+<p>I want to generate datasets such as crosstab_visittime_cat,crosstab_week_cat or as crosstab_1, crosstab_2 and so on.</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f135,1,python|pandas|crosstab
 30105531,"Why doesn't python log exceptions to syslog (but then, it does?)","<p>The <a href=""https://docs.python.org/2/library/logging.handlers.html#logging.handlers.SysLogHandler.emit"" rel=""nofollow"">documentation</a> for the <code>emit()</code> function of Python 2.x <a href=""https://docs.python.org/2/library/logging.handlers.html#sysloghandler"" rel=""nofollow"">SysLogHandler</a> says:</p>
 
 <blockquote>
@@ -1709,7 +1709,7 @@ except ZeroDivisionError as e:
 
 <p>I am using rsyslog 8.4.2 on a Debian wheezy system.</p>
 
-<p>Also, I am aware there are issues with multiline, but is this related? </p>",2,python|logging|syslog|rsyslog
+<p>Also, I am aware there are issues with multiline, but is this related? </p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f136,2,python|logging|syslog|rsyslog
 30100846,Navigate an NLTK tree (follow-up),"<p>I've asked the question how I can properly navigate through an NTLK tree.</p>
 
 <blockquote>
@@ -1759,7 +1759,7 @@ def traverse(t):
 
 <p>Any help would be much appreciated again. </p>
 
-<p>(Generally, if there is any expert on NLTK trees among you, I would love to chat with you and pay a few coffees in exchange for a bit of insight.)</p>",0,python|tree|nlp|nltk
+<p>(Generally, if there is any expert on NLTK trees among you, I would love to chat with you and pay a few coffees in exchange for a bit of insight.)</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f137,0,python|tree|nlp|nltk
 30197175,PyVisa-py backend,"<p>I have an error appeared on installing pyvisa-py pn on raspberry pi2, which is </p>
 
 <blockquote>
@@ -1813,7 +1813,7 @@ sim:
 Does not provide debug info
 </code></pre>
 
-<p>Could anyone help me solve it? Thanks a lot</p>",0,python|linux|raspberry-pi2
+<p>Could anyone help me solve it? Thanks a lot</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f138,0,python|linux|raspberry-pi2
 29986410,Python 3.x - toggling fullscreen in tkinter,"<p>So far, I have a command that makes my window fullscreen. Now, predictably, I want to be able to exit fullscreen also.</p>
 
 <p>This is the code I have:</p>
@@ -1834,7 +1834,7 @@ Does not provide debug info
     win.bind('&lt;Escape&gt;', exitFullscreen)
 </code></pre>
 
-<p>But the issue is that I can't get the window frame to reappear. I thought that doing <code>win.overrideredirect(False)</code> would work, but it didnt.</p>",2,python|tkinter|toggle|fullscreen
+<p>But the issue is that I can't get the window frame to reappear. I thought that doing <code>win.overrideredirect(False)</code> would work, but it didnt.</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f139,2,python|tkinter|toggle|fullscreen
 29755110,Twitter Streaming: Get trends on Twitter on the basis of countries,"<p>I am using <code>tweepy</code> to get twitter tweets. I want to get the current trends based on the country of my choice. My code is as follows:</p>
 
 <pre><code>import tweepy
@@ -1849,7 +1849,7 @@ for trend in trends:
 
 <p>The code above gives me a list of countries. I want to use the list to check the current trends in the country. How do I extract the trending <code>hashtags</code> for these countries?</p>
 
-<p>I came across <a href=""https://stackoverflow.com/questions/27071890/how-to-get-historic-trending-hashtags-on-twitter-by-date-and-or-by-location"">this</a> question but it has no answers.</p>",1,python|twitter|tweepy|twitter-streaming-api
+<p>I came across <a href=""https://stackoverflow.com/questions/27071890/how-to-get-historic-trending-hashtags-on-twitter-by-date-and-or-by-location"">this</a> question but it has no answers.</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f140,1,python|twitter|tweepy|twitter-streaming-api
 29814958,What does %c character formatting do in Python and it's use?,"<p>Going through string formatting operations but can't exactly wrap my head about %c operation and its use.</p>
 
 <p>Learn Python the Hard Way, gave the following example but it makes little sense without the proper context.</p>
@@ -1858,7 +1858,7 @@ for trend in trends:
 </code></pre>
 
 <p>Here is the link to if anyone wants to check it out:
-<a href=""http://learnpythonthehardway.org/book/ex37.html"" rel=""nofollow"">http://learnpythonthehardway.org/book/ex37.html</a></p>",0,python|string
+<a href=""http://learnpythonthehardway.org/book/ex37.html"" rel=""nofollow"">http://learnpythonthehardway.org/book/ex37.html</a></p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f141,0,python|string
 29829422,Legends in Matplotlib Basemap,"<p>I'm plotting multiple points in Basemap and would like to have a legend to signify the category that each color represents. However, since I have multiple points in each category, the legend pulls each of those points, giving me multiple entries of the same category in the legend. Is there a way to just show one overall color-category listing?</p>
 
 <pre><code>m = Basemap(llcrnrlon=30.,llcrnrlat=20.,urcrnrlon=-160.,urcrnrlat=63.,projection='lcc',resolution='c',lat_1=20.,lat_2=40.,lon_0=90.,lat_0=50.)
@@ -1883,7 +1883,7 @@ for j in range(len(corr)):
 
 <p>NOTE: I've placed plt.legend both inside and outside the loop with the same results. </p>
 
-<p><img src=""https://i.stack.imgur.com/bsXZG.png"" alt=""enter image description here""></p>",1,python|matplotlib|matplotlib-basemap
+<p><img src=""https://i.stack.imgur.com/bsXZG.png"" alt=""enter image description here""></p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f142,1,python|matplotlib|matplotlib-basemap
 29982556,"from . import models works, but import models doesn't","<p>I'm working on a webproject and using Django. In my <code>views.py</code> file I want to access the database for which I want to import my <code>models</code>.</p>
 
 <p>Here's my directory structure:  </p>
@@ -1924,7 +1924,7 @@ print(mod2.foo())
 
 <pre><code>def foo():
     return ""Hello""
-</code></pre>",2,python|django|python-3.x|import
+</code></pre>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f143,2,python|django|python-3.x|import
 29933510,How to find a specific string in a .txt file Python,"<p>I have a large textfile on my computer (location: /home/Seth/documents/bruteforce/passwords.txt) and I'm trying to find a specific string in the file. The list has one word per line and 215,000 lines/words. Does anyone know of simple Python script I can use to find a specific string?</p>
 
 <p>Here's the code I have so far,</p>
@@ -1945,7 +1945,7 @@ for line in f.readlines():
 
 <p>Your help is greatly appreciated.</p>
 
-<p>Ps: I'm using Python 2.7 on a Debian Linux laptop.</p>",0,python|text-files
+<p>Ps: I'm using Python 2.7 on a Debian Linux laptop.</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f144,0,python|text-files
 29780634,Dataframe how to keep only unique rows and plot curve,"<p>I have following data frame where I am trying to actually plot a curve but the problem is that it has multiple corresponding values for each value in both precision and recall. </p>
 
 <pre><code>       precision  recall
@@ -1988,7 +1988,7 @@ index = [gp_keys[0] for gp_keys in grouped.groups.values()]
 unique_df = df.reindex(index)
 </code></pre>
 
-<p>But didn't work.</p>",0,python|pandas|dataframe
+<p>But didn't work.</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f145,0,python|pandas|dataframe
 30059515,Using mongoengine in Django. Cannot save instance of Document into database,"<p>I am trying to create new Document and save it to the database. The database in Mongo was created automatically, but no entries are saved. What I am trying to do in my code is the following: </p>
 
 <pre><code>lesson = Lesson()
@@ -2070,7 +2070,7 @@ SESSION_ENGINE = 'mongoengine.django.sessions'
 
         def __unicode__(self):
             return smart_unicode(""Lesson #%d"" % self.id)
-</code></pre>",1,python|django|mongodb|mongoengine
+</code></pre>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f146,1,python|django|mongodb|mongoengine
 30063087,"ipython parallel client.map dramatically slower than python ""map""?","<p>I'm trying to understand why my load balanced view map statement takes 22 secs to execute on 2 cores rather than just 10 ms on one core using built-in map.  I understand that parallel work has an overhead associated with it, but that can't explain the extra 22 seconds.  What am I doing wrong? </p>
 
 <p>I am running Python 2.7 on an Intel Core2Duo Mac. OS X.10.   </p>
@@ -2088,12 +2088,12 @@ In [8]: %timeit map(lambda x:x**10, range(3000))
 
 In [9]: %timeit lview.map(lambda x:x**10, range(3000))
 1 loops, best of 3: 22.8 s per loop
-</code></pre>",0,python|parallel-processing|ipython
+</code></pre>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f147,0,python|parallel-processing|ipython
 29988393,How to create egg file using pydev plugin in eclipse?,"<p>I have used pydev with eclipse and implemented a small python project with some external source folders. now I want to execute my code on the server. in java I used to just export my project to JAR file. </p>
 
 <p>can you please advice me how to do so in python.</p>
 
-<p>thanks</p>",1,python|eclipse|pydev|egg
+<p>thanks</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f148,1,python|eclipse|pydev|egg
 30015692,Graphviz: edge to record label in Python (gv),"<p>I'm having a hard time generating the following edge:</p>
 
 <pre><code>...
@@ -2139,8 +2139,8 @@ gv.write(gh, ""out.dot"")
 
 <p>Which leaves me with the question how to obtain the edge shown above so it points to the correct record entry.</p>
 
-<p>Thanks in advance.</p>",2,python|graphviz
-30136501,Python: joining two lists,"<p>How to combine two lists by alternatively taking elements. For example: given the two lists ['a','b','c'] and [1, 2, 3, 4], the function should return [a, 1, b, 2, c, 3, 4]</p>",0,python|list|python-2.7
+<p>Thanks in advance.</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f149,2,python|graphviz
+30136501,Python: joining two lists,"<p>How to combine two lists by alternatively taking elements. For example: given the two lists ['a','b','c'] and [1, 2, 3, 4], the function should return [a, 1, b, 2, c, 3, 4]</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f150,0,python|list|python-2.7
 30100830,Tox and django_toolbar: ImportError,"<p>When trying to use Tox to better streamline testing across multiple environments, I'm runing into the following error when testing for Python 3.4:</p>
 
 <p><code>ImportError: No module named 'debug_toolbar'</code></p>
@@ -2225,7 +2225,7 @@ ____________________________________________________________________ summary ___
   py27: commands succeeded
 ERROR:   py34: commands failed
 (venv)joost@thorin:myproject/ (master✗) % 
-</code></pre>",1,python|django|tox
+</code></pre>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f151,1,python|django|tox
 29924997,PyQt5 Could not connect to display,"<p>to learn python I decided to make a small GUI that will interact with a web API. So without much thinking I created a virtual machine with Vagrant (ubuntu/trusty64) and installed PyQt5.
 I made a small script to create a window (here it is)</p>
 
@@ -2248,8 +2248,8 @@ sys.exit(app.exec_())
 
 <p>So I guess the problem comes from the fact that I'm using a virtual-machine without a display. Isn't there a way to make it use my Windows display just to render my program? Or do I need to install a VM with virtualbox?</p>
 
-<p>Thanks for your time.</p>",0,python|vagrant|virtual-machine|pyqt5
-30086936,What is the difference between the types <type 'numpy.string_'> and <type 'str'>?,<p>Is there a difference between the types <code>&lt;type 'numpy.string_'&gt;</code> and <code>&lt;type 'str'&gt;</code>?</p>,14,python|string|numpy|types
+<p>Thanks for your time.</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f152,0,python|vagrant|virtual-machine|pyqt5
+30086936,What is the difference between the types <type 'numpy.string_'> and <type 'str'>?,<p>Is there a difference between the types <code>&lt;type 'numpy.string_'&gt;</code> and <code>&lt;type 'str'&gt;</code>?</p>,5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f153,14,python|string|numpy|types
 29878768,numerical value for an expression in sympy,"<p>sympy is giving me the following expression:</p>
 
 <pre><code>2.8*x**2 - 4.0*x*Integral(1.0*x**2*sqrt(-x**2 + 1), (x, -1.0, 0.0)) + 1.33333333333333*x + 0.133333333333333
@@ -2283,7 +2283,7 @@ c_1 = integrate(f1*phi_1*w, (x, -1.0, 0.0))+integrate(f2*phi_1, (x, 0.0, 1.0))
 c_2 = integrate(f1*phi_2*w, (x, -1.0, 0.0))+integrate(f2*phi_2, (x, 0.0, 1.0)) 
 
 fapprox2 = c_0*phi_0+c_1*phi_1+c_2 *phi_2
-</code></pre>",2,python|python-2.7|numpy|scipy|sympy
+</code></pre>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f154,2,python|python-2.7|numpy|scipy|sympy
 30175530,"Git P4 under Cygwin: Submit fails with ""Patch does not apply""","<p>I'm attempting to use git-p4 under Cygwin.  The ""clone"" and ""rebase"" parts of the workflow appear to be working correctly, but I am unable to ""submit"".  I'm guessing it may have something to do with a line-ending convention. I've looked at <a href=""https://stackoverflow.com/questions/15953609/git-p4-submit-fails"">this git-p4 issue</a> and its linked items, but manipulations of line-ending and whitespace configuration are so far unsuccessful. Items of note in my configuration:</p>
 
 <p>(1) I'm using the bash shell function trick to get paths to work correctly:</p>
@@ -2368,7 +2368,7 @@ p4 ()
  +foo1 is the one!
 </code></pre>
 
-<p>Piping this to the second part of the command results in no error.  I am perplexed as to why the command fails when executed using <code>os.system()</code> in the Python script but succeeds otherwise.  Thoughts?</p>",2,python|git|cygwin|git-p4
+<p>Piping this to the second part of the command results in no error.  I am perplexed as to why the command fails when executed using <code>os.system()</code> in the Python script but succeeds otherwise.  Thoughts?</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f155,2,python|git|cygwin|git-p4
 30027934,Pre-select parent item in many2one popup,"<p>Let's start with a basic One2many relation, a class <strong>Parent</strong> and a class <strong>Child</strong>.</p>
 
 <p>Models :</p>
@@ -2412,7 +2412,7 @@ class Child(models.Model):
 <p>When I open a <strong>Parent</strong> form and try to create a new <strong>Child</strong> from the one2many popup, the <code>parent_id</code> field is not selected with the current open <strong>Parent</strong> from the window view !
 I have to retrieve it in the <code>parent_id</code> selection field to re-select it.</p>
 
-<p>Is there a way to do this autoselection ?</p>",0,python|openerp|odoo|many-to-one|openerp-8
+<p>Is there a way to do this autoselection ?</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f156,0,python|openerp|odoo|many-to-one|openerp-8
 30088630,Find page for a specific item in paginate() SQLAlchemy,"<p>I am usign Flask-SQLAlchemy’s <code>paginate()</code>. Now I need to find what is the page for a specific comment id.</p>
 
 <p>For example, this will work, if I have all comments in the same page:</p>
@@ -2425,7 +2425,7 @@ I have to retrieve it in the <code>parent_id</code> selection field to re-select
 <pre><code>/comments?page=1#comment_73
 </code></pre>
 
-<p>How can I find what is the page?</p>",0,python|flask|pagination|sqlalchemy|flask-sqlalchemy
+<p>How can I find what is the page?</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f157,0,python|flask|pagination|sqlalchemy|flask-sqlalchemy
 30118944,How to run bash script with commands in tests in vagrant?,"<p>Running commands or script lines with simple tests, like <code>-e</code>, in <code>vagrant</code> using the <code>ssh</code> subcommand works fine (e.g. </p>
 
 <pre><code>vagrant ssh -c 'if ! [ -e file.deb ] ; then wget http://a.b/file.deb; fi'
@@ -2449,7 +2449,7 @@ vagrant ssh -c 'bash ./fetch.sh'
 <li>the failure of the <code>cat EOF</code> idiom implies failure of any sort of script created in <code>vagrant</code> (<code>python</code>, <code>groovy</code>, etc. would suffer from the same incapacity of <code>bash</code> to provide usable string quoting/be usable at all)</li>
 </ul>
 
-<p>Is there any way to execute script code with complex statements in tests inside a <code>vagrant</code> box? Do I seriously need to transfer the script via the localhost interface (using FTP or something similar)?</p>",1,python|linux|bash|vagrant
+<p>Is there any way to execute script code with complex statements in tests inside a <code>vagrant</code> box? Do I seriously need to transfer the script via the localhost interface (using FTP or something similar)?</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f158,1,python|linux|bash|vagrant
 29803935,How may I create list of lists in Python to store list of texts?,"<p>I am trying to open a bunch of files from a directory and trying to put the results in list of lists that is to say,</p>
 
 <p>that is to say, 
@@ -2477,12 +2477,12 @@ Is there any smarter way to do it? I am using Python2.7 on Windows 7 Professiona
 You have many list of lists question in Python I have generally
 reviewed them. I am posting as I did not match. Apology for
 cross posting. If you may direct me to a previous post, I 
-would surely delete my post. </p>",0,python|python-2.7
+would surely delete my post. </p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f159,0,python|python-2.7
 29985859,python: scipy.spatial: draw a convex polygon and calculate the area,"<p>I am using python. Now I have some coordinates (earth plane coordinates) and I want to draw a convex polygon based on these coordinates. Besides, I need to save the polygon into a GeoJSON format and calculate the polygon area. </p>
 
 <p>I heard that scipy.spatial can do this but I have no idea how to do that, besides, how to extract the polygon coordinates and calculate the area on earth?</p>
 
-<p>Thanks </p>",3,python|scipy|area|convex-hull
+<p>Thanks </p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f160,3,python|scipy|area|convex-hull
 30168126,user registration in django rest framework,"<p>I am creating a server side for android application in DRF which will require user registration and login\logout endpoints. also obviously different permissions when a user logged in.</p>
 
 <p>I followed the rest framework tutorial here - <a href=""http://www.django-rest-framework.org/tutorial/1-serialization/"" rel=""nofollow noreferrer"">http://www.django-rest-framework.org/tutorial/1-serialization/</a> and this example really seeme to cover it all beside the user registration (creation).</p>
@@ -2498,7 +2498,7 @@ would surely delete my post. </p>",0,python|python-2.7
 
 <p>If it matters, my user model in actually a UserProfile model which includes the user model and added a phone_number...</p>
 
-<p>Thanks a lot!</p>",0,android|python|django|rest|django-rest-framework
+<p>Thanks a lot!</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f161,0,android|python|django|rest|django-rest-framework
 29829043,Custom button PyQT4,"<p>I'm having trouble displaying a button that I create from a class in PyQt4, using Python 2.7. My project has 80 buttons that all require a drag and drop function. I've created a button class that allows this, but I'm unsure as to how to display it within <code>Ui_Form</code>. </p>
 
 <p>I don't think I can use a layout manager as I want a background image so I assume I need to create the button from the Button class using the <code>Form</code> argument from <code>Ui_Form</code>'s <code>setupUi</code> function, but I'm insure as to how. </p>
@@ -2548,7 +2548,7 @@ if __name__=='__main__':
     sys.exit(app.exec_())
 </code></pre>
 
-<p><img src=""https://i.stack.imgur.com/2vs2t.png"" alt=""Example of button""></p>",0,python|qt|pyqt|qt4|pyqt4
+<p><img src=""https://i.stack.imgur.com/2vs2t.png"" alt=""Example of button""></p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f162,0,python|qt|pyqt|qt4|pyqt4
 29990224,How to get a string from the tkinter filedialog in Python 3?,"<p>I'm attempting to use the tkinter <code>filedialog</code> to get the user's choice of a file in my Python 3.4 program.</p>
 
 <p>Previously, I was trying to use the Gtk FileChooserDialog, but I keep running into wall after wall getting it to work (<a href=""https://stackoverflow.com/questions/29980352/how-to-hide-a-gtk-filechooserdialog-in-python-3-4"">here's my question about that</a>.) So, I (<em>attempted to</em>) switched over to tkinter and use the filedialog.</p>
@@ -2570,7 +2570,7 @@ print(type(path)) # &lt;- Not actually in the code, but I've included it to show
 
 <p>Calling <code>str()</code> on that doesn't work, and neither does using the <code>io</code> module function <code>getvalue()</code>.</p>
 
-<p>Does anyone know how I could get the chosen file path as a string from the <code>filedialog.askopenfile()</code> function?</p>",1,python|user-interface|tkinter
+<p>Does anyone know how I could get the chosen file path as a string from the <code>filedialog.askopenfile()</code> function?</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f163,1,python|user-interface|tkinter
 30049285,"REQUESTS: Return file object from url (as with open('','rb') )","<p>I want to download a file straight into memory using <code>requests</code> in order to pass it directly to <code>PyPDF2</code> reader avoiding writing it to disk, but I can't figure out how to pass it as a <code>file object</code>. Here's what I've tried:</p>
 
 <pre><code>import requests as req
@@ -2595,10 +2595,10 @@ pdf = PdfFileReader(rs_file.content)
 pdf = PdfFileReader(r_file.content)
 pdf = PdfFileReader(rs_file.raw)
 pdf = PdfFileReader(r_file.raw)
-</code></pre>",10,python|file|download|python-requests|pypdf
+</code></pre>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f164,10,python|file|download|python-requests|pypdf
 30108923,"In matplotlib, what's the difference between title() and suptitle()?","<p>I created 3 subplots using <code>subplot()</code>. Now I'd like to add titles for each subplot. Which one of <code>title()</code> and <code>suptitle()</code> shall I use?</p>
 
-<p>In general, what is the difference between them? Thanks!</p>",8,python|matplotlib
+<p>In general, what is the difference between them? Thanks!</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f165,8,python|matplotlib
 29830627,How to install scikit-image? (Windows - Python 3.4),"<p>I am working on a program that can identify objects, part of a much larger project for school. I have managed to convert these objects into white blobs on a black background, and need a way of detecting blobs (more than just one at a time) and storing a list of blob locations.</p>
 
 <p>Originally I was going to try and write a function that would do this, but I realized that there are many modules that already can, and scikit-image appeared the best for it, and I did consider SimpleCV as well. However, I am having trouble installing either of them.</p>
@@ -2621,7 +2621,7 @@ d-6gpq3qdv\scikit-image
 
 <p>I did try to install SimpleCV, however that requires OpenCV which is not compatible with Python 3.4 (I have to use 3.4 since it is part of a school project and my friends who are also working on it with 3.4 and it needs to be compatible)</p>
 
-<p>Anybody know of why this is not working? If not, is there a library that can do the blob detection, installs correctly on Windows and is compatible with 3.4? Thanks.</p>",4,python|image|module|simplecv
+<p>Anybody know of why this is not working? If not, is there a library that can do the blob detection, installs correctly on Windows and is compatible with 3.4? Thanks.</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f166,4,python|image|module|simplecv
 29829352,Cannot Import Name (model),"<p>I am getting the error message above, more specifically ""ImportError at /ops_page/create"" ""cannot import name ops_page."" Basically, I have an app titled ""ops_page"" and I cannot seem to get the newly created url, ""/ops_page/create"" which should contain a form corresponding to the model within ""ops_page."" I have looked at similar threads, and have tried deleting .pyc files in the ops_page app as well as the root directory, as well as deleting the sqlite db and re-syncing/migrating. Any idea what the issue might be here?</p>
 
 <p>My base urls.py:</p>
@@ -2789,7 +2789,7 @@ Exception Type: ImportError at /ops_page/create
 Exception Value: cannot import name ops_page
 </code></pre>
 
-<p>I am relatively new to django, so it could be an error in my syntax or I didn't map things correctly. Any help would be greatly appreciated. Thank you. </p>",1,python|django|url|importerror
+<p>I am relatively new to django, so it could be an error in my syntax or I didn't map things correctly. Any help would be greatly appreciated. Thank you. </p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f167,1,python|django|url|importerror
 29838808,"SQL query in python script, how to get quotes around a parameter?","<p>I need to rewrite the php script that handles a POST request and queries a SQLite3 database into python. The Query now looks like this</p>
 
 <pre><code>cursor.execute(""SELECT * from ""+requestedProgram+"" WHERE start LIKE ? ORDER BY start"", (requestedDate,))
@@ -2799,7 +2799,7 @@ Exception Value: cannot import name ops_page
 
 <p>However, I need to put quotes around the requestedDate string in order to make <em>LIKE</em> work. How do I get quotes around the parameter/variable?</p>
 
-<p>On another note: does the <em>ORDER BY</em> statement even do anything considering the nature of the cursor?</p>",1,python|sql|sqlite
+<p>On another note: does the <em>ORDER BY</em> statement even do anything considering the nature of the cursor?</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f168,1,python|sql|sqlite
 29926524,Django many-to-many return list of releated objects,"<p>I have a many to many relationship between model Stuff and model Thing.  When Stuff is converted to a string I would like to return a list of things that make it up.</p>
 
 <pre><code>class Thing(models.Model):
@@ -2812,7 +2812,7 @@ class Stuff(models.Model):
         # Return comma delimited list of things that are related to self
 </code></pre>
 
-<p>I've seen a lot of many to many problems that are solved by using <code>stuff.thing.all()</code>.  If I use <code>.get()</code> on thing how do I filter for Stuff's id?</p>",0,python|django|django-models
+<p>I've seen a lot of many to many problems that are solved by using <code>stuff.thing.all()</code>.  If I use <code>.get()</code> on thing how do I filter for Stuff's id?</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f169,0,python|django|django-models
 30196503,2D plots are not sitting flush against 3D-axis walls in python mplot3D,"<p>I'm attempting to plot 2D data onto a 3D axis.
 I have the 3D shape working using <code>ax.plot_surface</code> but I'm unable to get the 2D data to sit flush against the axis walls using <code>ax.plot</code>.</p>
 
@@ -2897,10 +2897,10 @@ ie. I'm setting the plot position to -0.08 and the axis limit to -0.08 but the p
 <p><strong>Edit2:</strong></p>
 
 <p>Somebody else who has encountered this issue but hasn't had the issue resolved
-<a href=""https://stackoverflow.com/questions/25265705/changing-the-position-of-the-grid-walls-in-an-mplot3d-figure"">Changing the position of the grid walls in an mplot3d figure</a></p>",10,python|python-2.7|matplotlib|mplot3d
+<a href=""https://stackoverflow.com/questions/25265705/changing-the-position-of-the-grid-walls-in-an-mplot3d-figure"">Changing the position of the grid walls in an mplot3d figure</a></p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f170,10,python|python-2.7|matplotlib|mplot3d
 29757391,"How to specify an ""upload to"" path in a Form File Field in Django?","<p>I'm not using a Model for this form, I know I can set the upload_to parameter inside a Model File Field, but seems not possible from the Form.</p>
 
-<p>When I set the FileField the file is uploaded to the MEDIA_ROOT I setup on my settings. Although, I would like the file uploaded to /folder. Is it possible directly from the Form File Field or I must move the file manually?</p>",1,python|django|django-forms
+<p>When I set the FileField the file is uploaded to the MEDIA_ROOT I setup on my settings. Although, I would like the file uploaded to /folder. Is it possible directly from the Form File Field or I must move the file manually?</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f171,1,python|django|django-forms
 29881965,Tkinter window not opening,"<p>I was trying to create a simple moving block using tkinter in Python 3, and everything was working until I imported time. The window now won't open. I've tried removing the import, and it doesn't help. This is my code:</p>
 
 <pre><code>from tkinter import *
@@ -2931,13 +2931,13 @@ square = canvas.create_rectangle(50, 50, 50, 50, width=50, fill=""black"")
 move()
 
 window.mainloop()
-</code></pre>",1,python|tkinter
+</code></pre>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f172,1,python|tkinter
 29837563,What is the difference between models.ldamodel.LdaModel and models.LdaModel?,"<p>What is the difference between 
 <code>gensim.models.ldamodel.LdaModel(...)</code> and <code>gensim.models.LdaModel(...)</code>?</p>
 
 <p>The <a href=""https://radimrehurek.com/gensim/models/ldamodel.html"" rel=""nofollow"">docs</a> use <code>gensim.models.ldamodel.LdaModel(...)</code>.</p>
 
-<p>However, <a href=""https://www.google.com/search?q=%22models.LdaModel%22&amp;oq=%22models.LdaModel%22&amp;aqs=chrome..69i57j0.9506j0j7&amp;sourceid=chrome&amp;es_sm=119&amp;ie=UTF-8#q=%22models.LdaModel(corpus%22&amp;tbas=0"" rel=""nofollow"">many people</a> seem to use <code>gensim.models.LdaModel(...)</code>.</p>",1,python|lda|gensim
+<p>However, <a href=""https://www.google.com/search?q=%22models.LdaModel%22&amp;oq=%22models.LdaModel%22&amp;aqs=chrome..69i57j0.9506j0j7&amp;sourceid=chrome&amp;es_sm=119&amp;ie=UTF-8#q=%22models.LdaModel(corpus%22&amp;tbas=0"" rel=""nofollow"">many people</a> seem to use <code>gensim.models.LdaModel(...)</code>.</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f173,1,python|lda|gensim
 29890191,"numpy reshape: incompatible array size, when array grows too big?","<p>I have the following code:  </p>
 
 <pre><code>n=1000  
@@ -2970,7 +2970,7 @@ dset=np.reshape(dset,np.int64([n,dim_z,dim_y,dim_x,dim_c]))
 Any suggestions?</p>
 
 <p>Thanks
-Max</p>",2,python-2.7|numpy|casting|reshape
+Max</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f174,2,python-2.7|numpy|casting|reshape
 30042611,Getting average of distinct list values,"<p>I have 4k values in list created from first col of this dataset (<a href=""https://gist.github.com/karimkhanp/1692f1f76718c35e939f"" rel=""nofollow"">link</a>):</p>
 
 <pre><code>11 1
@@ -2998,7 +2998,7 @@ Max</p>",2,python-2.7|numpy|casting|reshape
 
 <p>Apprach 2: convert col1 into list</p>
 
-<p><code>col1 = list(set(col1))</code> which will give distinct values for <code>col1</code> but how do I get average of 2nd col for each distinct value in first col?</p>",0,python|list
+<p><code>col1 = list(set(col1))</code> which will give distinct values for <code>col1</code> but how do I get average of 2nd col for each distinct value in first col?</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f175,0,python|list
 30079630,"How to simulate a ""lock timeout"" error with Django on MySQL","<p>What's the easiest way to simulate a ""lock timeout"" DatabaseError with Django using the MySQL backend?</p>
 
 <p>I have a piece of code, that operates over large querysets, and occasionally it throws the exception:</p>
@@ -3008,7 +3008,7 @@ Max</p>",2,python-2.7|numpy|casting|reshape
 
 <p>I understand what causes this and how to fix it, but I'm not sure how to test my fix since the error only happens in a production environment where several users are accessing certain tables simultaneously.</p>
 
-<p>I first tried to run <a href=""http://shiningpanda.com/mysql-table-lock-django.html"" rel=""nofollow"">some sample code</a> in a separate process to make Django apply a lock in MySQL, and while it does seem to lock the target table and make all other requests wait, a lock timeout never occurs when I test on my localhost with runserver. I let it run for 20 minutes without a timeout occurring.</p>",0,python|mysql|django|django-orm|database-locking
+<p>I first tried to run <a href=""http://shiningpanda.com/mysql-table-lock-django.html"" rel=""nofollow"">some sample code</a> in a separate process to make Django apply a lock in MySQL, and while it does seem to lock the target table and make all other requests wait, a lock timeout never occurs when I test on my localhost with runserver. I let it run for 20 minutes without a timeout occurring.</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f176,0,python|mysql|django|django-orm|database-locking
 29971071,XML to Postgres via python/psycopg2,"<p>I have an existing python script that loops through a directory of XML files parsing each file using etree, and inserting data at different points into a Postgres database schema using psycopg2 module.  This hacked together script worked just fine but now the amount of data (number and size of XML files) is growing rapidly, and the number of INSERT statements is just not scaling. The largest table in my final database has grown to about ~50 million records from about 200,000 XML files. So my question is, what is the most efficient way to:</p>
 
 <ol>
@@ -3021,7 +3021,7 @@ Max</p>",2,python-2.7|numpy|casting|reshape
 
 <p>Otherwise I was thinking about populating some sort of temporary data structure in memory that I could insert into the DB once it reaches a certain size?  I am just having trouble arriving at the specifics of how this would work.  </p>
 
-<p>Thanks for any insight on this topic, and please let me know if more information is needed to answer my question.</p>",2,python|xml|postgresql|csv
+<p>Thanks for any insight on this topic, and please let me know if more information is needed to answer my question.</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f177,2,python|xml|postgresql|csv
 30146396,python: finding the value of a random variable for a cdf,"<p>I apologize in advance if this is poorly worded. </p>
 
 <p>If I have a stdDev = 1, mean = 0, <code>scipy.stats.cdf(-1, loc = 0, scale = 1)</code> will give me the probability that a normally distributed random variable will be <code>&lt;= -1</code>, and that is <code>0.15865525393145707</code>. </p>
@@ -3030,7 +3030,7 @@ Max</p>",2,python-2.7|numpy|casting|reshape
 
 <p>i.e.  <code>value(cdf = 0.15865, loc = 0, scale = 1)</code> </p>
 
-<p>Thanks for the help. </p>",2,python|statistics|scipy|normal-distribution|cdf
+<p>Thanks for the help. </p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f178,2,python|statistics|scipy|normal-distribution|cdf
 29754562,PySpark Broadcast Variable Join,"<p>I am performing a join, and I have my data across over 100 nodes. So I have a small list of key/value that I am joining with another key/value pair. </p>
 
 <p>My list looks like such:</p>
@@ -3051,7 +3051,7 @@ Max</p>",2,python-2.7|numpy|casting|reshape
 <p>I get the following error:</p>
 
 <pre><code>AttributeError: 'list' object has no attribute 'map'
-</code></pre>",3,python|apache-spark|pyspark
+</code></pre>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f179,3,python|apache-spark|pyspark
 29981393,How to pause and resume Python threading.Timer,"<p>In python, <code>threading.Timer</code> works fine to execute a function after sometime. But there is no pause or resume feature. Is there any other way to do it?</p>
 
 <p>Something like this is required.</p>
@@ -3153,7 +3153,7 @@ x.doSomeWork()
 1 16.0011930466
 </code></pre>
 
-<p>Since it's pausing the Timer with key 1 for 4 times each for 1 seconds. So the final time for 1 should be 19+ seconds (Expected). But it's showing 16 only.</p>",1,python|multithreading|timer
+<p>Since it's pausing the Timer with key 1 for 4 times each for 1 seconds. So the final time for 1 should be 19+ seconds (Expected). But it's showing 16 only.</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f180,1,python|multithreading|timer
 29757367,How to install git source in requirements.txt?,"<p>I have this code in requirements.txt But i remember that using this method i install but this time I got error only ...</p>
 
 <pre><code>static3==0.5.1
@@ -3169,7 +3169,7 @@ pip install git+https://github.com/leonardoo/django-dropbox
 <pre><code>File ""/app/.heroku/python/lib/python2.7/site-packages/pip-6.0.6-py2.7.egg/pip/_vendor/pkg_resources/__init__.py"", line 2785, in scan_list
 remote:            raise ValueError(msg, line, ""at"", line[p:])
 remote:        ValueError: ('Expected version spec in', 'pip install git+https://github.com/rajasimon/python-twitter', 'at', ' install git+https://github.com/rajasimon/python-twitter')
-</code></pre>",3,python|django|heroku|github|pip
+</code></pre>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f181,3,python|django|heroku|github|pip
 30189429,Django: How to access test database?,"<p>I am working in Django 1.8. I have a Django management command to create materialized views on my database, as follows:</p>
 
 <pre><code>python manage.py create_db_matviews $DB_NAME $DB_USER $DB_PASS
@@ -3209,7 +3209,7 @@ Traceback (most recent call last):
 OperationalError: FATAL:  role ""default"" does not exist
 </code></pre>
 
-<p>What credentials should I use to get access to the test database? </p>",5,python|django
+<p>What credentials should I use to get access to the test database? </p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f182,5,python|django
 29919306,Find the column name which has the maximum value for each row,"<p>I have a DataFrame like this one:</p>
 
 <pre><code>In [7]:
@@ -3234,7 +3234,7 @@ Communications and Search   Business    General Lifestyle
     0   0.617021    0.042553    0.297872    0.042553           Communications 
     0   0.435897    0.000000    0.410256    0.153846           Communications 
     0   0.358974    0.076923    0.410256    0.153846           Business 
-</code></pre>",104,python|pandas|dataframe|max
+</code></pre>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f183,104,python|pandas|dataframe|max
 30036165,"Changing inputs into titles, issue with handling raw spaces","<p>so I'm quite new to programming and I'm trying to learn python as a starter.</p>
 
 <p>I'm trying to make a function that does multiple things (I'm going to use it for limiting inputs on names).</p>
@@ -3260,12 +3260,12 @@ Communications and Search   Business    General Lifestyle
 
 <p>The issue that I have is that the code will only reject blank inputs on the first try when running the function, if something is rejected once and the user inputs a series of spaces again, then it will just accept it as an input.</p>
 
-<p>Thanks for your time in advance! It's very appreciated :D</p>",0,python
+<p>Thanks for your time in advance! It's very appreciated :D</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f184,0,python
 29800157,Can rectangle be used as a parent class (tkinter)?,"<p>when I have free time at work, i'm fooling around with python (2.6), and I thought I'd try and create a <a href=""http://en.wikipedia.org/wiki/Conway%27s_Game_of_Life"" rel=""nofollow"">game of life</a>. For that purpose I want to make a class for the different cells, which would be drawn on the canvas like rectangles, but would have more properties like whether they are alive or dead, etc. </p>
 
 <p>I saw that the canvas module in the tkinter library has a rectangle class, but it says this module is obsolete, and in the tkinter module itself, all i can find is a function pertaining to rectangles</p>
 
-<p>Am I missing something... Is it possible at all to use rectangle as a parent class... (and maybe am I totally wrong in trying to make the cells instances of a class; still as a I'm only beginning to get into programming i'd like to try and make it like that for the experience) </p>",0,python|tkinter
+<p>Am I missing something... Is it possible at all to use rectangle as a parent class... (and maybe am I totally wrong in trying to make the cells instances of a class; still as a I'm only beginning to get into programming i'd like to try and make it like that for the experience) </p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f185,0,python|tkinter
 29957997,antlr4 python3 grammar on github,"<p>I'm using the grammar posted here:
 <a href=""https://github.com/antlr/grammars-v4/tree/master/python3"" rel=""nofollow"">https://github.com/antlr/grammars-v4/tree/master/python3</a></p>
 
@@ -3304,7 +3304,7 @@ Communications and Search   Business    General Lifestyle
 [@44,183:188='return',&lt;2&gt;,9:12]
 [@45,190:193='rate',&lt;35&gt;,9:19]
 [@46,195:195='*',&lt;46&gt;,9:24]**
-</code></pre>",1,python-3.x|antlr|antlr4
+</code></pre>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f186,1,python-3.x|antlr|antlr4
 30202165,Django: Asymmetric ManyToMany Relation,"<p>I am new to using <code>django</code> and would appreciate your input to the following problem.</p>
 
 <p>Two models are present, namely <code>A</code> and <code>B</code>. Instances of <code>A</code> must belong to at least one instance of <code>B</code>, while a <code>B</code> could contain any number of instances of <code>A</code>s from 0 to infinite. </p>
@@ -3321,7 +3321,7 @@ class B(models.Model):
   A_list = models.ManyToManyField(A)
 </code></pre>
 
-<p>Okay. I think, based on the description I have given, <code>ManyToManyField</code> should be used for the two models. The thing is, from what I have read, <code>blank = false</code> must be used to prevent a <code>null</code> assignment for <code>A</code> (since an <code>A</code> must be assigned to at least one <code>B</code>) but a <code>B</code> may not have an assigned <code>A</code> (and thus should not have the <code>blank = false</code> statement. Could anyone asymmetric <code>ManyToMany</code> relation can be implemented in <code>django</code> <code>Model</code>? </p>",0,python|django|database-design
+<p>Okay. I think, based on the description I have given, <code>ManyToManyField</code> should be used for the two models. The thing is, from what I have read, <code>blank = false</code> must be used to prevent a <code>null</code> assignment for <code>A</code> (since an <code>A</code> must be assigned to at least one <code>B</code>) but a <code>B</code> may not have an assigned <code>A</code> (and thus should not have the <code>blank = false</code> statement. Could anyone asymmetric <code>ManyToMany</code> relation can be implemented in <code>django</code> <code>Model</code>? </p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f187,0,python|django|database-design
 30102742,Why is my query for a structured property failing with BadFilterError?,"<p>I don't  understand how to <a href=""https://cloud.google.com/appengine/docs/python/ndb/queries#filtering_structured_properties"" rel=""nofollow"">filter for structured properties</a></p>
 
 <p>I keep getting there error:</p>
@@ -3421,7 +3421,7 @@ class NewVisitorTest(unittest.TestCase):
           self.browser.find_element_by_name('content').send_keys('Anonymous test post')
           self.browser.find_element_by_name('submit').submit()
           Assert.assertEquals(driver.getPageSource().contains('Anonymous test post'))
-</code></pre>",0,python|google-app-engine|dev-appserver-2
+</code></pre>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f188,0,python|google-app-engine|dev-appserver-2
 29757740,Django pass multiple words through a URL conf,"<p>Using django, I would like the name of my item through a variable in my URL conf. Say the name of my product is ""stack overflow"" I would like to be able to go to:</p>
 
 <pre><code>http://127.0.0.1:8000/product/stack+overflow/
@@ -3436,7 +3436,7 @@ class NewVisitorTest(unittest.TestCase):
 urlpatterns = patterns('',
     url(r'^product/(?P&lt;name&gt;\w+)/$', 'crunch.views.product_by_name', name='preview_by_name'),
 )
-</code></pre>",1,python|django|django-urls
+</code></pre>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f189,1,python|django|django-urls
 29773398,Serializing NotificationQuerySet from django-notifications-hq not working,"<p>So, i'm trying to add to my API made with DRF (Django REST Framework) the notifications Model, but i'm getting this error:</p>
 
 <p><code>AttributeError: 'NotificationQuerySet' object has no attribute 'recipient'</code></p>
@@ -3487,7 +3487,7 @@ With every Notification instance, i can also access to Model propierties:</p>
 
 <p>And works very well.</p>
 
-<p>Why is not working when passing this to the serializer? Its weird...</p>",3,python|django|serialization|notifications|django-rest-framework
+<p>Why is not working when passing this to the serializer? Its weird...</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f190,3,python|django|serialization|notifications|django-rest-framework
 29773904,Scrapy Mongodb Connection,"<p>I am scraping the data using scrapy.Now i want to store the data in mongo db for that i install <code>pymongo</code> but i am unable to connect to the databse
 Here is my code for settings.py</p>
 
@@ -3517,7 +3517,7 @@ class TutorialPipeline(object):
   <p>cannot import name Connection</p>
 </blockquote>
 
-<p>Where am i going wrong??</p>",2,python|mongodb|scrapy|pymongo
+<p>Where am i going wrong??</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f191,2,python|mongodb|scrapy|pymongo
 30186868,How does the stats.gaussian_kde method calcute the pdf?,"<p>I am using the <code>scipy.stats.gaussian_kde</code> method from <code>scipy</code> to generate random samples from the data.</p>
 
 <p>It works fine! What I have now found out is that the method also has inbuilt functions to calculate the probability density function of the given set of points (my data).</p>
@@ -3558,7 +3558,7 @@ pdf_data = distribution_data.pdf(test_data) # the pdf of the data
 
 <p>I would also like to know from here how I should proceed to calculate my weights?</p>
 
-<p>P.S. Forgive me for asking the same question in cross validated, there seems to be no response! </p>",1,python|scipy|gaussian|probability-density
+<p>P.S. Forgive me for asking the same question in cross validated, there seems to be no response! </p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f192,1,python|scipy|gaussian|probability-density
 30200947,joblib.Parallel for nested list comprehension,"<p>I have a nested list comprehension that looks something like this:</p>
 
 <pre><code>&gt;&gt;&gt; nested = [[1, 2], [3, 4, 5]]
@@ -3586,7 +3586,7 @@ pickle.PicklingError: Can't pickle &lt;type 'generator'&gt;: it's not found as _
 [1.7320508075688772, 1.7320508075688772, 2.0, 2.0, 2.23606797749979, 2.23606797749979]
 </code></pre>
 
-<p>If this is impossible, I can obviously restructure the list before and after passing it to <code>Parallel</code>. However, my actual list is long and each item is enormous, so doing so isn't ideal.</p>",4,python|syntax|parallel-processing|list-comprehension|joblib
+<p>If this is impossible, I can obviously restructure the list before and after passing it to <code>Parallel</code>. However, my actual list is long and each item is enormous, so doing so isn't ideal.</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f193,4,python|syntax|parallel-processing|list-comprehension|joblib
 30060616,Python Pandas to_dict function,"<p>I’m trying to create a dictionary, but can’t get it to work the way I intend.  I feel like I’m so close.  I a df of yelp data:</p>
 
 <pre><code>import pandas as pd
@@ -3632,7 +3632,7 @@ print cat_rev
 <p>Also nope, but almost:</p>
 
 <pre><code>ddd = cat_rev.set_index('user_id').to_dict(outtype='list')
-</code></pre>",2,python|pandas
+</code></pre>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f194,2,python|pandas
 29933483,Subsetting a Pandas series,"<p>I have a Pandas series. Basically one specific row of a pandas data frame. </p>
 
 <pre><code>Name: NY.GDP.PCAP.KD.ZG, dtype: int64
@@ -3686,7 +3686,7 @@ NY.GDP.PCAP.KN_logdiff            NaN
 NY.GDP.PCAP.PP.CD_logdff          NaN
 NY.GDP.PCAP.PP.KD_logdiff         NaN
 Name: NY.GDP.PCAP.KD.ZG, dtype: float64
-</code></pre>",0,python|numpy|pandas|scipy
+</code></pre>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f195,0,python|numpy|pandas|scipy
 29932474,"Adding classes, preventing changing indexes from affecting data","<p>I have a class <code>K()</code> that has an <code>__add__()</code> method that works as follows</p>
 
 <pre><code>d_1 = K(dict(a=3, b=5), dict(b=45,c=23))
@@ -3722,7 +3722,7 @@ False
 
 <p>This just outright doesn't work</p>
 
-<p>I'm not sure how to make this work with copies</p>",1,python|dictionary|operator-overloading
+<p>I'm not sure how to make this work with copies</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f196,1,python|dictionary|operator-overloading
 30192141,BeautifulSoup dont search recursive in already found tag,"<p>I'm working at the moment with wikipedia articles containing lists.</p>
 
 <p>I've got now the article <a href=""http://en.wikipedia.org/wiki/Archdeacons_in_the_Diocese_in_Europe"" rel=""nofollow noreferrer"">List of Archdeacons in the Diocese in Europe</a>. To get the ul (or table) tags I'm using BeautifulSoup (Python 2.7).
@@ -3736,7 +3736,7 @@ lists = article.find_all('ul')
 
 <p>The parameter <em>recursive</em> is NOT what I'm looking for because the list might be in a div tag.</p>
 
-<p>P.S.: <a href=""https://stackoverflow.com/questions/27673644/beautifulsoup-counting-tags-without-parsing-deep-inside-them/27673808#27673808"">This</a> user is looking for the same solution but gets not the right answer: ""Is there a way to make BS not search recursively into an already found tag?'""</p>",1,python|html|python-2.7|beautifulsoup|html-parsing
+<p>P.S.: <a href=""https://stackoverflow.com/questions/27673644/beautifulsoup-counting-tags-without-parsing-deep-inside-them/27673808#27673808"">This</a> user is looking for the same solution but gets not the right answer: ""Is there a way to make BS not search recursively into an already found tag?'""</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f197,1,python|html|python-2.7|beautifulsoup|html-parsing
 29787397,How to run this script continuously in Heroku,"<p>I need to run this script in heroku to update my database. The data is retrieve from my facebook post. </p>
 
 <p>I am not sure how to use the Heroku scheduler, what can I do?</p>
@@ -3774,7 +3774,7 @@ else:
     print 'error'
 </code></pre>
 
-<p>Thanks </p>",0,python|heroku|scheduled-tasks|job-scheduling
+<p>Thanks </p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f198,0,python|heroku|scheduled-tasks|job-scheduling
 30129405,How to export to excel datetime in Django 1.7,"<p>Iam using Django 1.7, Python 3.4 and PostgreSQL 9.1.
 I need to export to Excel some queryset. As a starting point I use this guide: <a href=""http://reliablybroken.com/b/2009/09/outputting-excel-with-django/"" rel=""nofollow"">outputting-excel-with-django</a></p>
 
@@ -3783,7 +3783,7 @@ I need to export to Excel some queryset. As a starting point I use this guide: <
 <p>But when I try to export my data I get a Type Error: <code>can't subtract offset-naive and offset-aware datetimes</code></p>
 
 <p>Anyone can help me with this?
-Thanks</p>",3,python|django|excel|datetime|python-3.x
+Thanks</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f199,3,python|django|excel|datetime|python-3.x
 29903389,Does randomSplit return a copy or a reference to the original rdd?,"<p>Suppose I have something like the code below</p>
 
 <pre><code>for idx in xrange(0, 10):
@@ -3793,7 +3793,7 @@ Thanks</p>",3,python|django|excel|datetime|python-3.x
     # scale train_cv and test_cv
 </code></pre>
 
-<p>by scaling <code>train_cv</code> and <code>test_cv</code>, will the original data be affected?</p>",3,python|apache-spark
+<p>by scaling <code>train_cv</code> and <code>test_cv</code>, will the original data be affected?</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f200,3,python|apache-spark
 29892546,Asus Xtion Pro Live and PyOpenni RGB,"<p>I am using PyOpenni in python to read data sensor from an Asus Xtion Live Pro.
 All works like a charm if I try to read depth data:</p>
 
@@ -3828,7 +3828,7 @@ while True:
 
 <p>So I can get only, more or less, 2-3 frame per second.</p>
 
-<p>Does anyone know why?</p>",0,python|kinect|openni|asus-xtion
+<p>Does anyone know why?</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f201,0,python|kinect|openni|asus-xtion
 30056214,How do you create a singleton celery task that runs indefinitely upon starting a Django application?,"<p>Right now I have a <code>@sharedtask</code> that follows the following code exactly:
 <a href=""http://docs.celeryproject.org/en/latest/tutorials/task-cookbook.html#id1"" rel=""nofollow"">http://docs.celeryproject.org/en/latest/tutorials/task-cookbook.html#id1</a></p>
 
@@ -3850,7 +3850,7 @@ while True:
 11:00:43 worker.1 | [2015-05-05 15:00:43,444: DEBUG/Worker-2] app.tasks.indefinite_task[b8b0445c-91e6-4652-bd75-4c609149161f]: Acquiring lock
 </code></pre>
 
-<p>Edit: I'm using a <code>Procfile</code> with heroku.</p>",2,python|django|celery|django-celery|celerybeat
+<p>Edit: I'm using a <code>Procfile</code> with heroku.</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f202,2,python|django|celery|django-celery|celerybeat
 29832234,VBA shell script set environment variable before execution,"<p>I'm trying to run a VBA module that uses a shell script to run an ipython notebook (using runipy) before going on to do other things, but my ipython notebook script requires inputs, which are setup using environment variables.</p>
 
 <p>Here's the VBA I have so far:</p>
@@ -3896,7 +3896,7 @@ runipy C:\Python27\Programs\ipython\ACT\argstest.ipynb
 
 <p>How do I get the shell created in the VBA to create the new environment variable so the python script can see it when it executes?</p>
 
-<p>Thanks! </p>",1,python|vba|shell|ipython
+<p>Thanks! </p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f203,1,python|vba|shell|ipython
 30106966,Smartcard PKCS11 AES Key Gen Failure,"<p>I am attempting to create an AES 256 key on an ACOS5-64 smartcard and OMNIKEY 3121 card reader, using PKCS11 in python (using the PyKCS11 library).  So far, all the ""standard"" operations seem to work with regards to asymmetric crypto.  I have run plenty of code samples and pkcs11-tool commands, to initialize the token, set/change PINs, create RSA keypairs, etc.  So, the drivers are all functional (pcscd, CCID, PKCS11 middleware).</p>
 
 <p>The following code is causing a problem:</p>
@@ -3962,7 +3962,7 @@ PyKCS11.PyKCS11Error: CKR_ATTRIBUTE_VALUE_INVALID (0x00000013)
 
 <p>The thing is that if I switch the CKA_TOKEN line to False, then it ""works"".  Of course, by setting that to false, it makes the key a session object instead of a token object (i.e. after I logout, the key is wiped).  Using pkcs11-tool with --list-objects, the key is not there.  I can use the ACSCMU (GUI tool for token admin), I can create an AES key in the ""Secret Key Manager"" and it does create a persistent key.  But I have no way to see what the ACSCMU is doing to make it persistent (it may not be using PKCS11 at all).</p>
 
-<p>If I had to guess the problem, I'd guess that it has to do with the session.  If CKA_TOKEN=True is invalid, then it seems the token is not actually in RW mode (as suggested by the CKF_RW_SESSION in the 9th line).  So far, I'm not sure what else to try or how to debug this.</p>",4,python|aes|smartcard|pkcs#11
+<p>If I had to guess the problem, I'd guess that it has to do with the session.  If CKA_TOKEN=True is invalid, then it seems the token is not actually in RW mode (as suggested by the CKF_RW_SESSION in the 9th line).  So far, I'm not sure what else to try or how to debug this.</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f204,4,python|aes|smartcard|pkcs#11
 30090355,Writing multiple files from one pandas dataframe,"<p>I have a CSV file that I'm trying to extract and break down into parts. It 10 columns. My current script (a line of which is shown below) asks user for input of two columns (say columns A and C) and gets data from the third (column F) and writes columns A and F to a new CSV file. </p>
 
 <pre><code>df1 = data.columnF[(data['columnA'] == data_name) &amp; (data['columnC'] == study_name)]
@@ -3992,7 +3992,7 @@ name6.txt &gt; study6
             study0
 </code></pre>
 
-<p>How can I do that?</p>",1,python|python-2.7|csv|pandas|dataframe
+<p>How can I do that?</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f205,1,python|python-2.7|csv|pandas|dataframe
 29848369,Python Raw socket - IP_HDRINCL option,"<p>According to the manual page of raw sockets,</p>
 
 <blockquote>
@@ -4047,7 +4047,7 @@ s.setsockopt(socket.IPPROTO_IP, socket.IP_HDRINCL, 1)
 dip = ""172.16.122.1""
 pkt = IP() + ""Hello""
 s.sendto(pkt, (dip , 0 ))
-</code></pre>",3,python|sockets
+</code></pre>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f206,3,python|sockets
 29983059,"Matplotlib Window Size, Title, etc","<p>I'm new in python and matplotlib. I have a project and I need to create a graphic in a Tkinter GUI a graphic using matplotlib. I found and used this code:</p>
 
 <pre><code>import numpy as np
@@ -4094,7 +4094,7 @@ I have already try with this:</p>
 <pre><code>figure(num=None, figsize=(8, 6), dpi=80, facecolor='w', edgecolor='k')
 </code></pre>
 
-<p>But this only creates another window! Help please!</p>",3,python|matplotlib|figure
+<p>But this only creates another window! Help please!</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f207,3,python|matplotlib|figure
 29795900,Python Webdriver my script won't find the button inside the iFrame,"<p>I am trying to verify if a button is present on a webpage after I have successfully logged in.  I am using Webdriver with Python.  The button is in an iFrame.
 This is my first webdriver python program using the a page object model framework.  Not bad so far i think.</p>
 
@@ -4195,7 +4195,7 @@ def test_login_valid_user(self):
    &lt;div class=""gwt-TabLayoutPanelTab GEGQEWXCK"" style=""background-color: rgb(254, 255, 238);""&gt;
    &lt;div class=""gwt-TabLayoutPanelTabInner""&gt;
    &lt;div class=""gwt-HTML""&gt;Administration&lt;/div&gt;
-</code></pre>",0,python|selenium|selenium-webdriver
+</code></pre>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f208,0,python|selenium|selenium-webdriver
 29854784,Python Authomatic with local user/pass database?,"<p>I'm considering bringing authentication into my project (I currently use Auth0) and came across Authomatic which looks cool and promising.</p>
 
 <p>A little background: I have a bare (no framework) WSGI app and I'd like to support both database logins and social logins.  I see Authomatic has good support for social/OAuth(2) providers, so I'm guessing it has everything I need (presumably generating secure cookies/tokens to authenticate the session) except a local provider.</p>
@@ -4206,8 +4206,8 @@ def test_login_valid_user(self):
 
 <p>I'm guessing it's not too hard to add a local/database provider but I wanted to check: 1. Is this is a good idea, am I thinking about it correctly?  and 2. Has anyone done this already?</p>
 
-<p>Many thanks!</p>",4,python|authentication|wsgi
-29874529,Execute python script while open terminal,<p>I want this: Execute python script while I open terminal (I am using <code>iTerm</code> and <code>fish-shell</code>).</p>,-6,python|shell|python-2.7|terminal|fish
+<p>Many thanks!</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f209,4,python|authentication|wsgi
+29874529,Execute python script while open terminal,<p>I want this: Execute python script while I open terminal (I am using <code>iTerm</code> and <code>fish-shell</code>).</p>,5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f210,-6,python|shell|python-2.7|terminal|fish
 29948626,"Scapy layer for MPEG2-TS, with conditionalField for adaptation","<p>I try to create a MPEG2-TS layer for scapy.</p>
 
 <p>I need to ""add"" and parse additional fields based on the adaptation field.</p>
@@ -4288,7 +4288,7 @@ If the ""Adaptation and payload"" is set, I need to parse the adaptation fields 
 </code></pre>
 
 <p>I tried with some ConditionalField but without luck till now.
-Thanks for help.</p>",1,python|scapy
+Thanks for help.</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f211,1,python|scapy
 29950985,Is cProfile betraying me?,"<p>I wanted to know why my <code>pyzmq</code> and <code>protobuf</code> based messaging ping-pong is much slower than expected, so I used <code>cProfile</code> to inspect the script you find at the end of this post.</p>
 
 <pre><code>protoc --python_out=. rpc.proto
@@ -4427,12 +4427,12 @@ message rpc_request {
 
 message rpc_reply {
     optional string value = 3; }
-</code></pre>",2,python|profiling|protocol-buffers|pyzmq|cprofile
+</code></pre>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f212,2,python|profiling|protocol-buffers|pyzmq|cprofile
 29990202,ObjectListView wxPython: how to show a wx.Color,"<p>I am using wxPython ObjectListView and it is very easy to use. Now I need to render a wx.Color as a column but I haven't found a way in the documentation. Basically I have list of items each of them have the following attributes: name, surname and hair color. Hair color is a RGB color and I would like to show it as a column in my ObjectListView.</p>
 
 <p>Is there a way to do it ?
-Many thanks</p>",0,python|wxpython|objectlistview-python
-29997777,How do I create an apparmor profile for an application that runs using Python's twisted library?,"<p>I'm trying to create an apparmor profile for a networking application with access to ssh and runs using Python's twisted library. I have tried using aa-genprof to generate a profile. In another bash, I ran my applications with a few test cases. However, no rules are being generated. How do I go about generating the profile?</p>",5,python|security|twisted|apparmor
+Many thanks</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f213,0,python|wxpython|objectlistview-python
+29997777,How do I create an apparmor profile for an application that runs using Python's twisted library?,"<p>I'm trying to create an apparmor profile for a networking application with access to ssh and runs using Python's twisted library. I have tried using aa-genprof to generate a profile. In another bash, I ran my applications with a few test cases. However, no rules are being generated. How do I go about generating the profile?</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f214,5,python|security|twisted|apparmor
 30003836,"Python, how do I drop the first octet in reverse zone? fun with strings","<p>I need to create a reverse DNS entry for IPv4. </p>
 
 <p>The ip address is 108.61.190.64</p>
@@ -4452,7 +4452,7 @@ Many thanks</p>",0,python|wxpython|objectlistview-python
 <p>Is there a Python tool for this task?
 [::-1] does a complete reverse and not just rearranging the octets.</p>
 
-<p>P.S. I have the same reverse issue for IPv6 but no octet is to be dropped.</p>",0,python|dns|ip|reverse
+<p>P.S. I have the same reverse issue for IPv6 but no octet is to be dropped.</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f215,0,python|dns|ip|reverse
 30008038,How to use logging unicode in python 2.6?,"<p>I have a simple logging handler:</p>
 
 <pre><code>log = logging.getLogger()
@@ -4473,13 +4473,13 @@ log.addHandler(ch)
 <pre><code>UnicodeDecodeError
 </code></pre>
 
-<p>How to logging unicode message ? </p>",0,python
+<p>How to logging unicode message ? </p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f216,0,python
 29754352,Using SQL Failover Partner with pyodbc,"<p>Is pyodbc capable of using a failover partner?  ODBC says it's supported so I'm not sure why what I have is not working:</p>
 
 <pre><code>db = pyodbc.connect(driver='{SQL Server}', database=DATABASE, server=PRIMARY, failover_partner=SECONDARY)
 </code></pre>
 
-<p>My database is SQL Server 2008.  The only other thing I can do at this point is use a try/except to handle the connection creation but I'd vastly prefer doing this the way I understand SQL is intended to work.</p>",1,python|sql|sql-server|odbc|pyodbc
+<p>My database is SQL Server 2008.  The only other thing I can do at this point is use a try/except to handle the connection creation but I'd vastly prefer doing this the way I understand SQL is intended to work.</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f217,1,python|sql|sql-server|odbc|pyodbc
 29857609,Scrapy - Issue with xpath on an xml crawl,"<p>I'm trying to make a simple spider to grab some xml and spit it out in a new format for an experiment. However it seems there is extra code contained within the xml which is spat out. The format I want is like this (no extra code or value tag) along the lines of this: <code>&lt;body&gt;Don't forget me this weekend!&lt;/body&gt;</code></p>
 
 <p>I think I am using xpath wrong but I'm not sure what I'm doing wrong.</p>
@@ -4533,7 +4533,7 @@ class SiteSpider(XMLFeedSpider):
       &lt;/heading&gt;
    &lt;/item&gt;
 &lt;/items&gt;
-</code></pre>",1,python|xml|xpath|scrapy|scrapy-spider
+</code></pre>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f218,1,python|xml|xpath|scrapy|scrapy-spider
 30046902,The ``/`` character is not allowed in object names,"<p>I am working with a structure within the HDF5 file that has names with '/' in them. When I load said file, I get this warning:</p>
 
 <pre><code> ⓔ  develop  In [1]  import pandas as pd
@@ -4596,13 +4596,13 @@ apiclient: None
 sqlalchemy: 0.9.7
 pymysql: None
 psycopg2: None
-</code></pre>",2,python|pandas|scipy
+</code></pre>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f219,2,python|pandas|scipy
 30148532,wxpython boxsizer addmany spacer,"<p>How can I add a spacer between two items in a boxsizer, while using Add Many?
-I tried key words like Spacer, AddSpacer and things like that but unfortunately, it didn't work. </p>",0,python|wxpython|boxsizer
+I tried key words like Spacer, AddSpacer and things like that but unfortunately, it didn't work. </p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f220,0,python|wxpython|boxsizer
 29876917,How to check string is laid out in correct format (Python),"<p>I am coding a program which needs to import log files.
 The user must input the name of the file in the correct order of 'DD-HH.MM' (day, hour, minute). Is there any way to validate that the users input is in the correct order?</p>
 
-<p>Thanks in advance</p>",0,python|string|comparison
+<p>Thanks in advance</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f221,0,python|string|comparison
 30071948,How to re-match a group that did not capture anything?,"<p>I'm trying to parse a string in which a certain section can either be enclosed between <code>""</code> or <code>'</code> or not be enclosed at all.  However, I'm struggling finding a <strong>syntax that works when no quotation marks are there at all</strong>.</p>
 
 <p>See the following (simplified) example:</p>
@@ -4624,7 +4624,7 @@ AttributeError: 'NoneType' object has no attribute 'group'
 'NoneType' object has no attribute 'group'
 </code></pre>
 
-<p><strong>The desired result for the last attempt should be <code>None</code> as the second command in the example.</strong></p>",0,python|regex
+<p><strong>The desired result for the last attempt should be <code>None</code> as the second command in the example.</strong></p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f222,0,python|regex
 29754675,reStructuredText in Sphinx: display number when referencing a section,"<p>To reference a section using reStructuredText in Sphinx, I can do:</p>
 
 <pre><code>.. _my-reference-label:
@@ -4655,7 +4655,7 @@ It refers to the section itself, see :ref:`my-reference-label`.
 
 <p>where <em>2.1</em> is the section's number.</p>
 
-<p>Is there a way to accomplish this using reStructuredText in Sphinx?</p>",2,python-sphinx|restructuredtext
+<p>Is there a way to accomplish this using reStructuredText in Sphinx?</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f223,2,python-sphinx|restructuredtext
 29905184,Django how to get haystack working with django-hvad,"<p>I'm working on a multilingual application where I need to implement a search engine, I opted for haystack.</p>
 
 <p>This is the model I want to index</p>
@@ -4704,7 +4704,7 @@ It refers to the section itself, see :ref:`my-reference-label`.
     )
 </code></pre>
 
-<p>I don't know in haystack how to deal with hvad translation fields</p>",1,python|django|django-haystack|django-hvad
+<p>I don't know in haystack how to deal with hvad translation fields</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f224,1,python|django|django-haystack|django-hvad
 29934111,Getting data from response meta or getting data from item loader. Which is better?,"<p>I have written a spider where I am sending some data from parent function to child function via meta. In child function I am parsing these items. But if some data is not found in <code>response.meta.get('name')</code> I am writing some xpath in child function. </p>
 
 <p>Which is the better way in these two?</p>
@@ -4722,7 +4722,7 @@ if not item.get_output_value('name'):
     item.add_value('name', response.meta.get('name'))
 else:
     item.add_xpath('name', 'xpath')
-</code></pre>",0,python|xpath|web-scraping|scrapy
+</code></pre>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f225,0,python|xpath|web-scraping|scrapy
 29974564,Python script with date input,"<p>So I have a script that takes data every 30 seconds for an indefinite amount of time. It saves the data to a text file that is easily read by another program that I can run on another desktop. </p>
 
 <p>Ideally what I would want is a simple user interface where I can input a data, or just a simple string by using a text box or even a drop down menu. Here's the part of my code where the date would go:</p>
@@ -4747,7 +4747,7 @@ test = open('[B20] ' + date + ""-Temp_Press_Data.txt"")
 test = test.read()
 </code></pre>
 
-<p>What's the best way to go about this. Any help would be appreciated. Thanks.</p>",2,python|date|input
+<p>What's the best way to go about this. Any help would be appreciated. Thanks.</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f226,2,python|date|input
 30007478,python ipaddress()reverse_pointer equivalent for 3.4,"<p>I am trying to get the reverse IPv6 arpa from a valid IPv6 address but the feature I would like to use is only available in Python3.5 and FreeBSD ports is still on Python3.4</p>
 
 <pre><code>In [1]: import ipaddress
@@ -4758,7 +4758,7 @@ AttributeError: 'IPv6Address' object has no attribute 'reverse_pointer'
 
 <p>What is the Python3.4 equivalent to get the reverse IPv6 arpa?</p>
 
-<p><a href=""https://docs.python.org/dev/library/ipaddress.html"" rel=""nofollow"">ipaddress 3.5 manual page</a></p>",1,python|dns|ip|ipv6
+<p><a href=""https://docs.python.org/dev/library/ipaddress.html"" rel=""nofollow"">ipaddress 3.5 manual page</a></p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f227,1,python|dns|ip|ipv6
 30043709,Python: sorting a list of tuples on alpha case-insensitive order,"<p>I have a list of tuples (""twoples"")</p>
 
 <pre><code>[('aaa',2), ('BBB',7), ('ccc',0)]
@@ -4795,7 +4795,7 @@ list.sort(key=str.tolower)
 
 <p>... at the first (</p>
 
-<p>itemgetter() doesn't help, because there's only one 'key' allowed</p>",3,python|list|sorting
+<p>itemgetter() doesn't help, because there's only one 'key' allowed</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f228,3,python|list|sorting
 30125515,Filtering out redundant repeated data from a pandas dataframe,"<p>I have a dataframe that looks a like this;</p>
 
 <pre><code>index, othercols, FPN
@@ -4853,7 +4853,7 @@ def is_rep(row):
 df['mask_col']=df.apply(lambda row:is_rep(row),axis=1,reduce=False)
 
 df=(df[df['mask_col']==0]).drop(['shft_up','shft_dn','mask_col'],axis=1)
-</code></pre>",3,python|pandas
+</code></pre>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f229,3,python|pandas
 29932707,UnboundLocalError: local variable 'X' referenced before assignment Python for simbols fixer,"<p>I have to do a simbols fixer in python for LateX
 So I made this code and I dont know why it shows </p>
 
@@ -4964,7 +4964,7 @@ BracketFind()
 </code></pre>
 
 <p>Do You have an idea about what is causing this?
-I dont understand why is showing this if at the begin of the execution it prints 'archivo' </p>",2,python
+I dont understand why is showing this if at the begin of the execution it prints 'archivo' </p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f230,2,python
 29967612,WebSockets best practice for connecting an external application to push data,"<p>I am trying to understand how to use websockets correctly and seem to be missing some fundamental part of the puzzle.</p>
 
 <p>Say I have a website with 3 different pages:</p>
@@ -4998,7 +4998,7 @@ I dont understand why is showing this if at the begin of the execution it prints
 
 <p>OR, should CoreApplication.py connect programatically with WebSocketServer.py? As I cannot seem to find any examples of being able to do this for example with Autobahn or other simple web sockets as once the WebSocketServer is instantiated it seems to run in a loop and does not accept external sendMessage requests?</p>
 
-<p>So to sum up the question: What is the best practice? To simply make CoreApplication.py interact with WebSocketServer.py as a client (with special command data) or for CoreApplication.py to use an already running instance of  WebSocketServer.py (both of which are on the same machine) through some more direct method to directly sendMessages without having to make a full websocket connection first to the WebSocketServer.py server?</p>",2,python|websocket
+<p>So to sum up the question: What is the best practice? To simply make CoreApplication.py interact with WebSocketServer.py as a client (with special command data) or for CoreApplication.py to use an already running instance of  WebSocketServer.py (both of which are on the same machine) through some more direct method to directly sendMessages without having to make a full websocket connection first to the WebSocketServer.py server?</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f231,2,python|websocket
 29948375,Matplotlib Basemap not working Windows 8.1,"<p>I want to plot some GPS-data using python 2.7 using matplotlibs basemap.</p>
 
 <p>I download the binary windows installer and it executes and run without any problems. However, when I try to import and run in python I get:</p>
@@ -5024,7 +5024,7 @@ GEOS, which is a dependency should be involved in the Basemap installer but I in
 
 <p>I have ofcourse looked through other threads on this page, but none of them seem to offer a solution.</p>
 
-<p>Best regards</p>",0,python|matplotlib-basemap
+<p>Best regards</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f232,0,python|matplotlib-basemap
 30202348,Formatting time on a plot in Python,"<p>I have the following code and was wondering how I could format the time to read in a 12 hr format. e.g. 0:00, 3:30, 10:00 etc. as of now the y axis reads 00:00:00, 00:01:00, 00:02:00 and so on. The data in the csv was formatted like this, 0:00, 1:00,2:00 etc.</p>
 
 <p>How could I go about formatting the y axis to the format I need to?</p>
@@ -5064,12 +5064,12 @@ plt.show()
 </code></pre>
 
 <p>Here is an image of what the graph shows: 
-<img src=""https://i.stack.imgur.com/rxeeN.jpg"" alt=""enter image description here""></p>",1,python|datetime|pandas|matplotlib
+<img src=""https://i.stack.imgur.com/rxeeN.jpg"" alt=""enter image description here""></p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f233,1,python|datetime|pandas|matplotlib
 29961898,How to track anonymous users with Flask,"<p>My app implements a shopping cart in which anonymous users can fill their cart with products. User Login is required only before payment. How can this be implemented?</p>
 
 <p>The main challenge is that flask must keep track of the user (even if anonymous) and their orders. My current approach is to leverage the <code>AnonymousUserMixin</code> object that is assigned to <code>current_user</code>. The assumption is that <code>current_user</code> will not change throughout the session. However, I noticed that a new <code>AnonymousUserMixin</code> object is assigned to <code>current_user</code>, for example, upon every browser page refresh. Notice that this does not happen if a user is authenticated.</p>
 
-<p>Any suggestions on how to circumvent this?</p>",6,python|flask|flask-login|anonymous-users
+<p>Any suggestions on how to circumvent this?</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f234,6,python|flask|flask-login|anonymous-users
 30036300,Tkinter label go at the bottom of the frame,"<p>I have kind of a problem with my little Python application using Tkinter and the pack layout management. I don't understand why the labels go at the bottom of the frame.</p>
 
 <p>Here is the code:</p>
@@ -5118,10 +5118,10 @@ root.mainloop()
 
 <p>Do you have any idea what the problem could be ?</p>
 
-<p>Thanks !</p>",0,python|tkinter|label|tk|pack
+<p>Thanks !</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f235,0,python|tkinter|label|tk|pack
 30052990,How to use OpenStreetMap background on Matplotlib Basemap,"<p>This should be simple, but when I look for it I just find web packages. I need something better than as oriented on <a href=""https://stevendkay.wordpress.com/2010/02/24/plotting-points-on-an-openstreetmap-export/"" rel=""noreferrer"">This Blog</a>. Maybe using <code>.oms</code> file or shapefiles. Some way to give bbox and get the OpenStreetMap background on <code>Basemap</code> map.</p>
 
-<p>I found some questions like this on Stack, but the answers directs to, or download the <code>.png</code> file on OpenStreetMap website, or to use some web package.</p>",8,python-2.7|gis|openstreetmap|matplotlib-basemap
+<p>I found some questions like this on Stack, but the answers directs to, or download the <code>.png</code> file on OpenStreetMap website, or to use some web package.</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f236,8,python-2.7|gis|openstreetmap|matplotlib-basemap
 29824155,Python fill matrix with specific values,"<p>I have 2D matrix and I want to fill it with 0 and 1. And I have a list include some value. </p>
 
 <p>For example:</p>
@@ -5136,7 +5136,7 @@ root.mainloop()
           [0, 0, 1]]
 </code></pre>
 
-<p>I made this with two nested for loop witf if statement. Values is random integers from 0 to 100. And my matrix will be 10*10. Is there any way to create this more elegant?</p>",3,python|matrix
+<p>I made this with two nested for loop witf if statement. Values is random integers from 0 to 100. And my matrix will be 10*10. Is there any way to create this more elegant?</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f237,3,python|matrix
 29855047,defining half of the module in one package and other half in another in python,"<p>I want to do this. </p>
 
 <p>In package 1 </p>
@@ -5154,10 +5154,10 @@ root.mainloop()
       __init__.py 
 </code></pre>
 
-<p>to get an overall view with both combined. This is possible to do in java even though the classes are in separate jars. Is this something I can do in Python even if I have 2 separate eggs for it? </p>",0,python|python-2.7|pip
+<p>to get an overall view with both combined. This is possible to do in java even though the classes are in separate jars. Is this something I can do in Python even if I have 2 separate eggs for it? </p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f238,0,python|python-2.7|pip
 30163728,How to prevent IPython from activate to the cell below after running a cell?,"<p>After running a code in given cell, <code>IPython</code> goes down to the next cell below and activate it.</p>
 
-<p>How to set IPython so that it ""stays"" in the same cell after code is run?</p>",0,ipython
+<p>How to set IPython so that it ""stays"" in the same cell after code is run?</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f239,0,ipython
 30167692,iPython Set Up Missing Steps?,"<p>The documentation for iPython can be found here:</p>
 
 <p><a href=""http://ipython.org/ipython-doc/stable/index.html"" rel=""nofollow"">http://ipython.org/ipython-doc/stable/index.html</a></p>
@@ -5166,7 +5166,7 @@ root.mainloop()
 
 <p>Then the next section skips to using ipython.</p>
 
-<p>Okay, so it must be installed, right? Enter <code>python</code> to enter your interactive prompt and... nothing looks different... but just try using its features! <code>?</code>! Nope, that's a <code>SyntaxError</code>, just like normal.</p>",-1,python|ipython
+<p>Okay, so it must be installed, right? Enter <code>python</code> to enter your interactive prompt and... nothing looks different... but just try using its features! <code>?</code>! Nope, that's a <code>SyntaxError</code>, just like normal.</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f240,-1,python|ipython
 29973059,How to stratify data using Orange?,"<p>Looking for some help from the Orange experts out there.</p>
 
 <p>I have a data set of about 6 million lines.  For simplicity's sake, we'll consider only two columns.  One is of positive decimal numbers and is imported as a continuous value.  The other is of discrete values (either 0 or 1) where there is a ratio of 30:1 for 1's to 0's.</p>
@@ -5219,7 +5219,7 @@ f.write(timeStr)
 f.close()
 </code></pre>
 
-<p>Note:  There may seem like there are syntax errors (stratified vs. stratification) but the program runs as-is without exceptions.  Also, I know the documentation shows stuff like stratified=StratifiedIfPossible but for some reason, only boolean values work for me.</p>",0,python|decision-tree|orange
+<p>Note:  There may seem like there are syntax errors (stratified vs. stratification) but the program runs as-is without exceptions.  Also, I know the documentation shows stuff like stratified=StratifiedIfPossible but for some reason, only boolean values work for me.</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f241,0,python|decision-tree|orange
 30008056,Python 2 / Pillow - issue calculating resized image height & width,"<p>I'm building a blog-style website using Django that allows people to upload images for their posts. I wrote some code to resize user uploaded images. It takes the uploaded image and saves two copies, 1 scaled down large image and 1 thumbnail. </p>
 
 <p>The code works perfectly on my personal computer I'm using for development (Python 3, Django 1.8), but it doesn't work in production on my server (Python 2, Django 1.8). On the server, it appears the image resize math is giving a value of 0 for either the width or height. I've tried various methods of rounding, etc but nothing seems to fix the issue.</p>
@@ -5310,7 +5310,7 @@ f.close()
 
 <p>My question is why and how do I get around this? It seems like a pretty straightforward formula to maintain the image size ratio. Even stranger that it works with Python 3 but not Python 2.</p>
 
-<p>I'm admittedly not an expert at this, so I'm open to a more efficient way of resizing the image. However, I'd still be interested to learn why that formula returns a value of zero.</p>",0,python|django|python-imaging-library|pillow
+<p>I'm admittedly not an expert at this, so I'm open to a more efficient way of resizing the image. However, I'd still be interested to learn why that formula returns a value of zero.</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f242,0,python|django|python-imaging-library|pillow
 30039947,Parse XML namespace with Element Tree findall,"<p>How can I use a query element tree <code>findall('Email')</code> given the following xml?</p>
 
 
@@ -5339,7 +5339,7 @@ root
 
 root.findall('Email')
 []
-</code></pre>",1,python|xml|docusignapi
+</code></pre>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f243,1,python|xml|docusignapi
 29842464,Adding Single-sign-on to GMail API authorization,"<p>I have successfully created a python web-app on Google App Engine that interacts with the Gmail API. What I would like to get now, is that when that the permissions are given, my app also creates a user account to which the user can login with their Google Account. This would prevent the user to having to type in another password for my app.</p>
 
 <p>To summarize, current workflow is:
@@ -5373,7 +5373,7 @@ class MainHandler(webapp.RequestHandler):
     # Call the service using the authorized Http object.
     request = service.events().list(calendarId='primary')
     response = request.execute(http=http)
-</code></pre>",0,python-2.7|google-app-engine|single-sign-on|gmail-api
+</code></pre>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f244,0,python-2.7|google-app-engine|single-sign-on|gmail-api
 29877876,Find max values in a dict containing lists,"<p>The dict got the keys <code>years</code> and for each year it's a list of all the temperatures in all 12 months of that year. My goal is to print out a table starting with what year it is and then a new line for each month and the temp that month.</p>
 
 <p><strong>The main thing is to mark the highest temp of all years with <code>(ATH)</code> and mark the highest temp in each year with <code>(YearHighest)</code>.</strong></p>
@@ -5434,7 +5434,7 @@ Month9: 34 (YearHighest)(ATH)
 Month10:  2
 Month11: 10
 Month12:  1
-</code></pre>",1,python|list|python-3.x|for-loop|dictionary
+</code></pre>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f245,1,python|list|python-3.x|for-loop|dictionary
 29953752,Can't find the contents of a 'div' using BeautifulSoup,"<p>I'm trying to scrape some information about MLB players from the MLB website. 
 However, using urllib2 and BeautifulSoup, I can't find the contents under the 'div'. But I can clearly see the contents on Chrome.</p>
 
@@ -5457,7 +5457,7 @@ but the result only shows</p>
 </code></pre>
 
 <p>I have never encountered this problem before. Can someone help me with this?
-Thanks!!</p>",2,python|web-scraping|beautifulsoup
+Thanks!!</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f246,2,python|web-scraping|beautifulsoup
 30075234,OPENSHIFT Cron job just stop working,"<p>I have an hourly cron job which has been running in Openshift free gear for almost a year and has been no problem.  But the past 2 days, cron job stops running automatically.  I have been googling around and still cannot find what went wrong.  Here are what I have checked/done to date</p>
 
 <ul>
@@ -5471,7 +5471,7 @@ Thanks!!</p>",2,python|web-scraping|beautifulsoup
 <p>Mon May  4 13:01:29 EDT 2015: END hourly cron run - status=0</p></li>
 </ul>
 
-<p>Any advice or pointer as to why it just stop working when there is no change to the app.  Thank you.</p>",0,python|django|openshift
+<p>Any advice or pointer as to why it just stop working when there is no change to the app.  Thank you.</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f247,0,python|django|openshift
 29882870,How to position BoxLayout to top of screen,"<p>I have a ActionBar that is nested inside a BoxLayout widget. I'd like the ActionBar to appear at the very top of the screen. Currently, I'm only able to get it to appear at the very bottom. Here is a screenshot:</p>
 
 <p><img src=""https://i.stack.imgur.com/6J7Om.jpg"" alt=""enter image description here""></p>
@@ -5513,7 +5513,7 @@ if __name__ == ""__main__"":
                     text: ""Log Out""
 </code></pre>
 
-<p>As you can see, I've tried playing with various values for the pos_hint, but it does not appear to affect the position of the ActionBar. I suspect I'm missing something simple. What do I need to do to get the ActionBar to appear at the very top of the window?</p>",1,android|python|kivy
+<p>As you can see, I've tried playing with various values for the pos_hint, but it does not appear to affect the position of the ActionBar. I suspect I'm missing something simple. What do I need to do to get the ActionBar to appear at the very top of the window?</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f248,1,android|python|kivy
 30189492,ValueError: [u'path'] error when trying to install pysftp in python,"<p>I'm trying to install <a href=""https://pypi.python.org/pypi/pysftp"" rel=""nofollow"">pysftp-0.2.8</a> on my 64 bit Windows 7 system, I use 32 bit python 2.7. I also have Microsoft Visual Studio 2012 Express installed.  When I run</p>
 
 <pre><code>python setup.py install 
@@ -5531,7 +5531,7 @@ ValueError: [u'path']
 <pre><code>Visual Studio 2012 (VS11): SET VS90COMNTOOLS=%VS110COMNTOOLS%
 </code></pre>
 
-<p>in command line, but it didn't help.</p>",0,python|windows|installation
+<p>in command line, but it didn't help.</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f249,0,python|windows|installation
 30012495,Reading Google Trends time series data with Python,"<p>I'm trying to read the following URL into Python:</p>
 
 <pre><code>http://www.google.com/trends/fetchComponent?q=nepal&amp;cid=TIMESERIES_GRAPH_0&amp;export=3
@@ -5546,12 +5546,12 @@ the_page = response.read()
 
 <p>The resulting value of the_page, for reasons that I don't understand, is an error page.</p>
 
-<p><strong>UPDATE:</strong> I think that the problem is related to some authentication issue: when I try to open the link in the browser's incognito window, it also returns an error page.</p>",1,python|google-trends
+<p><strong>UPDATE:</strong> I think that the problem is related to some authentication issue: when I try to open the link in the browser's incognito window, it also returns an error page.</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f250,1,python|google-trends
 30205003,Using SBT to manage projects that contain both Scala and Python,"<p>In a current project, I've built Python code for interacting with a specific datasource; now, I'm working on building a Scala version.</p>
 
 <p>I've rearranged things so that all of the Python code lives in <code>src/main/python</code> within the SBT project for my Scala code, but this got me thinking: Is there any nice way to integrate the project management between the two?  To set up SBT so that I can run my Python <code>distutils</code> installation/sdist generation or sphinx document generation as SBT tasks?</p>
 
-<p>Or, more generally: Is there a standard method for running arbitrary system tasks by way of SBT?</p>",9,python|scala|sbt
+<p>Or, more generally: Is there a standard method for running arbitrary system tasks by way of SBT?</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f251,9,python|scala|sbt
 30178254,"Predicting out future values using OLS regression (Python, StatsModels, Pandas)","<p>I'm currently trying to implement a MLR in Python and am not sure how I go about applying the coefficients I've found to future values.</p>
 
 <pre><code>import pandas as pd
@@ -5594,7 +5594,7 @@ TV     Radio    Newspaper    Sales
 
 <p>I've been trying a method I found here but I can't seem to get it working: <a href=""https://stackoverflow.com/questions/9943848/forecasting-using-pandas-ols"">Forecasting using Pandas OLS</a></p>
 
-<p>Thank you!</p>",2,python|pandas|statsmodels
+<p>Thank you!</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f252,2,python|pandas|statsmodels
 29996094,How to to find a value within two delimiter with Python 2.7,"<p>I have a file with many lines like this:</p>
 
 <p>...</p>
@@ -5624,7 +5624,7 @@ KO30_V
 
 <p>How to do this? Could I use split for this? I'm using Python 2.7</p>
 
-<p>Thx!</p>",0,python-2.7|split
+<p>Thx!</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f253,0,python-2.7|split
 30143740,A foreign key in the view details,"<p>I have a django app where you want to display all images tracked to a particular gallery, but I get the error: 'GalleryDetailsView1' object has no attribute 'gallery'</p>
 
 <p><strong>Model</strong></p>
@@ -5690,7 +5690,7 @@ class GalleryDetailsView1(generic.DetailView):
 {% endblock %}
 
 {% block content_bottom %}{% endblock content_bottom %}
-</code></pre>",0,python|django|templates|views|django-queryset
+</code></pre>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f254,0,python|django|templates|views|django-queryset
 29756220,Django ajax response contains cloudflare script,"<p>I am learning Django by developing a web application. I have added the site to <a href=""https://www.cloudflare.com/overview"" rel=""nofollow"">cloudflare</a> CDN's free service. After a long learning curve i am able to send request to Django application using ajax, but strangely the response contains the script from cloudflare embedded as part of it.</p>
 
 <p>Example ajax response:</p>
@@ -5714,7 +5714,7 @@ try{if (!window.CloudFlare) {var CloudFlare=[{verbose:0,p:0,byc:0,owlid:""cf"",b
     return HttpResponse(html)
 </code></pre>
 
-<p>Can anyone help me understand how to remove this extra script from cloudflare?</p>",0,ajax|django|python-2.7|cloudflare
+<p>Can anyone help me understand how to remove this extra script from cloudflare?</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f255,0,ajax|django|python-2.7|cloudflare
 29783040,python pip instal apns 0.2.1,"<p>I'm trying to use <a href=""https://pypi.python.org/pypi/apns-client/0.2.1"" rel=""nofollow"">apns-client 0.2.1</a> but I only get an error message.</p>
 
 <pre><code>22:56:01 $ pip install apnsclient==0.2.1
@@ -5723,7 +5723,7 @@ Could not find a version that satisfies the requirement apnsclient==0.2.1 (from 
 No matching distribution found for apnsclient==0.2.1
 </code></pre>
 
-<p>How can I install 0.2.1 version and then save it in requirements.txt? I need it in this way because my hosting use this file too.</p>",0,python|pip
+<p>How can I install 0.2.1 version and then save it in requirements.txt? I need it in this way because my hosting use this file too.</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f256,0,python|pip
 29787589,animation.FuncAnimation Python Gui,"<p>I am writing a <code>GUI Python</code> code which should be run every 15 minutes, however when it runs it took more than that (15 minutes +running time). The function I am using is,</p>
 
 <pre><code>animation.FuncAnimation(f,animate,interval=900000)
@@ -5733,7 +5733,7 @@ No matching distribution found for apnsclient==0.2.1
 
 <p>using time.sleep is not good option as this will lead to freezing the GUI screen, I am using <code>Tkinter</code> which is thread unsafe</p>
 
-<p>Thanks in Advance,</p>",-1,python
+<p>Thanks in Advance,</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f257,-1,python
 30102965,Incorrect and inconsistent user counts using Google Core Reporting API and bigquery when using variable/dimension filtering,"<p>Background: I have app and web data, some of my apps (new iOS versions) use GA dimensions and the rest (Android and web) use GA custom variables.</p>
 
 <p>So firstly, I'm currently trying to replicate this query in BigQuery in the Query Explorer to get simple user counts over a defined date for my web users only:</p>
@@ -5793,7 +5793,7 @@ When in Query Explorer I ask for user counts over a given date and instead use a
 
 <p>If the filter was being applied post aggregation as it is when filtering using variables then I would get a higher user count, not less. I seriously cannot explain what the Query Explorer is doing in order to give me substantially lower counts when filtering on dimensions.</p>
 
-<p>Please halp</p>",1,python|google-analytics|google-api|google-bigquery
+<p>Please halp</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f258,1,python|google-analytics|google-api|google-bigquery
 30182006,carriage lines and splitting cell values in pandas DataFrame,"<p>my data is in a pandas DataFrame with each row, structured like this:</p>
 
 <pre><code>&gt; df={'date1': '0 \r Created February 21, 2015', 'amt': '$50,815 raised by 498 donors'}
@@ -5827,7 +5827,7 @@ When in Query Explorer I ask for user counts over a given date and instead use a
 <pre><code>&gt; df['month'] = df['date1'].map(lambda x: x.split()[0])
 
 &gt; df['day'] = df['date1'].map(lambda x: x.split()[1])   #IndexError
-</code></pre>",1,python|pandas
+</code></pre>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f259,1,python|pandas
 29998417,"Create parser with subcommands in argparse, customize positional argument(s)","<p>I'm very new to this module so please bear with me. I have the following code:</p>
 
 <h1>reader.py</h1>
@@ -5859,7 +5859,7 @@ args = parent_parser.parse_args()
 
 <p>Again, I'm not sure if this is how command line apps/scripts are supposed to behave. I read the docs and looked at examples but it's still isn't clear to me how sub parsers work. I tried looking at Click module but that seems to me even more complicated.</p>
 
-<p>Any help appreciated. Thanks!</p>",1,python|command-line-arguments|argparse
+<p>Any help appreciated. Thanks!</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f260,1,python|command-line-arguments|argparse
 29861229,"TypeError: must be string or buffer, not instance","<p>I am using django-jsignature in my django project. After making the post request, the form returns ""type 'instance'"". I'm trying to save this as an image, but I get the above error. </p>
 
 <p>Even better would be to save the form data as a vector image as suggested in the docs.</p>
@@ -5878,7 +5878,7 @@ args = parent_parser.parse_args()
                 f.write(signature_picture)
 </code></pre>
 
-<p>(signature_file_path == '/tmp/tmpB71Wft.PNG')</p>",1,javascript|python|django
+<p>(signature_file_path == '/tmp/tmpB71Wft.PNG')</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f261,1,javascript|python|django
 30199393,How can pickled byte data be unpickled?,"<p>How can pickled data be written and read back from a BytesIO object?</p>
 
 <p>I tried:</p>
@@ -5897,7 +5897,7 @@ s2 = pickle.load(bytes_io)
 <pre><code>Traceback (most recent call last):
   File ""&lt;stdin&gt;"", line 1, in &lt;module&gt;
 EOFError
-</code></pre>",4,python|pickle
+</code></pre>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f262,4,python|pickle
 29813848,Can't upload image in django use MEDIA_ROOT and MEDIA_URL,"<p>hello i want to make upload image in admin django but when i use media_root and media url image can not upload. this is model.py</p>
 
 <pre><code>class Product(models.Model):
@@ -5934,7 +5934,7 @@ MEDIA_URL   = '/upload/'
 <pre><code>&lt;img src=""{{post.image.url}}"" alt="""" /&gt;
 </code></pre>
 
-<p>can you help me solve this problem?</p>",1,python|django|django-models
+<p>can you help me solve this problem?</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f263,1,python|django|django-models
 29921407,4 dimensional array of zeros in python,"<p>I want to make an 4 dimensional array of zeros in python. 
 I know how to do this for a square array but I want the lists to have different lengths.</p>
 
@@ -5943,7 +5943,7 @@ I know how to do this for a square array but I want the lists to have different 
 <pre><code>numpy.zeros((200,)*4)
 </code></pre>
 
-<p>Which gives them all length 200 but I would like to have lengths <code>200,20,100,20</code> because now I have a lot of zeros in my array that I don't use</p>",9,python|arrays|numpy
+<p>Which gives them all length 200 but I would like to have lengths <code>200,20,100,20</code> because now I have a lot of zeros in my array that I don't use</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f264,9,python|arrays|numpy
 29774995,Django- Using Parameters To Display Entry,"<p>My database is setup something like.</p>
 
 <pre><code>class comments(models.Model):
@@ -5952,8 +5952,8 @@ I know how to do this for a square array but I want the lists to have different 
     comment = models.CharField(max_length=255)
 </code></pre>
 
-<p>In my view, I grab a float value from the user. I want to take that value use the Min/Max as parameters and if that float value is between the Min/Max, display the comment that's associated to it. At times there might be more then 1 match, however for now I cant even figure out how to do the first step.  </p>",0,python|django
-30180457,Please provide an example of the .format() function where the index field is left blank,<p>Alright I am a bit confused. what I'm learning to program from says that the index fields for the .format() method can be left blank and if this is the case that the parameters are just filled in to the slots in a left to right fashion. I have tried to find answers to this question but haven't found any and I would greatly appreciate it if someone could clear this up for me with some easily understandable examples and explanations of how you would use the .format() method without index values.</p>,1,python-3.x
+<p>In my view, I grab a float value from the user. I want to take that value use the Min/Max as parameters and if that float value is between the Min/Max, display the comment that's associated to it. At times there might be more then 1 match, however for now I cant even figure out how to do the first step.  </p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f265,0,python|django
+30180457,Please provide an example of the .format() function where the index field is left blank,<p>Alright I am a bit confused. what I'm learning to program from says that the index fields for the .format() method can be left blank and if this is the case that the parameters are just filled in to the slots in a left to right fashion. I have tried to find answers to this question but haven't found any and I would greatly appreciate it if someone could clear this up for me with some easily understandable examples and explanations of how you would use the .format() method without index values.</p>,5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f266,1,python-3.x
 29820852,How to open a text file as a character matrix in python?,"<p>I have a .fa file which contains a list of secuences of nucleotids. It is something like this</p>
 
 <blockquote>
@@ -5964,7 +5964,7 @@ I know how to do this for a square array but I want the lists to have different 
   <p>GATAGTACATGGGGGATAGAC</p>
 </blockquote>
 
-<p>I need to somehow open the file in python and make a 2-dim array which contains as rows the lines of the .fa file and in each column a letter of the file. Thanks for any help!!!!</p>",0,python|arrays|statistics
+<p>I need to somehow open the file in python and make a 2-dim array which contains as rows the lines of the .fa file and in each column a letter of the file. Thanks for any help!!!!</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f267,0,python|arrays|statistics
 29955091,Cleverbot api not working (python 2 to python 3),"<p>I'm trying to convert an module that interact with Cleverbot. It's on python 2, but I would like it to be working with python 3. But I encounter an error :</p>
 
 <p><code>parsed = [ item.split('\r') for item in self.resp.split('\r\r\r\r\r\r')[:-1]]
@@ -6125,7 +6125,7 @@ quest=input(""Question: "")
 cb = Cleverbot()
 quest=cb.ask(quest)
 print(quest)
-</code></pre>",0,python
+</code></pre>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f268,0,python
 29911852,Python duplicate a python-igraph,"<p>I have a python-igraph and need to make two copies of it and change each of the copies without changing the other one. Right now I am doing it like this:</p>
 
 <pre><code>copy1 = fullGraph
@@ -6134,7 +6134,7 @@ copy2 = fullGraph
 
 <p>But it seems that this is not the correct way of doing it since whatever I change in copy1, the same thing happen to copy2 (like deleting an edge). I was wondering what is the best way to make a copy of the main graph.</p>
 
-<p>Thanks</p>",2,python|reference|duplicates|igraph
+<p>Thanks</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f269,2,python|reference|duplicates|igraph
 29996592,how to mock function call used by imported pypi library in python,"<p>I have the following code that I'm trying to test:</p>
 
 <p>great_report.py</p>
@@ -6158,7 +6158,7 @@ test_get_link_raises_exception(self, mock_get_report_link):
     self.assertRaises(ReportNotReadyException, get_link)
 </code></pre>
 
-<p>I tried mocking the retry parameters but am running into issues where get_link keeps retrying over and over which causes long build times instead of just raising the exception and continuing. How can I mock the parameters for the @retry call in my test?</p>",0,python|unit-testing|mocking
+<p>I tried mocking the retry parameters but am running into issues where get_link keeps retrying over and over which causes long build times instead of just raising the exception and continuing. How can I mock the parameters for the @retry call in my test?</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f270,0,python|unit-testing|mocking
 29983298,sre_constants.error: unexpected end of regular expression,"<p>I am new to Python's Regular Expression module and I am trying to find any occurrence of the following:</p>
 
 <pre><code>PWSCF        :    18.81s CPU        38.94s WALL
@@ -6174,7 +6174,7 @@ test_get_link_raises_exception(self, mock_get_report_link):
 <pre><code>File ""/opt/python/lib/python2.7/re.py"", line 242, 
 in _compile raise error, v # invalid expression 
 sre_constants.error: unexpected end of regular expression
-</code></pre>",0,python|regex
+</code></pre>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f271,0,python|regex
 29924479,Changing the second result of a function call with mock,"<p>I have a loop that looks like this:</p>
 
 <pre><code>for i in range(len(some_list)):
@@ -6200,7 +6200,7 @@ with mock.patch(mymodule.requests.post, return_value=mock_response):
    mymodule.some_function()
 </code></pre>
 
-<p>However, it looks like it doesn't actually get the ""right"" status code. What's the best way of changing the behavior in side_effect or return_value to properly get the behavior I want? I think side_effect is what I want, but I'm not sure what the best way is to mock the responses.</p>",7,python|mocking|pytest|python-mock
+<p>However, it looks like it doesn't actually get the ""right"" status code. What's the best way of changing the behavior in side_effect or return_value to properly get the behavior I want? I think side_effect is what I want, but I'm not sure what the best way is to mock the responses.</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f272,7,python|mocking|pytest|python-mock
 30046209,End a Python function after a certain time?,"<p>For example, I have this function:</p>
 
 <pre><code>some_global_varible = """"
@@ -6228,7 +6228,7 @@ The ""bob"" funtion is an example for a function that takes 10 seconds, but the 
     while True:
         print(""Working"")
         time.sleep(1)
-</code></pre>",1,python|timer|timeout
+</code></pre>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f273,1,python|timer|timeout
 29810183,Sqlalchemy - Updating row with a filter produces List Index Error,"<p>I hope this is my last question pertaining to this pet project of mine.</p>
 
 <p>I'm trying to update table Clocktimes (column = time_out) with the current time. I want to select by a UUID that I create with UUID4. When I run the code, I get ListIndex out of range error, on a function in query.py (a part of Sqlalchemy). I've listed that rather short function below my code.</p>
@@ -6248,7 +6248,7 @@ The ""bob"" funtion is an example for a function that takes 10 seconds, but the 
     return self._entities[0]
 </code></pre>
 
-<p>The Sqlalchemy code is pretty complex so I haven't looked through it yet, but my theory is that it doesn't like my filter for some reason. Anyway, I can't figure it out - do any of you have any idea?</p>",6,python|sqlite|sqlalchemy
+<p>The Sqlalchemy code is pretty complex so I haven't looked through it yet, but my theory is that it doesn't like my filter for some reason. Anyway, I can't figure it out - do any of you have any idea?</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f274,6,python|sqlite|sqlalchemy
 29987461,"Searching for floats in web-page, then creating a graph using these floats","<p>the errorI'm trying to write a code which will scan a web-page, find needed data, pack it as a list of floats and depict a graph using these floats. Consider the following code:</p>
 
 <pre><code>import matplotlib.pyplot as pyplot
@@ -6313,7 +6313,7 @@ for num in range(0,len(y)):
 
 pyplot.plot(x,y)
 pyplot.show()
-</code></pre>",1,python
+</code></pre>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f275,1,python
 29852342,Grouping and summarizing data into a new pandas dataframe,"<p>I have a dataframe that looks like the below (my actual dataframe is around 200k rows).  Each row is a unique user's distance from the origin point and the time since they logged in last.</p>
 
 <pre><code>+------------+------------------+
@@ -6376,8 +6376,8 @@ TypeError: tuple indices must be integers, not str
 
 <p>I was thinking another option would be to create boolean masks for each of my cases and then summarize each mask.</p>
 
-<p>What I'm asking is, what is the simplest way to go from my original dataframe to the summary dataframe?</p>",1,python|pandas
-30088390,how to load python script in interactive shell,<p>I am trying <code>sudo python get_gps.py -c</code> and expecting it to load the script and then present the interactive shell to debug the script live as opposed to typing it in manually.</p>,2,python
+<p>What I'm asking is, what is the simplest way to go from my original dataframe to the summary dataframe?</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f276,1,python|pandas
+30088390,how to load python script in interactive shell,<p>I am trying <code>sudo python get_gps.py -c</code> and expecting it to load the script and then present the interactive shell to debug the script live as opposed to typing it in manually.</p>,5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f277,2,python
 30117132,cython.parallel cannot see the difference in speed,"<p>I tried to use cython.parallel prange. I can only see two cores 50% being used. How can I make use of all the cores. i.e. send the loops to the cores simultaneously sharing the arrays, volume and mc_vol?</p>
 
 <p>EDIT: I also edited purely sequential for-loop which is about 30 seconds faster than than cython.parallel prange version. Both of them are using one core only. Is there are way to parallelize this.  </p>
@@ -6472,7 +6472,7 @@ return mc_vol
     ],
     cmdclass={'build_ext': build_ext}, requires=['Cython', 'numpy', 'matplotlib', 'pathos', 'scipy', 'cython.parallel']
 )
-</code></pre>",0,python|for-loop|parallel-processing|cython
+</code></pre>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f278,0,python|for-loop|parallel-processing|cython
 29965176,Alternative to npz files?,"<p>I use arrays stored in Python .npz format. I have a lot of these files, which all share the same common structure: filename <code>my_file_var1_var2_var3.npz</code> contains the following items (all arrays are 32bit Floats):</p>
 
 <ul>
@@ -6486,7 +6486,7 @@ return mc_vol
 
 <p>It's quite annoying to have in excess of 1000 files, and each of them ends up taking some 4Mb. I was thinking that it would be good to shift them to a container, like HDF5/Pytables or similar. The different arrays are just arrays, there's not preferential ordering or anything (they are effectively matrices or stacks of vectors that will be operated on). All the arrays for each filename are required together simultaneously. </p>
 
-<p>Are there any recommendations on what formats would be better to retrieve the arrays associated with <code>var1</code>, <code>var2</code> and <code>var3</code>, that is portable and efficient with storage</p>",2,python|arrays|hdf
+<p>Are there any recommendations on what formats would be better to retrieve the arrays associated with <code>var1</code>, <code>var2</code> and <code>var3</code>, that is portable and efficient with storage</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f279,2,python|arrays|hdf
 30080498,Build docker image from rhel6.5 image,"<p>I'm trying to build a python3-based container and install some requirements. But the build of python3 fails
 Here my Dockerfile</p>
 
@@ -6537,7 +6537,7 @@ See `config.log' for more details
 Setting up Install Process
 No package gcc available.
 Error: Nothing to do
-</code></pre>",0,python|docker
+</code></pre>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f280,0,python|docker
 30064100,How to upgrade Django app from 1.6.11 to 1.8 when makemigrations crashes?,"<p>I'm following the instructions to upgrade a Django app from Django 1.6.11 to 1.8.1. I've deleted all the migrations save for the <strong>init</strong>.py. I then run:</p>
 
 <pre><code>manage.py makemigrations
@@ -6595,7 +6595,7 @@ For more, see https://docs.djangoproject.com/en/1.8/topics/migrations/#migration
     _('Num'), help_text=_('Number, automatically-generated'),
     unique=True, blank=True, null=True, default=AccountManager().gen_num
 )
-</code></pre>",0,python|django|migration
+</code></pre>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f281,0,python|django|migration
 30182344,How to iterate through the synset list generated from wordnet using python 3.4.2,"<p>I am using wordnet to find the synonyms for a particular word as shown below</p>
 
 <pre><code>synonyms = wn.synsets('good','a')
@@ -6612,7 +6612,7 @@ Synset('beneficial.s.01')
 
 <p>etc...</p>
 
-<p>How to iterate through each synset and get the name and the pos tag of each synset?</p>",1,python-3.x|nlp|wordnet|sentiment-analysis
+<p>How to iterate through each synset and get the name and the pos tag of each synset?</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f282,1,python-3.x|nlp|wordnet|sentiment-analysis
 30125373,IPython notebook to slides: Reveal is not defined,"<p>I'm using nbconvert to make a reveal.js slideshow from my notebook. Specifically, I'm running: <code>ipython nbconvert --to slides analysis.ipynb</code>. This creates ""analysis.slides.html"", and I put ""reveal.js"" in the same folder. That is, I have:</p>
 
 <ul>
@@ -6637,7 +6637,7 @@ http://requirejs.org/docs/errors.html#mismatch
 
 <p>I don't get a 404 error for the line which loads reveal.js - <code>&lt;script src=""reveal.js/js/reveal.js""&gt;&lt;/script&gt;</code> - so any ideas why I might be seeing the errors I am?</p>
 
-<p>Thanks!</p>",4,javascript|ipython-notebook|reveal.js
+<p>Thanks!</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f283,4,javascript|ipython-notebook|reveal.js
 30164330,Sum values in tuple (values in dict),"<p>I have a dictionary <code>data</code> that looks like that with sample values:</p>
 
 <pre><code>defaultdict(&lt;type 'list'&gt;, 
@@ -6662,4 +6662,4 @@ http://requirejs.org/docs/errors.html#mismatch
 
 <p>However, I don't know in advance how many items will be in every tuple, so using the <code>sum(tup[0] for tup in v)</code> with hard-coded indices is not an option. I know, however, how many integers will be in the tuple. This value is an integer and I get this along with the <code>data</code> dict. All tuples are always of the same length (in this example, of length 2).</p>
 
-<p>How do I tell Python that I want the <code>out</code> dict to contain tuple of the size that matches the length I have to use?</p>",1,python|python-2.7|dictionary|tuples
+<p>How do I tell Python that I want the <code>out</code> dict to contain tuple of the size that matches the length I have to use?</p>",5ea3ea2328a5265106165252,5ea3e98a768a4e63d95a8f284,1,python|python-2.7|dictionary|tuples

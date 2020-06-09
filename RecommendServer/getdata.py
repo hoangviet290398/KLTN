@@ -13,8 +13,15 @@
 import pandas as pd
 import numpy as np
 import spacy
+from pymongo import MongoClient
+# client = MongoClient("mongodb://localhost:27017/")
+# db = client["q&asystem"]
+# questions = db["questions"]
+# for x in questions.find():
+#     print(x)
 #pd.set_option('display.max_colwidth', -1)
 #pd.set_option('display.max_columns', None)
+
 EN = spacy.load('en_core_web_sm')
 df = pd.read_csv('data/Original_data.csv')
 # print(df.head())

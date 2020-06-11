@@ -19,7 +19,7 @@
 
     <script>
     
-    jQuery(document).ready(function(){
+
 
        $('#search').keyup(function () {
         var keyword = $(this).val();
@@ -172,7 +172,7 @@
         $("#unread_notification").remove();
     }
     @endif
-});
+
 
 
 </script>

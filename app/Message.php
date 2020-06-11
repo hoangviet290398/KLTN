@@ -12,9 +12,9 @@ class Message extends Eloquent
     protected $fillable=['from_user','to_user','is_read','message','created_at'];
    
 
-    // public function user() {
-    //     return $this->belongsTo('App\User', 'user_id', '_id');
-    // }
+    public function user() {
+        return $this->belongsTo('App\User', 'from_user', '_id');
+    }
 
     
 }

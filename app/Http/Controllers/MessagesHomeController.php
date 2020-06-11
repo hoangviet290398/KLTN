@@ -68,9 +68,9 @@ class MessagesHomeController extends Controller
             $query->where('from_user', $user_id)->where('to_user', $my_id);
         })->oRwhere(function ($query) use ($user_id, $my_id) {
             $query->where('from_user', $my_id)->where('to_user', $user_id);
-		})->get();
+        })->get();
         
-
+        
         
 		return view('messages.chatbox',compact('messages'));
 	}

@@ -13,12 +13,13 @@ use Illuminate\Support\Facades\Storage;
 class AnswerController extends Controller
 {
 	private $typeFiles = array('application/x-rar-compressed', 'application/octet-stream', 'application/zip', 'application/x-rar', 'application/x-zip-compressed', 'multipart/x-zip', 'application/x-compressed');
-	private $startIdEdit = 33;
-	private $startIdAdd = 28;
+	private $startIdEdit = 28;
+	private $startIdAdd = 23;
 
 	public function store(AnswerRequest $request)
 	{
 		$id = substr($request->header('referer'),$this->startIdAdd);
+	
 		$question= Question::find("$id");
 		$question->total_answer+=1;
 		$question->save();
@@ -75,6 +76,7 @@ class AnswerController extends Controller
 	public function update(AnswerRequest $request)
 	{
 		$id = substr($request->header('referer'),$this->startIdEdit);
+		
 		$answer = Answer::find($id);
 		$answer->content = $request->get('content');
 		if($request->hasFile('attachment')) {

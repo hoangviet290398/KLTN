@@ -63,4 +63,8 @@ class User extends Authenticatable
         return $this->hasMany('App\Notification','actor_id','_id');
 
     }
+
+    public function messages() {
+        return $this->hasMany('App\Message','from_user','_id');
+    }
 }

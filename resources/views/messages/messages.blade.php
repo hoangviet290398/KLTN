@@ -50,9 +50,13 @@
                     <div class="px-4 py-2  ">
                         <div class="row px-2 align-center">
                             <a href="/" style="color:#0275d8"><i class="fa fa-arrow-left fa-2x pr-2 pt-2"></i></a>
-
-                            <img src="https://res.cloudinary.com/mhmd/image/upload/v1564960395/avatar_usae7z.svg"
+                            @if(is_file('storage/avatars/'.Auth::user()->avatar))
+                            <img src="{{ asset('storage/avatars')}}/{{Auth::user()->avatar}}"
                                 alt="user" width="50" class="rounded-circle">
+                            @else
+                            <img src="{{Auth::user()->avatar}}"
+                                alt="user" width="50" class="rounded-circle">
+                            @endif
                             <p class="h4 mb-0 px-2 py-3">{{Auth::user()->fullname}} (you)</p>
                         </div>
 
@@ -61,13 +65,18 @@
                         <div class="list-group rounded-0">
 
                             @foreach($users as $user)
-                            <a id="{{$user->id}}" data-receiverName="{{$user->fullname}}" href="#"
+                            <a id="{{$user->id}}" data-receiverName="{{$user->fullname}}" data-avatar="{{$user->avatar}}"href="#"
                                 class="list-group-item list-group-item-action rounded-0">
 
 
-                                <div class="media"><img
-                                        src="https://res.cloudinary.com/mhmd/image/upload/v1564960395/avatar_usae7z.svg"
+                                <div class="media">
+                                @if(is_file('storage/avatars/'.$user->avatar))
+                                <img src="{{ asset('storage/avatars')}}/{{$user->avatar}}"
                                         alt="user" width="65" class="rounded-circle">
+                                @else
+                                <img src="{{$user->avatar}}"
+                                        alt="user" width="65" class="rounded-circle">
+                                @endif
                                     <div class="media-body ml-4">
                                         <div id="userInboxName"
                                             class="d-flex align-items-center justify-content-between mb-1">
@@ -150,6 +159,7 @@
     var message = '';
     var latestMessage = '';
     var isMessageRead = '';
+    var  user_avatar ='';
     // ajax setup form csrf token
     $.ajaxSetup({
         headers: {
@@ -161,6 +171,7 @@
     $('.list-group-item').click(function() {
         $('.list-group-item').removeClass('active list-group-item-light');
         receiver_name = $(this).attr('data-receiverName');
+        user_avatar = $(this).attr('data-avatar');
 
         $(this).addClass('active');
 
@@ -177,6 +188,7 @@
                 //appear current receiver 
                 replace = document.getElementById("target_name");
                 replace.innerHTML = "<strong>" + receiver_name + "</strong>";
+                replace_avatar = document.getElementById("target_name");
                 //show chatbox
                 var isChatBoxDisplayed = document.getElementById("UserChatBox");
                 if (isChatBoxDisplayed.style.display === "none") {

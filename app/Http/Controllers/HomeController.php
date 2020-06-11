@@ -23,7 +23,7 @@ class HomeController extends Controller
 
 		$categories = Category::all();
 
-
+		
 		
 		return view('home',compact('questions','topMembers', 'categories'));
 	}
@@ -164,10 +164,11 @@ class HomeController extends Controller
 	{
 		$limit = 20;
 		$keyword = $request->keyword;
-
+		
 		$users = User::whereRaw(array('$text'=>array('$search'=> $keyword)))->where('admin',0)->orderBy('created_at', 'desc')->paginate($limit);
+	
 		$users->setPath('/');
-
+		
 		if($users->count()<=0) return "";
 		foreach($users as $user){
 			echo view('layout.search_user',compact('user'));

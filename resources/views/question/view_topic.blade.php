@@ -284,6 +284,9 @@ use App\LikeDislike;
                 </div>
                 <div>
                    <!-- Asked date goes here-->
+                   <small class="text-muted pl-4" style="color:#5488c7;" data-toggle="tooltip" title="{{$question->created_at->toDayDateTimeString()}}">asked:
+                            {{$question->created_at->diffForHumans()}}
+                        </small>
                 </div>
                 <br>
             </div>
@@ -356,41 +359,7 @@ use App\LikeDislike;
     <!-- End Question Block -->
 
 
-    <!-- Start Insert Answer Block -->
-    @if (Auth::check())
-    <div class="" style="margin-top: 20px;">
-        <div class="card-body">
-            @foreach($errors->all() as $error)
-                <div class="alert alert-danger">{{ $error }}</div>
-            @endforeach
-            @if(Session::has('errorUpload'))
-                <div class="alert alert-danger">{{ Session::get('errorUpload') }}</div>
-            @endif
-            <form id="addanswer" method="post" action="{{route('addAnswer')}}" enctype="multipart/form-data">
-                @csrf
-                <input type="text" name="question_id" hidden value="{{$question->_id}}">
-                <div class="form-group">
-                   
-                    <div class="row">
-                       
-                        <div class="col-sm-12">
-                            <textarea id="markdown" name="content"></textarea>
-                        </div>
-                    </div>
-                     <div class="row">
-                         <div class="col-sm-12">
-                            <div class="file-loading">
-                                <input id="fileUpload" name="attachment" type="file">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <button onclick="checkContent()" type="button" class="btn btn-primary float-right">Answer</button>
-            </form>
-        </div>
-    </div>
-    @endif
-    <!-- End Insert Answer Block -->
+    
 
     <!-- Start Answer Block -->
     <div class="" style="margin-top: 20px; margin-bottom: 20px; " id="answer_block">
@@ -576,6 +545,41 @@ use App\LikeDislike;
         <div class="row px-3 pt-3 justify-content-sm-center">{!! $answers->links() !!}</div>
     </div>
 
+<!-- Start Insert Answer Block -->
+@if (Auth::check())
+    <div class="" style="margin-top: 20px;">
+        <div class="card-body">
+            @foreach($errors->all() as $error)
+                <div class="alert alert-danger">{{ $error }}</div>
+            @endforeach
+            @if(Session::has('errorUpload'))
+                <div class="alert alert-danger">{{ Session::get('errorUpload') }}</div>
+            @endif
+            <form id="addanswer" method="post" action="{{route('addAnswer')}}" enctype="multipart/form-data">
+                @csrf
+                <input type="text" name="question_id" hidden value="{{$question->_id}}">
+                <div class="form-group">
+                   
+                    <div class="row">
+                       
+                        <div class="col-sm-12">
+                            <textarea id="markdown" name="content"></textarea>
+                        </div>
+                    </div>
+                     <div class="row">
+                         <div class="col-sm-12">
+                            <div class="file-loading">
+                                <input id="fileUpload" name="attachment" type="file">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button onclick="checkContent()" type="button" class="btn btn-primary float-right mb-3">Answer</button>
+            </form>
+        </div>
+    </div>
+    @endif
+    <!-- End Insert Answer Block -->
 </div>
 @include('layout.rightpanel')
 </div>

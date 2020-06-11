@@ -52,6 +52,9 @@
                             <small class="font-weight-bold" style="color:#5488c7;">{{$question->user->fullname}}</small>
                         </a>
                         <!-- Asked date goes here-->
+                        <small class="text-muted pl-4" style="color:#5488c7;" data-toggle="tooltip" title="{{$question->created_at->toDayDateTimeString()}}">asked:
+                            {{$question->created_at->diffForHumans()}}
+                        </small>
                         <br>
                         <div class="row">
                             <div class="col-12">

@@ -20,6 +20,10 @@
         }
         console.log(id);
     };
+    var forwardId = localStorage.getItem('receiverID');
+    var forwardReceiverName = localStorage.getItem('receiverName');
+    console.log('foID' + forwardId);
+    localStorage.clear();
     </script>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <style>
@@ -40,7 +44,7 @@
     </style>
 </head>
 
-<body>
+<body onLoad="testOnLoad(forwardId)">
     <div class="wrapper rounded-lg overflow-x-hidden shadow">
         <div class="row">
             <!-- Users box-->
@@ -51,11 +55,10 @@
                         <div class="row px-2 align-center">
                             <a href="/" style="color:#0275d8"><i class="fa fa-arrow-left fa-2x pr-2 pt-2"></i></a>
                             @if(is_file('storage/avatars/'.Auth::user()->avatar))
-                            <img src="{{ asset('storage/avatars')}}/{{Auth::user()->avatar}}"
-                                alt="user" width="50" class="rounded-circle">
+                            <img src="{{ asset('storage/avatars')}}/{{Auth::user()->avatar}}" alt="user" width="50"
+                                class="rounded-circle">
                             @else
-                            <img src="{{Auth::user()->avatar}}"
-                                alt="user" width="50" class="rounded-circle">
+                            <img src="{{Auth::user()->avatar}}" alt="user" width="50" class="rounded-circle">
                             @endif
                             <p class="h4 mb-0 px-2 py-3">{{Auth::user()->fullname}} (you)</p>
                         </div>
@@ -65,18 +68,18 @@
                         <div class="list-group rounded-0">
 
                             @foreach($users as $user)
-                            <a id="{{$user->id}}" data-receiverName="{{$user->fullname}}" data-avatar="{{$user->avatar}}"href="#"
+                            <a id="{{$user->id}}" data-receiverName="{{$user->fullname}}"
+                                data-avatar="{{$user->avatar}}" href="#"
                                 class="list-group-item list-group-item-action rounded-0">
 
 
                                 <div class="media">
-                                @if(is_file('storage/avatars/'.$user->avatar))
-                                <img src="{{ asset('storage/avatars')}}/{{$user->avatar}}"
-                                        alt="user" width="65" class="rounded-circle">
-                                @else
-                                <img src="{{$user->avatar}}"
-                                        alt="user" width="65" class="rounded-circle">
-                                @endif
+                                    @if(is_file('storage/avatars/'.$user->avatar))
+                                    <img src="{{ asset('storage/avatars')}}/{{$user->avatar}}" alt="user" width="65"
+                                        class="rounded-circle">
+                                    @else
+                                    <img src="{{$user->avatar}}" alt="user" width="65" class="rounded-circle">
+                                    @endif
                                     <div class="media-body ml-4">
                                         <div id="userInboxName"
                                             class="d-flex align-items-center justify-content-between mb-1">
@@ -159,7 +162,7 @@
     var message = '';
     var latestMessage = '';
     var isMessageRead = '';
-    var  user_avatar ='';
+    var user_avatar = '';
     // ajax setup form csrf token
     $.ajaxSetup({
         headers: {
@@ -167,6 +170,61 @@
         }
     });
 
+    function testOnLoad(receiver_id) {
+        if (forwardId == '' || forwardId == 'undefined' || forwardId == null) {
+            var isWelcomeDisplayed = document.getElementById("welcomeToMessage");
+            if (isWelcomeDisplayed.style.display === "none") {
+                isWelcomeDisplayed.style.display = "block";
+
+            }
+        } else {
+            receiver_name = forwardReceiverName;
+            $.ajax({
+                type: "GET",
+                url: "messages/" + receiver_id,
+                data: "",
+                cache: false,
+                success: function(data) {
+                    //alert(data);
+                    $('#messages').html(data);
+
+                    //appear current receiver 
+                    replace = document.getElementById("target_name");
+                    replace.innerHTML = "<strong>" + receiver_name + "</strong>";
+                    replace_avatar = document.getElementById("target_name");
+                    //show chatbox
+                    var isChatBoxDisplayed = document.getElementById("UserChatBox");
+                    if (isChatBoxDisplayed.style.display === "none") {
+                        isChatBoxDisplayed.style.display = "block";
+
+                    }
+                    //show user profile
+                    var isProfileDisplayed = document.getElementById("UserProfile");
+                    if (isProfileDisplayed.style.display === "none") {
+                        isProfileDisplayed.style.display = "block";
+
+                    }
+                    //hide welcome msg
+                    var isWelcomeDisplayed = document.getElementById("welcomeToMessage");
+                    if (isWelcomeDisplayed.style.display === "block") {
+                        isWelcomeDisplayed.style.display = "none";
+
+                    }
+                    //remove unread message notification
+                    $('#' + receiver_id + 'messageNotification').removeClass('pending');
+                    $('#' + receiver_id).removeClass('font-weight-bold');
+                    $('#' + receiver_id + 'name').removeClass('font-weight-bold');
+                    // make a function to scroll down auto
+
+                    var objDiv = document.getElementById("chat-box");
+                    objDiv.scrollTop = objDiv.scrollHeight;
+                }
+            });
+        }
+
+
+
+    }
 
     $('.list-group-item').click(function() {
         $('.list-group-item').removeClass('active list-group-item-light');
@@ -242,14 +300,19 @@
         if (message == '') {
 
             alert('Message cannot be empty!');
-        } else if (receiver_id == '') {
-            alert('Choose a receiver to send message!');
-
-        } else if (message != '' && receiver_id != '') {
+        } else if ((message != '' && receiver_id != '') || (message != '' && forwardId != null)) {
             //alert(message);
-            $('.input-group input').val(''); // while pressed enter text box will be empty
 
-            var datastr = "receiver_id=" + receiver_id + "&message=" + message;
+
+            $('.input-group input').val(''); // while pressed enter text box will be empty
+            if (forwardId == null && receiver_id != '') {
+                console.log('receiver id' + receiver_id);
+                var datastr = "receiver_id=" + receiver_id + "&message=" + message;
+            } else if (forwardId != null) {
+                console.log('forward id' + forwardId);
+                var datastr = "receiver_id=" + forwardId + "&message=" + message;
+            }
+
             $.ajax({
                 type: "post",
                 url: "messages", // need to create this post route
@@ -275,7 +338,12 @@
             //alert(message);
             $(this).val(''); // while pressed enter text box will be empty
 
-            var datastr = "receiver_id=" + receiver_id + "&message=" + message;
+            if (forwardId != '' || forwardId != null || forwardId != 'undefined') {
+                var datastr = "receiver_id=" + forwardId + "&message=" + message;
+            } else if (receiver_id != '') {
+                var datastr = "receiver_id=" + receiver_id + "&message=" + message;
+            }
+
             $.ajax({
                 type: "post",
                 url: "messages", // need to create this post route

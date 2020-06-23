@@ -1,27 +1,27 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     @include('layout.css')
     @yield('css')
     <title>@yield('title')</title>
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
 </head>
+
 <body class="main-background">
 
     @include('layout.header')
 
-    {{--  <a href="{{route('aboutUs')}}" type="button" class="btn btn-outline-info btn-about-us" style="z-index: 1;">About us</a> --}}
-    
+    {{--  <a href="{{route('aboutUs')}}" type="button" class="btn btn-outline-info btn-about-us" style="z-index:
+    1;">About us</a> --}}
+
     @yield('content')
 
     @include('layout.js')
     @yield('js')
 
     <script>
-    
-
-
-       $('#search').keyup(function () {
+    $('#search').keyup(function() {
         var keyword = $(this).val();
         if (keyword != '') {
             $.ajax({
@@ -30,24 +30,22 @@
                 data: {
                     keyword
                 },
-                success: function (data) {
-                  if(data!=""){
-                    $('#result_list').empty();
-                    $('#result_list').html(data);
-                    $('#result_list').show();
+                success: function(data) {
+                    if (data != "") {
+                        $('#result_list').empty();
+                        $('#result_list').html(data);
+                        $('#result_list').show();
+                    } else {
+                        $('#result_list').hide();
+                    }
                 }
-                else{
-                    $('#result_list').hide();
-                }
-            }
-        })
-        }
-        else{
+            })
+        } else {
             $('#result_list').hide();
         }
     });
 
-       $('#searchTags').keyup(function () {
+    $('#searchTags').keyup(function() {
         var keyword = $(this).val();
         if (keyword != '') {
             $.ajax({
@@ -56,32 +54,29 @@
                 data: {
                     keyword
                 },
-                success: function (data) {
-                    if(data!=""){
+                success: function(data) {
+                    if (data != "") {
                         $('#allTags').empty();
                         $('#allTags').html(data);
                         $('#allTags').show();
-                    }
-                    else{
+                    } else {
                         $('#allTags').hide();
                     }
                 }
             })
-        }
-        else{
+        } else {
             $.ajax({
                 url: "{{ route('ajaxSearchTags1') }}",
                 method: "GET",
                 data: {
                     keyword
                 },
-                success: function (data) {
-                    if(data!=""){
+                success: function(data) {
+                    if (data != "") {
                         $('#allTags').empty();
                         $('#allTags').html(data);
                         $('#allTags').show();
-                    }
-                    else{
+                    } else {
                         $('#allTags').hide();
                     }
                 }
@@ -89,7 +84,7 @@
         }
     });
 
-       $('#searchUsers').keyup(function () {
+    $('#searchUsers').keyup(function() {
         var keyword = $(this).val();
         if (keyword != '') {
             $.ajax({
@@ -98,32 +93,29 @@
                 data: {
                     keyword
                 },
-                success: function (data) {
-                    if(data!=""){
+                success: function(data) {
+                    if (data != "") {
                         $('#allU').empty();
                         $('#allU').html(data);
                         $('#allU').show();
-                    }
-                    else{
+                    } else {
                         $('#allU').hide();
                     }
                 }
             })
-        }
-        else{
+        } else {
             $.ajax({
                 url: "{{ route('ajaxSearchUsers1') }}",
                 method: "GET",
                 data: {
                     keyword
                 },
-                success: function (data) {
-                    if(data!=""){
+                success: function(data) {
+                    if (data != "") {
                         $('#allU').empty();
                         $('#allU').html(data);
                         $('#allU').show();
-                    }
-                    else{
+                    } else {
                         $('#allU').hide();
                     }
                 }
@@ -131,8 +123,11 @@
         }
     });
 
-    $('#title').keyup(function () {
+    $('#title').keyup(function() {
         var keyword = $(this).val();
+        var isSuggestionDisplayed = document.getElementById("suggestion");
+
+
         console.log(keyword);
         if (keyword != '') {
             $.ajax({
@@ -141,29 +136,34 @@
                 data: {
                     keyword
                 },
-                success: function (data) {
-                  if(data!=""){
-                    $('#similar_questions_list').empty();
-                    $('#similar_questions_list').html(data);
-                    $('#similar_questions_list').show();
-                }
-                else{
-                    $('#similar_questions_list').hide();
+                success: function(data) {
+                    if (data != "") {
+                        $('#similar_questions_list').empty();
+                        $('#similar_questions_list').html(data);
+                        $('#similar_questions_list').show();
+                        if (isSuggestionDisplayed.style.display === "none") {
+                            isSuggestionDisplayed.style.display = "block";
+                        }
+                    } else {
+                        $('#similar_questions_list').hide();
                     }
                 }
             });
-        }
-        else{
+        } else if (keyword == '') {
+            if (isSuggestionDisplayed.style.display === "block") {
+                isSuggestionDisplayed.style.display = "none";
+            }
             $('#similar_questions_list').hide();
         }
     });
 
 
-       function submit_search(){
-        if($('#search').val()!='') $('#searchform').submit();
+    function submit_search() {
+        if ($('#search').val() != '') $('#searchform').submit();
     }
     @if(Auth::check())
-    function read_notification(){
+
+    function read_notification() {
         $.ajax({
             url: "{{ route('readNotification') }}",
             method: "GET"
@@ -172,10 +172,8 @@
         $("#unread_notification").remove();
     }
     @endif
-
-
-
-</script>
+    </script>
 </body>
 @include('layout.footer')
+
 </html>

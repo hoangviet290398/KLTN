@@ -107,7 +107,7 @@ class MessagesHomeController extends Controller
             $options
         );
 
-        $data = ['from_user' => $from_user, 'to_user' => $to_user]; // sending from and to user id when pressed enter
+        $data = ['from_user' => $from_user, 'to_user' => $to_user,'message'=>$message]; // sending from and to user id when pressed enter
         $pusher->trigger('my-channel', 'my-event', $data);
     }
     

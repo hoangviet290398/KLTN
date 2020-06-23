@@ -113,7 +113,7 @@ class QuestionController extends Controller
 	public function similarQuestions(Request $request){
 		$keyword = $request->keyword;
 		$client = new Client();
-		$res = $client->get('http://172.17.0.1:5000/getsearchresults?query='.$keyword.'&num_results=5');
+		$res = $client->get('http://172.17.0.1:5000/getsearchresults?query='.$keyword.'&num_results=15');
 		$response =json_decode($res->getBody()->getContents('results'));
 		
 		$similar_questions = $response->results;

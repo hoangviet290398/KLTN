@@ -13,7 +13,7 @@ use GuzzleHttp\Client;
 class QuestionController extends Controller
 {
 	private $typeFiles = array('application/x-rar-compressed', 'application/octet-stream', 'application/zip', 'application/x-rar', 'application/x-zip-compressed', 'multipart/x-zip', 'application/x-compressed');
-	private $startIdInUrl = 32;
+	private $startIdInUrl = 27;
 
 	public function create()
 	{

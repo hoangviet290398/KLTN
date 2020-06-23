@@ -1,1 +1,1 @@
-<a href="/topic/{{$value->_id}}" class="dropdown-item"><small>{{htmlspecialchars($value->_source->title)}}</small></a>
+<a href="/topic/{{$question->_id}}" class="dropdown-item"><small>{{htmlspecialchars($question->title)}}</small></a>

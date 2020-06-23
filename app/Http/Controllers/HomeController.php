@@ -92,46 +92,24 @@ class HomeController extends Controller
 	}
 
 	public function ajaxSearch(Request $request){
-		$keyword = $request->keyword;
-		$client = new Client();
-		$res = $client->get('http://localhost:9200/q&asystem.questions/_search?q="'.$keyword.'"&filter_path=hits.hits');
-		$questions = $res->getBody('hits');
-	
-		$decode = json_decode($questions);
-		
-		$result = $decode->hits->hits;
+		$questions = $this->runSearch($request->keyword);
+		if($questions->count()<=0) return "";
 
-		//if($result->count()<=0)return "";
-
-		foreach($result as $key => $value){
-				
-			echo view('layout.search_link',compact('value'));
+		foreach($questions as $question){
+			echo view('layout.search_link',compact('question'));
 		}
 	}
 
 	public function searchIndex(Request $request){
 		$keyword = $request->keyword;
-		$client = new Client();
-		$res = $client->get('http://localhost:9200/q&asystem.questions/_search?q="'.$keyword.'"&filter_path=hits.hits');
-		
-		
-		$questions = $res->getBody('hits');
-	
-		$decode = json_decode($questions);
-		
-		$result = $decode->hits->hits;
-		$array_id = [];
-		foreach ($result as $key => $value) {
-			array_push($array_id,$value->_id); 
-		}
 		$limit=\Config::get('constants.options.ItemNumberPerPage');
-		$questions = Question::whereIn('_id', $array_id)->paginate($limit);
-		$questions->setPath('/');
+		$all_question = Question::whereRaw(array('$text'=>array('$search'=> $keyword)))->get()->count();
+		$questions = Question::whereRaw(array('$text'=>array('$search'=> $keyword)))->paginate($limit)->appends(request()->query());
 
 		$topMembers = User::all();
 		$categories = Category::all();
 		
-		return view('question.search_result',compact('questions','keyword','topMembers','categories'));
+		return view('question.search_result',compact('questions','keyword','topMembers','categories','all_question'));
 	}
 
 	public function viewByCategory($id)
@@ -232,25 +210,9 @@ class HomeController extends Controller
 
 
 
-
 	// public function runSearch($keyword){
-	// 	$fullText = Question::whereRaw(array('$text'=>array('$search'=> $keyword)))->get();
+		
 
 	// 	return $fullText;
-	// }
-
-	// public function getQuestion(){
-	// 	$client = new Client();
-	// 	$res = $client->get('http://localhost:9200/q&asystem.questions/_search?q=title:VietPham');
-
-	// 	$keyword = 'VietPham';
-	// 	$questions = $this->runSearch($keyword);
-	// 	echo $questions;
-	// 	echo "<br/>";
-	// 	echo "<br/>";
-	// 	echo "<br/>";
-	// 	//echo $res->getStatusCode(); // 200
-	// 	echo $res->getBody(); // { "type": "User", ....
-
 	// }
 }

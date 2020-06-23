@@ -43,7 +43,7 @@ use Carbon\Carbon;
 					</div>
 				</form>
 				<br/>
-				<h5 class="text-left">{{number_format($questions->count())}} results</h5>
+				<h5 class="text-left">{{number_format($all_question)}} results</h5>
 
 			</div>
 			<div class="card-body p-0">
@@ -136,7 +136,7 @@ use Carbon\Carbon;
 							</div>
 							<hr>
 							@endforeach
-							<div class="row px-3 pt-3 justify-content-sm-center">{!! $questions->links() !!}</div>
+							<div class="row px-3 pt-3 justify-content-sm-center">{!! $questions->appends(request()->query())->links() !!}</div>
 						</div>
 					</div>
 					@include('layout.rightpanel')

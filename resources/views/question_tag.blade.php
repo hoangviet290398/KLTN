@@ -33,7 +33,7 @@ use Carbon\Carbon;
 						<a class="nav-link" data-toggle="pill" href="#menu2">Month</a>
 					</li>
 				</ul> --}}
-				<h2>Questions tagged "{{$tag->name}}"</h2>
+				<h2>Câu hỏi có tag "{{$tag->name}}"</h2>
 				{{-- <form action="{{ route('searchIndex') }}" method="get">
 					<div class="input-group mb-4">
 						<input type="search" name="keyword" placeholder="" aria-describedby="button-addon5" class="form-control" value="{{$keyword}}">
@@ -43,14 +43,14 @@ use Carbon\Carbon;
 					</div>
 				</form> --}}
 				<br/>
-				<h5 class="text-left">{{number_format($questions->count())}} results</h5>
+				<h5 class="text-left">{{number_format($questions->count())}} kết quả</h5>
 			</div>
 			<div class="card-body p-0">
 				@if($questions->count()==0)
 				<div class="text-center">
 					<br/>
 					<img src="{{ asset('images/resource/magnifying.svg') }}" width="90px">
-					<p>We couldn't find anything questions tagged <b>{{$tag->name}}</b></p>
+					<p>Không tìm kết quả nào với tag <b>{{$tag->name}}</b></p>
 					
 				</div>
 				@endif
@@ -67,7 +67,7 @@ use Carbon\Carbon;
 								<a href="/personalinfomation/{{ $question->user->_id }}" class="text-decoration-none">
 									<small class="font-weight-bold" style="color:#5488c7;">{{$question->user->fullname}}</small>
 								</a>
-								<small class="text-muted pl-4" style="color:#5488c7;" data-toggle="tooltip" title="{{$question->created_at->toDayDateTimeString()}}">asked:
+								<small class="text-muted pl-4" style="color:#5488c7;" data-toggle="tooltip" title="{{$question->created_at->toDayDateTimeString()}}">đã hỏi:
 
 									{{$question->created_at->diffForHumans()}}
 								</small>
@@ -100,20 +100,20 @@ use Carbon\Carbon;
 											<div class="col-sm-3 px-1">
 												<div class="border rounded text-muted bg-white text-center px-1">
 													<i class="fa fa-thumbs-up"></i>
-													{{$question->total_like}} likes
+													{{$question->total_like}} thích
 												</div>
 											</div>
 											<div class="col-sm-3 px-1">
 												<div class="border rounded text-muted bg-white text-center">
 													<i class="fa fa-thumbs-down"></i>
-													{{$question->total_dislike}} dislikes
+													{{$question->total_dislike}} không thích
 												</div>
 											</div>
 
 											<div class="col-sm-3 px-1">
 												<div class="border rounded text-muted bg-white text-center">
 													<i class="fa fa-comment"></i>
-													{{$question->total_answer}} answers
+													{{$question->total_answer}} trả lời
 												</div>
 											</div>
 
@@ -122,7 +122,7 @@ use Carbon\Carbon;
 												@if(Auth::check())
 												<a href="{{ route('viewTopic', ['id' => $question->id]) }}" class="border rounded text-light bg-dark text-center px-4 text-decoration-none" style="font-size:18px">Answer</a>
 												@else
-												<a href="/signin" class="border rounded text-light bg-dark text-center px-4 text-decoration-none" style="font-size:18px">Answer</a>
+												<a href="/signin" class="border rounded text-light bg-dark text-center px-4 text-decoration-none" style="font-size:18px">Trả lời</a>
 												@endif
 
 											</div>

@@ -49,8 +49,8 @@
                         <img src="{{ asset('images/resource/logo2a.png') }}" alt="" class="w-100" style="margin-top: 15px;margin-left:15px" ></a>
                     </div>
                     <div class="col-sm-8 mt-3">
-                        <h4 class="font-weight-bold">Welcome to TechSolution</h4>
-                        <small>Ask anything you want!</small>
+                        <h4 class="font-weight-bold">Chào mừng bạn đến với TechSolution</h4>
+                        <small>Hỏi bất kỳ thứ gì bạn thích!</small>
                     </div>
                 </div>
             </div>
@@ -59,35 +59,35 @@
                     <input type="hidden" name="_token" value="{{csrf_token()}}">    
                     <div class="form-group">
                         <label class="font-weight-bold " for="email">Email:</label>
-                        <input id="email" name="email" type="email" class="form-control" aria-describedby="emailHelp" placeholder="Enter email">
+                        <input id="email" name="email" type="email" class="form-control" aria-describedby="emailHelp" placeholder="Nhập địa chỉ email">
                     </div>
                     <div class="form-group">
-                        <label class="font-weight-bold" for="password">Password:</label>
-                        <input id="password" name="password" type="password" class="form-control" placeholder="Password">
+                        <label class="font-weight-bold" for="password">Mật khẩu:</label>
+                        <input id="password" name="password" type="password" class="form-control" placeholder="Nhập mật khẩu">
                     </div>
                     @if($errors->any())
                     <div class="alert alert-danger">{{$errors->first()}}</div>
                     @endif
                     <div class="form-group">
-                        <button type="submit" class="btn btn-primary w-100 font-weight-bold">Sign In</button>
+                        <button type="submit" class="btn btn-primary w-100 font-weight-bold">Đăng ký</button>
                     </div>
                     <div class="text-center">
-                        Hasn't had an account? <a href="{{ route('signUp' )}}">Sign up here</a>
+                        Chưa có tài khoản? <a href="{{ route('signUp' )}}">Đăng ký</a>
                     </div>
                 </form>
                 <br/>
                 <a class="btn btn-dark w-100 " href="{{ url('login/github') }}">
-                    <i class="fa fa-github fa-lg" aria-hidden="true"></i>  Sign in with GitHub
+                    <i class="fa fa-github fa-lg" aria-hidden="true"></i>  Đăng nhập bằng GitHub
                 </a>
                 <br/>
                 <br/>
                  <a class="btn w-100 text-white" style="background-color: #385499" href="{{ url('login/facebook') }}">
-                    <i class="fa fa-facebook-square fa-lg" aria-hidden="true"></i>  Sign in with Facebook
+                    <i class="fa fa-facebook-square fa-lg" aria-hidden="true"></i>  Đăng nhập bằng Facebook
                 </a>
                 <br/>
                 <br/>
                  <a class="btn btn-danger w-100" href="{{ url('login/google') }}">
-                    <i class="fa fa-google fa-lg" aria-hidden="true"></i>  Sign in with Google
+                    <i class="fa fa-google fa-lg" aria-hidden="true"></i>  Đăng nhập bằng Google
                 </a>
             </div>
         </div>

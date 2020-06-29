@@ -4,7 +4,7 @@
         @if(Auth::check())
         <div class="col-sm-0.5">
             <!-- start add button block -->
-            <a href="{{route('addTopic')}}" class="btn btn-primary btn-block font-weight-bold">Ask a Question</a>
+            <a href="{{route('addTopic')}}" class="btn btn-primary btn-block font-weight-bold">Đặt câu hỏi</a>
             <!-- end add button block -->
         </div>
         @endif
@@ -58,7 +58,7 @@
 
     <!--QuyTran added 22/10/2019 -->
     <div>
-        <h6 class="font-weight-bold ml-3 mt-4"><i class="fa fa-users mr-3"></i>Top Members</h6>
+        <h6 class="font-weight-bold ml-3 mt-4"><i class="fa fa-users mr-3"></i>Thành viên nổi bật</h6>
         <br />
         @foreach($topMembers as $topMember)
         <div class="row px-2 pt-1 pb-1">
@@ -87,13 +87,13 @@
 
                 <div class="row">
                     <small class="text-muted pr-2" style="color:#5488c7;">
-                        {{$topMember->questions->count()}} Questions
+                        {{$topMember->questions->count()}} câu hỏi
                     </small>
                     <small class="text-muted pr-2" style="color:#5488c7;">
                        -
                     </small>
                     <small class="text-muted pr-1" style="color:#5488c7;">
-                        {{$topMember->answers->count()}} Answers
+                        {{$topMember->answers->count()}} trả lời
                     </small>
                 </div>
             </div>

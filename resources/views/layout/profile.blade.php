@@ -27,16 +27,15 @@
                          <img src="{{ Auth::user()->avatar }}" class="img-fluid" style="width: 200px;">  
                         @endif
                         <h4 class="mt-2 text-primary font-weight-bold">{{ Auth::user()->fullname }}</h4>
-                        <button class="badge btn btn-warning" data-toggle="modal" data-target="#exampleModal">Change
-                            avatar</button>
+                        <button class="badge btn btn-warning" data-toggle="modal" data-target="#exampleModal">Đổi ảnh đại diện</button>
                         <div class="nav flex-column nav-pills my-3 bg-white border">
-                            <a href="{{ route('information') }}" class="btn nav-link @if(!empty($active_personal_info)) active @endif" >Personal information</a>
-                            <a href="{{ route('changePassword') }}" class="btn nav-link @if(!empty($active_change_pass)) active @endif">Change password</a>
-                            <a href="{{ route('manageQuestion') }}" class="btn nav-link @if(!empty($active_manage_question)) active @endif">Manage questions</a>
-                            <a href="{{ route('manageAnswer') }}" class="btn nav-link @if(!empty($active_manage_answer)) active @endif">Manage answers</a>
+                            <a href="{{ route('information') }}" class="btn nav-link @if(!empty($active_personal_info)) active @endif" >Thông tin cá nhân</a>
+                            <a href="{{ route('changePassword') }}" class="btn nav-link @if(!empty($active_change_pass)) active @endif">Đổi mật khẩu</a>
+                            <a href="{{ route('manageQuestion') }}" class="btn nav-link @if(!empty($active_manage_question)) active @endif">Quản lý câu hỏi</a>
+                            <a href="{{ route('manageAnswer') }}" class="btn nav-link @if(!empty($active_manage_answer)) active @endif">Quản lý câu trả lời</a>
                             <form action="{{ route('logOut') }}" method="post">
                             @csrf
-                            <button type="submit" class="btn nav-link w-100">Sign out</a>
+                            <button type="submit" class="btn nav-link w-100">Đăng xuất</a>
                             </form>
                         </div>
                     </div>
@@ -65,7 +64,7 @@
                     {{ csrf_field() }}
                     <div class="card">
                         <div class="card-header d-flex justify-content-between bg-primary">
-                            <h3 class="text-white font-weight-bold">Change avatar</h3>
+                            <h3 class="text-white font-weight-bold">Đổi ảnh đại diện</h3>
                            
                         </div>
                         <div class="card-body">
@@ -74,7 +73,7 @@
                             </div>
                         </div>
                     </div>
-                     <button class="btn btn-success float-right mt-2">Save</button>
+                     <button class="btn btn-success float-right mt-2">Lưu</button>
                 </form>
                 </div>
             </div>

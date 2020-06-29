@@ -8,7 +8,7 @@ $url = explode("/",$value->url);
             <div class="col-2">
                 <div class="card border-success mt-1 mb-4 mx-3" style="">
                     <div class="card-body text-success">
-                        <p class="card-text text-center">0 <br>Answer</br></p>
+                        <p class="card-text text-center">0 <br>trả lời</br></p>
                     </div>
                 </div>
             </div>
@@ -16,7 +16,7 @@ $url = explode("/",$value->url);
                 <a href="/topic/{{ $url[4] }}" class="">{{ $value->title }}
                 </a>
                 <p class="card-text">{{ $value->body }}</p>
-                <footer class="blockquote-footer text-right">Asked June 26th, 2019 at 17:02 by <cite
+                <footer class="blockquote-footer text-right">đã hỏi: June 26th, 2019 at 17:02 bởi <cite
                         title="Source Title"><a href="">Quy Tran</a></cite>
                 </footer>
 

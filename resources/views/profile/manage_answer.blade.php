@@ -3,14 +3,14 @@
 @section('title', 'Manage answer')
 
 @section('contentprofile')
-<h2 class="text-primary text-center">MANAGE ANSWERS</h2>
+<h2 class="text-primary text-center">QUẢN LÝ CÂU TRẢ LỜI</h2>
 <hr class="my-3">
 <div class="table-responsive">
     <table class="table table-hover" >
         <thead>
             <tr>
-                <th scope="col">Question title - Answer content - Answer created time</th>
-                <th scope="col" class="text-right">Edit</th>
+                <th scope="col">Tiêu đề câu hỏi - Nội dung câu trả lời - Ngày tạo câu trả lời</th>
+                <th scope="col" class="text-right">Sửa</th>
             </tr>
         </thead>
         <tbody>

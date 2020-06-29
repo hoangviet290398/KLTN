@@ -8,11 +8,11 @@
         <div class="col-sm-10">
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                <h2>All Tags</h2>
+                <h2>Tất cả tags</h2>
                 <br/>
                 <form action="">
                   <div class="form-group mb-4">
-                    <input id="searchTags" type="search" placeholder="Filter by tag" aria-describedby="button-addon" class="form-control-lg border-primary">
+                    <input id="searchTags" type="search" placeholder="Tìm trong tags" aria-describedby="button-addon" class="form-control-lg border-primary">
                 </div>
                 </form>
             </div>
@@ -45,7 +45,7 @@
                                                         {{$category->name}}
                                                     </a>
                                                 </div>
-                                                <div class="mb-0 text-muted">{{$category->questions()->count()}} Questions</div>
+                                                <div class="mb-0 text-muted">{{$category->questions()->count()}} câu hỏi</div>
                                                
                                             </div>
                                         </div>

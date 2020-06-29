@@ -170,14 +170,14 @@
       <div class="row">
         <div class="col-sm-12 col-md-6">
           <h6>About</h6>
-          <p class="text-justify">We want to connect the people who have knowledge to the people who need it, to bring together people with different perspectives so they can understand each other better, and to empower everyone to share their knowledge.</p>
+          <p class="text-justify">Chúng tôi muốn kết nối những người có kiến thức sâu rộng đến với những người cần những kiến thức đó. Từ đó, mang mọi người đến nhiều lĩnh vực mới mẻ hơn và giúp họ hiểu rõ về chúng hơn đồng thời khuyến khích mọi người chia sẻ kiến thức và cùng nhau xây dựng một cộng đồng vững mạnh</p>
         </div>
 
         <div class="col-xs-6 col-md-3">
           <h6>Categories</h6>
           <ul class="footer-links">
             <li><a href="{{ route('allTags') }}">Tags</a></li>
-            <li><a href="{{ route('allUsers') }}">Users</a></li>
+            <li><a href="{{ route('allUsers') }}">Người dùng</a></li>
             <li><a href="#">Help</a></li>
             
           </ul>
@@ -186,8 +186,8 @@
         <div class="col-xs-6 col-md-3">
           <h6>Quick Links</h6>
           <ul class="footer-links">
-            <li><a href="{{ route('homePage') }}">Home</a></li>
-            <li><a href="{{route('aboutUs')}}">About Us</a></li>
+            <li><a href="{{ route('homePage') }}">Trang chủ</a></li>
+            <li><a href="{{route('aboutUs')}}">Về chúng tôi</a></li>
            
             
           </ul>
@@ -198,17 +198,15 @@
     <div class="container">
       <div class="row">
         <div class="col-md-8 col-sm-6 col-xs-12">
-          <p class="copyright-text">Copyright &copy; 2019 All Rights Reserved by 
+          <p class="copyright-text">Copyright &copy; 2020 All Rights Reserved by 
             <a href="#">TechSolution</a>.
          </p>
        </div>
 
        <div class="col-md-4 col-sm-6 col-xs-12">
         <ul class="social-icons">
-          <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
-          <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
-          <li><a class="dribbble" href="#"><i class="fa fa-dribbble"></i></a></li>
-          <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>   
+          <li><a class="github" href="https://github.com/hoangviet290398/KLTN" target="_blank"><i class="fa fa-github"></i></a></li>
+
         </ul>
       </div>
     </div>

@@ -194,7 +194,7 @@
                         @csrf
                         <button type="submit" class="dropdown-item">
                              <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                            Logout
+                            Đăng xuất
                         </button>
                        
                         </form>

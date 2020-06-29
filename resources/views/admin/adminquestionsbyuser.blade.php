@@ -1,15 +1,15 @@
  <div class="card-header text-center" style="background-color: white">
                 <ul class="nav nav-pills font-weight-bold" >
                     <li class="nav-item">
-                        <a class="nav-link active" href="{{ route('manageQuestionsByUser', ['id' => $created_by->id]) }}">Questions</a>
+                        <a class="nav-link active" href="{{ route('manageQuestionsByUser', ['id' => $created_by->id]) }}">Câu hỏi</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('manageAnswersByUser', ['id' => $created_by->id]) }}">Answers</a>
+                        <a class="nav-link" href="{{ route('manageAnswersByUser', ['id' => $created_by->id]) }}">Trả lời</a>
                     </li>
                    
                 </ul>
                 <br/>
-                <h5 class="text-left">{{number_format($questions->count())}} questions</h5>
+                <h5 class="text-left">{{number_format($questions->count())}} câu hỏi</h5>
             </div>
 
 <div class="py-2"></div>
@@ -36,8 +36,8 @@
 
                                         </div>
                 <div class="col-sm-11">
-               <h3 class="text-center mt-3" style=" color:#777;letter-spacing: 10px; "><b>QUESIONS MANAGEMENT</b></h3>
-                <h5>Created by <b>{{$created_by->fullname}}</b></h5>
+               <h3 class="text-center mt-3" style=" color:#777;letter-spacing: 10px; "><b>QUẢN LÝ CÂU HỎI</b></h3>
+                <h5>Tạo bởi <b>{{$created_by->fullname}}</b></h5>
                 </div>
                 </div>
             </div>
@@ -45,7 +45,7 @@
                
                 <div class="row">
                     <div class="col-sm-3">
-                        <h5>Title</h5>
+                        <h5>Tiêu đề</h5>
                     </div>
                    
                    
@@ -53,22 +53,22 @@
                         <h5>Tag</h5>
                     </div>
                     <div class="col-sm-1">
-                        <h5>Total like</h5>
+                        <h5>Lượt thích</h5>
                     </div>
                     <div class="col-sm-1">
-                        <h5>Total dislike</h5>
+                        <h5>Lượt không thích</h5>
                     </div>
                     <div class="col-sm-1">
-                        <h5>Total answer</h5>
+                        <h5>Tổng câu trả lời</h5>
                     </div>
                      <div class="col-sm-2">
-                        <h5>Created Date</h5>
+                        <h5>Ngày tạo</h5>
                     </div>
                      <div class="col-sm-2">
-                        <h5>Updated Date</h5>
+                        <h5>Ngày chỉnh sửa</h5>
                     </div>
                      <div class="col-sm-1">
-                        <h5>Action</h5>
+                        <h5>Hành động</h5>
                     </div>
                    
 
@@ -114,18 +114,18 @@
                                                     <div class="modal-dialog">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
-                                                                <h5 class="modal-title">Confirmation</h5>
+                                                                <h5 class="modal-title">Xác nhận</h5>
                                                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                                                             </div>
                                                             <div class="modal-body">
-                                                                <p>Are you sure you want to delete this topic?</p>
+                                                                <p>Bạn có chắc muốn xóa bài viết này?</p>
                                                             </div>
                                                             <div class="modal-footer">
-                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
                                                                 <form action="{{route('adminDeleteTopic')}}" method="post">
                                                                     @csrf
                                                                     <input type="text" name="_id" value="{{$question->_id}}" hidden>
-                                                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                                                    <button type="submit" class="btn btn-danger">Xóa</button>
                                                                 </form>
                                                             </div>
                                                         </div>

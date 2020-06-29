@@ -104,7 +104,7 @@
 					<b class="badge badge-warning">Attachment:</b>
 					<a href="{{asset('storage/files/'.$answer->attachment_path)}}"><i>{{substr($answer->attachment_path,strlen($answer->attachment_path)-\Config::get('constants.options.limitCharacterAttachmentName'))}}</i></a>
                 @endif
-                <button type="submit" class="btn btn-primary float-right" onclick="checkContent()">Save changes</button>
+                <button type="submit" class="btn btn-primary float-right" onclick="checkContent()">Lưu thay đổi</button>
             </form>
         </div>
     </div>

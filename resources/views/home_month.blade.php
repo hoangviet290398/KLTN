@@ -14,26 +14,26 @@
             <div class="card-header text-center" style="background-color: white">
                 <ul class="nav nav-pills font-weight-bold" >
                     <li class="nav-item">
-                        <a class="nav-link" href="/">Recent Question</a>
+                        <a class="nav-link" href="/">Câu hỏi gần đây</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="mostanswered">Most Answered</a>
+                        <a class="nav-link" href="mostanswered">Nhiều câu trả lời nhất</a>
                     </li>
                      <li class="nav-item">
-                        <a class="nav-link " href="noanswers">No Answers</a>
+                        <a class="nav-link " href="noanswers">Chưa có câu trả lời</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="week">Week</a>
+                        <a class="nav-link" href="week">Tuần</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="month">Month</a>
+                        <a class="nav-link active" href="month">Tháng</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="year">Year</a>
+                        <a class="nav-link" href="year">Năm</a>
                     </li>
                 </ul>
                 <br/>
-                <h5 class="text-left">{{number_format($questions->count())}} questions</h5>
+                <h5 class="text-left">{{number_format($questions->count())}} câu hỏi</h5>
             </div>
             <div class="card-body p-0">
                 @foreach($questions as $question)
@@ -50,7 +50,7 @@
                         <a href="/personalinfomation/{{ $question->user->_id }}" class="text-decoration-none">
                             <small class="font-weight-bold" style="color:#5488c7;">{{$question->user->fullname}}</small>
                         </a>
-                        <small class="text-muted pl-4" style="color:#5488c7;" data-toggle="tooltip" title="{{$question->created_at->toDayDateTimeString()}}">asked:
+                        <small class="text-muted pl-4" style="color:#5488c7;" data-toggle="tooltip" title="{{$question->created_at->toDayDateTimeString()}}">đã hỏi:
                             {{$question->created_at->diffForHumans()}}
                         </small>
                         <br>

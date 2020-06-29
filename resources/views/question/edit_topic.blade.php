@@ -33,7 +33,7 @@
 	<div class="card shadow">
 
 		<div class="card-header">
-			<h3>Edit topic</h3>
+			<h3>Sửa câu hỏi</h3>
 		</div>
 
 		<div class="card-body">
@@ -45,7 +45,7 @@
 				<!-- Start topic title -->
 				<input type="text" name="id" hidden value="{{$question->id}}">
 				<div class="form-group">
-					<label for="title">Topic title</label>
+					<label for="title">Tiêu đề câu hỏi</label>
 					<input type="text" class="form-control" id="title" name="title" required
 					placeholder="Subject of your topic (limit of 100 characters)" maxlength="100" value="{{ $question->title }}">
 				</div>
@@ -58,7 +58,7 @@
 						<div class="alert alert-danger">{{ $error }}</div>
 					@endforeach
 
-					<label for="category">Category</label>
+					<label for="category">Thể loại</label>
 					<select class="form-control col-sm-3" id="category" name="category">
 						@foreach($categories as $category)
 							@if($question->category_id==$category->_id)
@@ -80,7 +80,7 @@
 				<!-- End category-->
 
 				<!-- Content -->
-				<label for="markdown">Content</label>
+				<label for="markdown">Nội dung</label>
 				<div class="row">
 					<div class="col-sm-4">
 						<div class="file-loading">
@@ -95,7 +95,7 @@
 				</div>
 				<!-- End content-->
 
-				<button type="button" onclick="checkContent()" class="btn btn-primary float-right">Save changes</button>
+				<button type="button" onclick="checkContent()" class="btn btn-primary float-right">Lưu thay đổi</button>
 
 			</form>
 		</div>

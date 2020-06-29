@@ -21,11 +21,11 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item active">
-                            <a class="nav-link text-light header" href="{{ route('homePage') }}">Home <span
+                            <a class="nav-link text-light header" href="{{ route('homePage') }}">Trang chủ <span
                                     class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light header" href="{{route('aboutUs')}}">About Us</a>
+                            <a class="nav-link text-light header" href="{{route('aboutUs')}}">Về chúng tôi</a>
                         </li>
 
 
@@ -40,11 +40,11 @@
                                         <div class="input-group form-control-sm">
                                             @if(isset($keyword))
                                             <input id="search" name="keyword" class="form-control form-control-sm"
-                                                type="search" placeholder="Type search words" title="enter your keyword"
+                                                type="search" placeholder="Nhập từ khóa tìm kiếm..." title="enter your keyword"
                                                 autocomplete="off" value="{{$keyword}}">
                                             @else
                                             <input id="search" name="keyword" class="form-control form-control-sm"
-                                                type="search" placeholder="Type search words" title="enter your keyword"
+                                                type="search" placeholder="Nhập từ khóa tìm kiếm..." title="enter your keyword"
                                                 autocomplete="off">
                                             @endif
                                             <div id="result_list" class="scrollbar scrollbar-lady-lips dropdown-menu">
@@ -155,22 +155,22 @@
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="setting">
                                         <a class="dropdown-item" href="{{ route('information') }}">
                                             <i class="fa fa-cog" style="width:20px"></i>
-                                            Profile
+                                            Hồ sơ cá nhân
                                         </a>
                                         <a class="dropdown-item" href="{{ route('manageQuestion') }}">
                                             <i class="fa fa-comments-o" style="width:20px"></i>
-                                            Your questions
+                                            Câu hỏi của bạn
                                         </a>
                                         <a class="dropdown-item" href="{{ route('manageAnswer') }}">
                                             <i class="fa fa-lightbulb-o" style="width:20px"></i>
-                                            Your answers
+                                            Câu trả lời của bạn
                                         </a>
                                         <div class="dropdown-divider"></div>
                                         <form action="{{ route('logOut') }}" method="post">
                                             @csrf
                                             <button type="submit" class="dropdown-item">
                                                 <i class="fa fa-sign-out" style="width:20px"></i>
-                                                Sign out
+                                                Đăng xuất
                                             </button>
                                         </form>
 

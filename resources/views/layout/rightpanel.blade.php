@@ -105,7 +105,7 @@
     </div>
 
     <div>
-        <h6 class="font-weight-bold ml-3 mt-4"><i class="fa fa-tags mr-3"></i>Trending Tags</h6>
+        <h6 class="font-weight-bold ml-3 mt-4"><i class="fa fa-tags mr-3"></i>Tags nổi bật</h6>
         <div class="col-sm-12">
             @foreach($categories as $category)
             <div class="row">

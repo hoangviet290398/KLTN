@@ -1,5 +1,6 @@
-<?php 
-$url = explode("/",$value->url);
+
+<?php
+    $url = explode("/",$question->url)[4];
 ?>
 
 <ul class="list-group list-group-flush">
@@ -13,11 +14,11 @@ $url = explode("/",$value->url);
                 </div>
             </div>
             <div class="col-10">
-                <a href="/topic/{{ $url[4] }}" class="">{{ $value->title }}
+                <a href="/topic/{{ $url}}" class="">{{ $question->title }}
                 </a>
-                <p class="card-text">{{ $value->body }}</p>
-                <footer class="blockquote-footer text-right">Asked June 26th, 2019 at 17:02 by <cite
-                        title="Source Title"><a href="">Quy Tran</a></cite>
+                <p class="card-text pv-archiveText1">{{ $question->body }}</p>
+                <footer class="blockquote-footer text-right">Asked by <cite
+                        title="Source Title"><a href="#">Quy Tran</a></cite>
                 </footer>
 
             </div>

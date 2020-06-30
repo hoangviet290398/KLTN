@@ -85,7 +85,7 @@ use Carbon\Carbon;
 
 									</div>
 
-									<p class="pv-archiveText">{{$question->content}}</p>
+									<p class="pv-archiveText">{{strip_tags($question->content)}}</p>
 									<!-- QuyTran added -->
 									<div class="row">
 										<div class="pl-3 pt-1 pb-3">

@@ -63,7 +63,7 @@
 		<div class="row">
 			<div class="col-sm-12">
 				<div class="" style="text-align: center;">
-					<h2 class="text-primary ">CHANGE PASSWORD</h2>	
+					<h2 class="text-primary ">ĐỔI MẬT KHẨU</h2>	
 				</div>
 				<hr class="my-3">
 				<div class="row">
@@ -81,20 +81,20 @@
     					<form action="{{ route('storeChangePassword') }}" method="post" id="changepass">
     						<input type="hidden" name="_token" value="{{csrf_token()}}">
     						<div class="form-group">
-    					    	<label for="curentpassword" class="font-weight-bold">Current password</label>
+    					    	<label for="curentpassword" class="font-weight-bold">Mật khẩu hiện tại:</label>
     					    	<input id="currentpassword" type="password" class="form-control"  name="curentpassword">
     						</div>
     						<div class="form-group">
-    					    	<label for="newpassword" class="font-weight-bold">New password</label>
+    					    	<label for="newpassword" class="font-weight-bold">Mật khẩu mới:</label>
     					    	<input id="newpassword" type="password" class="form-control" name="newpassword">
     						</div>
     						<div class="form-group">
-    					    	<label for="confirmpass" class="font-weight-bold">Confirm password</label>
+    					    	<label for="confirmpass" class="font-weight-bold">Xác nhận mật khẩu mới:</label>
     					    	<input id="confirmpass" type="password" class="form-control" name="confirmpass">
     						</div>
     					  	<div class="d-flex justify-content-center">
-    					  		<button type="submit" class="btn btn-primary">Save</button>
-    					  		<button type="reset" class="btn btn-outline-primary " style="margin-left: 10px; ">Reset</button>
+    					  		<button type="submit" class="btn btn-primary">Lưu</button>
+    					  		<button type="reset" class="btn btn-outline-primary " style="margin-left: 10px; ">Hủy</button>
     						</div>
     					</form>
 					</div>

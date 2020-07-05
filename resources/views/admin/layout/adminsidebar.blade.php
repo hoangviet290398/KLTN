@@ -25,21 +25,21 @@
 
         <!-- Heading -->
         <div class="sidebar-heading">
-            Interface
+            QUẢN LÝ
         </div>
 
         <!-- Nav Item - Charts -->
         <li class="nav-item">
             <a class="nav-link" href="{{ route('manageAllUsers') }}">
                 <i class="fas fa-fw fa-user"></i>
-                <span>Users</span></a>
+                <span>Người dùng</span></a>
         </li>
 
         <!-- Nav Item - Tables -->
         <li class="nav-item">
             <a class="nav-link" href="{{ route('manageAllQuestions') }}">
                 <i class="fas fa-fw fa-question"></i>
-                <span>Questions</span></a>
+                <span>Câu hỏi</span></a>
         </li>
 
         {{-- <!-- Nav Item - Tables -->

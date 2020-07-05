@@ -15,25 +15,25 @@ use Carbon\Carbon;
 			<div class="card-header text-left" style="background-color: white">
 				{{-- <ul class="nav nav-pills font-weight-bold" >
 					<li class="nav-item">
-						<a class="nav-link active" data-toggle="pill" href="#home">Recent Question</a>
+						<a class="nav-link active" data-toggle="pill" href="#home">Câu hỏi gần đây</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" data-toggle="pill" href="#menu1">Hot</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" data-toggle="pill" href="#menu1">Most Answered</a>
+						<a class="nav-link" data-toggle="pill" href="#menu1">Nhiều câu trả lời nhất</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" data-toggle="pill" href="#menu1">No Answers</a>
+						<a class="nav-link" data-toggle="pill" href="#menu1">Chưa có câu trả lời</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" data-toggle="pill" href="#menu1">Week</a>
+						<a class="nav-link" data-toggle="pill" href="#menu1">Tuần</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" data-toggle="pill" href="#menu2">Month</a>
+						<a class="nav-link" data-toggle="pill" href="#menu2">Tháng</a>
 					</li>
 				</ul> --}}
-				<h2>Results for "{{$keyword}}"</h2>
+				<h2>Kết quả cho "{{$keyword}}"</h2>
 				<form action="{{ route('searchIndex') }}" method="get">
 					<div class="input-group mb-4">
 						<input type="search" name="keyword" placeholder="" aria-describedby="button-addon5" class="form-control" value="{{$keyword}}">
@@ -43,7 +43,7 @@ use Carbon\Carbon;
 					</div>
 				</form>
 				<br/>
-				<h5 class="text-left">{{number_format($all_question)}} results</h5>
+				<h5 class="text-left">{{number_format($all_question)}} kết quả</h5>
 
 			</div>
 			<div class="card-body p-0">
@@ -51,8 +51,8 @@ use Carbon\Carbon;
 				<div class="text-center">
 					<br/>
 					<img src="{{ asset('images/resource/magnifying.svg') }}" width="90px">
-					<p>We couldn't find anything for <b>{{$keyword}}</b></p>
-					<small>Try different or less specific keywords</small>
+					<p>Không tìm thấy kết quả cho <b>{{$keyword}}</b></p>
+					<small>Thử từ khóa khác hoặc từ khóa đơn giản hơn</small>
 				</div>
 				@endif
 				@foreach($questions as $question)
@@ -101,29 +101,29 @@ use Carbon\Carbon;
 											<div class="col-sm-3 px-1">
 												<div class="border rounded text-muted bg-white text-center px-1">
 													<i class="fa fa-thumbs-up"></i>
-													{{$question->total_like}} likes
+													{{$question->total_like}} thích
 												</div>
 											</div>
 											<div class="col-sm-3 px-1">
 												<div class="border rounded text-muted bg-white text-center">
 													<i class="fa fa-thumbs-down"></i>
-													{{$question->total_dislike}} dislikes
+													{{$question->total_dislike}} không thích
 												</div>
 											</div>
 
 											<div class="col-sm-3 px-1">
 												<div class="border rounded text-muted bg-white text-center">
 													<i class="fa fa-comment"></i>
-													{{$question->total_answer}} answers
+													{{$question->total_answer}} trả lời
 												</div>
 											</div>
 
 
 											<div class="col-sm-3">
 												@if(Auth::check())
-												<a href="topic/{{ $question->id }}" class="border rounded text-light bg-dark text-center px-4 text-decoration-none" style="font-size:18px">Answer</a>
+												<a href="topic/{{ $question->id }}" class="border rounded text-light bg-dark text-center px-4 text-decoration-none" style="font-size:18px">Trả lời</a>
 												@else
-												<a href="/signin" class="border rounded text-light bg-dark text-center px-4 text-decoration-none" style="font-size:18px">Answer</a>
+												<a href="/signin" class="border rounded text-light bg-dark text-center px-4 text-decoration-none" style="font-size:18px">Trả lời</a>
 												@endif
 
 											</div>

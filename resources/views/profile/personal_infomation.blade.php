@@ -22,15 +22,15 @@
                 <div class="row">
                     <div class="col-sm">
                         <ul>
-                            <li>Total question: {{ $user->questions->count() }}</li>
-                            <li>Total answer: {{ $user->answers->count() }}</li>
+                            <li>Tổng câu hỏi: {{ $user->questions->count() }}</li>
+                            <li>Tổng câu trả lời: {{ $user->answers->count() }}</li>
                         </ul>
                     </div>
                     <div class="col-sm">
                         <ul>
-                            <li>Total like: {{ $totalLike }}</li>
-                            <li>Total dislike: {{ $totalDislike }}</li>
-                            <li>Total accepted answer: {{ $totalAccepted }}</li>
+                            <li>Tổng lượt thích: {{ $totalLike }}</li>
+                            <li>Tổng lượt không thích: {{ $totalDislike }}</li>
+                            <li>Tổng câu trả lời được chấp thuận: {{ $totalAccepted }}</li>
                         </ul>
                     </div>
                 </div>

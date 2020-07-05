@@ -22,7 +22,7 @@
                                                         {{$category->name}}
                                                     </a>
                                                 </div>
-                                                <div class="mb-0 text-muted">{{$category->questions()->count()}} Questions</div>
+                                                <div class="mb-0 text-muted">{{$category->questions()->count()}} câu hỏi</div>
                                                 
                                             </div>
                                         </div>

@@ -96,8 +96,8 @@
                         <img src="{{ asset('images/resource/logo2a.png') }}" alt="" class="h-100 w-100"></a>
                 </div>
                 <div class="col-sm-7 mt-3">
-                    <h4 class="font-weight-bold">TechSolution Register</h4>
-                    <small>There is no matter in the world you live!</small>
+                    <h4 class="font-weight-bold">Đăng ký tài khoản TechSolution</h4>
+                    <small>Không quan trọng bạn ở nơi đâu!</small>
                 </div>
             </div>
         </div>
@@ -105,23 +105,23 @@
             <form id="registerform" action="{{ route('signUpStore') }}" method="post">
                 {{ csrf_field() }}
                 <div class="form-group">
-                    <label class="font-weight-bold" for="email">Email address:</label>
+                    <label class="font-weight-bold" for="email">Địa chỉ email:</label>
                     <input id="email" name="email" type="email" class="form-control" aria-describedby="emailHelp"
-                        placeholder="Enter email">
+                        placeholder="Nhập email">
                 </div>
                 <div class="form-group">
-                    <label class="font-weight-bold" for="password">Password:</label>
-                    <input id="password" name="password" type="password" class="form-control" placeholder="Password">
+                    <label class="font-weight-bold" for="password">Mật khẩu:</label>
+                    <input id="password" name="password" type="password" class="form-control" placeholder="Nhập mật khẩu">
                 </div>
                 <div class="form-group">
-                    <label class="font-weight-bold" for="confirm">Confirm password:</label>
+                    <label class="font-weight-bold" for="confirm">Xác nhận mật khẩu:</label>
                     <input id="confirm" name="confirm" type="password" class="form-control"
-                        placeholder="Confirm password">
+                        placeholder="Nhập lại mật khẩu">
                 </div>
                 <div class="form-group">
-                    <label class="font-weight-bold" for="fullname">Full name:</label>
+                    <label class="font-weight-bold" for="fullname">Họ tên:</label>
                     <input id="fullname" name="fullname" type="text" class="form-control" aria-describedby="emailHelp"
-                        placeholder="Your Fullname">
+                        placeholder="Nhập họ tên">
                 </div>
                 <div class="form-group">
                     <div class="row">
@@ -137,10 +137,10 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary w-100 font-weight-bold">Create account</button>
+                    <button type="submit" class="btn btn-primary w-100 font-weight-bold">Tạo tài khoản</button>
                 </div>
                 <div class="text-center">
-                    Already have an account? <a href="{{route('signInIndex')}}">Login here</a>
+                    Đã có tài khoản? <a href="{{route('signInIndex')}}">Đăng nhập</a>
                 </div>
             </form>
         </div>

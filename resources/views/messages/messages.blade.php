@@ -60,7 +60,7 @@
                             @else
                             <img src="{{Auth::user()->avatar}}" alt="user" width="50" class="rounded-circle">
                             @endif
-                            <p class="h4 mb-0 px-2 py-3">{{Auth::user()->fullname}} (you)</p>
+                            <p class="h4 mb-0 px-2 py-3">{{Auth::user()->fullname}} (bạn)</p>
                         </div>
 
                     </div>
@@ -98,13 +98,13 @@
                                             <div class="row pt-1 pb-2">
                                                 @if($user->id != $latestMessage['from_user'] &&
                                                 $latestMessage['from_user'] == Auth::user()->id)
-                                                <p id="singleMessagePreview"
+                                                <p id="singleMessagePreview{{$latestMessage['to_user']}}"
                                                     class="truncateLongTexts col-8 mb-0 text-small  "
-                                                    data-latestMessage="" style="font-size:1.15rem">You:
+                                                    data-latestMessage="" style="font-size:1.15rem">Bạn:
                                                     {{$latestMessage['message']}}</p>
 
                                                 @else
-                                                <p id="singleMessagePreview"
+                                                <p id="singleMessagePreview{{$latestMessage['to_user']}}"
                                                     class="truncateLongTexts col-8 mb-0 text-small  "
                                                     style="font-size:1.15rem"
                                                     data-isMessageRead="{{$latestMessage['is_read']}}">
@@ -296,6 +296,7 @@
     });
 
 
+
     function sendMessageOnClick() {
         if (message == '') {
 
@@ -322,15 +323,14 @@
                 error: function(jqXHR, status, err) {},
                 complete: function() {
                     //scrollToBottomFunc();
+
                 }
+
             })
+
         }
 
     }
-
-
-
-
     $(document).on('keyup', '.input-group input', function(e) {
         message = $(this).val();
         // check if enter key is pressed and message is not null also receiver is selected
@@ -349,16 +349,20 @@
                 url: "messages", // need to create this post route
                 data: datastr,
                 cache: false,
-                success: function(data) {},
+                success: function(data) {
+
+
+                },
                 error: function(jqXHR, status, err) {},
                 complete: function() {
+
                     //scrollToBottomFunc();
 
                 }
             })
+
         }
     });
-
 
     // Enable pusher logging - don't include this in production
     Pusher.logToConsole = true;
@@ -371,7 +375,46 @@
     var channel = pusher.subscribe('my-channel');
     channel.bind('my-event', function(data) {
         //alert(JSON.stringify(data));
-        console.log(data.from_user);
+
+        console.log('new message ' + data.message);
+        // setTimeout(function() {
+        //     console.log('my id: '+my_id);
+        //     console.log('user id: '+ receiver_id);
+        //     if (data.from_user == my_id && data.to_user == receiver_id) {
+        //         console.log('what ' + data.message);
+
+        //         document.getElementById("singleMessagePreview" + data.to_user).innerHTML = 'You: ' +
+        //             data.message;
+
+        //     }
+        //     // } else {
+        //     //     document.getElementById("singleMessagePreview" + data.from_user).innerHTML = data
+        //     //         .message;
+
+        //     // }
+        // }, 3000);
+
+        console.log('my id: ' + my_id);
+        console.log('user id: ' + receiver_id);
+
+        setTimeout(function() {
+            $('#messagePreview').ready(function() {
+                if (data.from_user == my_id && data.to_user == receiver_id) {
+                    console.log('what ' + data.message);
+
+                    document.getElementById("singleMessagePreview" + receiver_id).innerHTML =
+                        'Bạn: ' + data
+                        .message;
+
+                } else if (data.to_user == my_id) {
+                    document.getElementById("singleMessagePreview" + data.from_user).innerHTML =
+                        data.message;
+                }
+            });
+        }, 100);
+
+
+
         if (my_id == data.from_user) {
             $('#' + data.to_user).click();
 
@@ -396,6 +439,7 @@
     });
     </script>
 </body>
+
 
 
 </html>

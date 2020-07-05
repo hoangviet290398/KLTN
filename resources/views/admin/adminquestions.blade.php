@@ -1,7 +1,7 @@
 <div class="col-sm-12">
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary"><i class="fa fa-question"></i> Questions</h6>
+            <h6 class="m-0 font-weight-bold text-primary"><i class="fa fa-question"></i> Câu hỏi</h6>
         </div>
         <div class="card-body">
             <div id="allQuestions">
@@ -14,9 +14,9 @@
                                 <div class="row no-gutters align-items-center">
                                     <!-- Question stats -->
                                     <div class="col-sm-1 pr-2 text-center">
-                                        <p class="text-muted">{{$question->total_like}}<br> likes</p>
-                                        <p class="text-muted">{{$question->total_dislike}}<br> dislikes</p>
-                                        <p class="text-muted">{{$question->total_answer}}<br> answers</p>
+                                        <p class="text-muted">{{$question->total_like}}<br> lượt thích</p>
+                                        <p class="text-muted">{{$question->total_dislike}}<br> lượt không thích</p>
+                                        <p class="text-muted">{{$question->total_answer}}<br> trả lời</p>
                                     </div>
                                     <div class="col-sm-11">
                                         <!-- Question title -->
@@ -33,18 +33,18 @@
                                                     <div class="modal-dialog">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
-                                                                <h5 class="modal-title">Confirmation</h5>
+                                                                <h5 class="modal-title">Xác nhận</h5>
                                                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                                                             </div>
                                                             <div class="modal-body">
-                                                                <p>Are you sure you want to delete this topic?</p>
+                                                                <p>Bạn có chắc muốn xóa bài viết này?</p>
                                                             </div>
                                                             <div class="modal-footer">
-                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
                                                                 <form action="{{route('adminDeleteTopic')}}" method="post">
                                                                     @csrf
                                                                     <input type="text" name="_id" value="{{$question->_id}}" hidden>
-                                                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                                                    <button type="submit" class="btn btn-danger">Xóa</button>
                                                                 </form>
                                                             </div>
                                                         </div>

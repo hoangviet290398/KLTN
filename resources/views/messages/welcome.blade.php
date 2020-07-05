@@ -9,8 +9,7 @@
 
 <body>
     <div class="circles">
-        <p>Welcome to chat!<br>
-            <small>Choose a user to send message.</small>
+        <p>Chào mừng bạn đến chat!<br>
         </p>
         <span class="circle big"></span>
         <span class="circle med"></span>

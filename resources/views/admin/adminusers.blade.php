@@ -1,12 +1,12 @@
 <div class="col-sm-12">
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary"><i class="fa fa-user"></i> Users</h6>
+            <h6 class="m-0 font-weight-bold text-primary"><i class="fa fa-user"></i> Người dùng</h6>
         </div>
         <div class="card-body">
             <form action="">
                 <div class="form-group mb-4">
-                    <input id="searchUsers" type="search" placeholder="Filter by user" aria-describedby="button-addon" class="form-control-lg border-primary">
+                    <input id="searchUsers" type="search" placeholder="Tìm kiếm người dùng" aria-describedby="button-addon" class="form-control-lg border-primary">
                 </div>
                 </form>
             <div class="">
@@ -38,8 +38,8 @@
                                                     {{$user->fullname}}
                                                 </a>
                                             </div>
-                                            <div class="mb-0 text-muted">{{$user->questions->count()}} Questions</div>
-                                            <div class="mb-0  text-muted">{{$user->answers->count()}} Answers</div>
+                                            <div class="mb-0 text-muted">{{$user->questions->count()}} Câu hỏi</div>
+                                            <div class="mb-0  text-muted">{{$user->answers->count()}} Trả lời</div>
                                         </div>
 
                                     </div>
@@ -50,18 +50,18 @@
                                                     <div class="modal-dialog">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
-                                                                <h5 class="modal-title">Confirmation</h5>
+                                                                <h5 class="modal-title">Xác nhận</h5>
                                                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                                                             </div>
                                                             <div class="modal-body">
-                                                                <p>Are you sure you want to delete this user?</p>
+                                                                <p>Bạn có chắc muốn xóa người dùng này?</p>
                                                             </div>
                                                             <div class="modal-footer">
-                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
                                                                 <form action="{{route('adminDeleteUser')}}" method="post">
                                                                     @csrf
                                                                     <input type="text" name="_id" value="{{$user->_id}}" hidden>
-                                                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                                                    <button type="submit" class="btn btn-danger">Xóa</button>
                                                                 </form>
                                                             </div>
                                                         </div>

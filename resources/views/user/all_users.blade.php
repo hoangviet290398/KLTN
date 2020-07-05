@@ -10,11 +10,11 @@
         <div class="col-sm-10">
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h2>All Users</h2>
+                    <h2>Tất cả người dùng</h2>
                     <br />
                     <form action="">
                         <div class="form-group mb-4">
-                            <input id="searchUsers" type="search" placeholder="Filter by user"
+                            <input id="searchUsers" type="search" placeholder="Tìm trong người dùng"
                                 aria-describedby="button-addon" class="form-control-lg border-primary">
                         </div>
                     </form>
@@ -48,9 +48,9 @@
                                                             {{$user->fullname}}
                                                         </a>
                                                     </div>
-                                                    <div class="mb-0 text-muted">{{$user->questions->count()}} Questions
+                                                    <div class="mb-0 text-muted">{{$user->questions->count()}} câu hỏi
                                                     </div>
-                                                    <div class="mb-0  text-muted">{{$user->answers->count()}} Answers
+                                                    <div class="mb-0  text-muted">{{$user->answers->count()}} trả lời
                                                     </div>
                                                     <a href="/messages" style="color:blue"><i
                                                             class="fa fa-envelope" onclick="sendMessage();"></i></a>

@@ -5,7 +5,7 @@
 @section('script')
 <script>
 function confirmRemove(btn){
-    var r = confirm("Do you want to delete this question?");
+    var r = confirm("Bạn có chắc muốn xóa câu hỏi này?");
     if (r == true) {
         document.getElementById("question_id").value = btn.getAttribute('tag');
         document.getElementById("deleteform").submit();
@@ -15,15 +15,15 @@ function confirmRemove(btn){
 @endsection
 
 @section('contentprofile')
-<h2 class="text-primary text-center">MANAGE QUESTIONS</h2>
+<h2 class="text-primary text-center">QUẢN LÝ CÂU HỎI</h2>
 <hr class="my-3">
 <div class="table-responsive">
     <table class="table table-hover">
         <thead>
             <tr>
-                <th scope="col">Title</th>
-                <th scope="col">Category</th>
-                <th scope="col" class="text-right">Edit</th>
+                <th scope="col">Tiêu đề</th>
+                <th scope="col">Thể loại</th>
+                <th scope="col" class="text-right">Hành động</th>
             </tr>
         </thead>
         <tbody>

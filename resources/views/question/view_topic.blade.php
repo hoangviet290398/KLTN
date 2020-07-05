@@ -260,18 +260,18 @@ use App\LikeDislike;
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title">Confirmation</h5>
+                                        <h5 class="modal-title">Xác nhận</h5>
                                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                                     </div>
                                     <div class="modal-body">
-                                        <p>Are you sure you want to delete this topic?</p>
+                                        <p>Bạn có chắc muốn xóa bài viết này?</p>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
                                         <form action="{{route('deleteTopic')}}" method="post">
                                             @csrf
                                             <input type="text" name="_id" value="{{$question->id}}" hidden>
-                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                            <button type="submit" class="btn btn-danger">Xóa</button>
                                         </form>
                                     </div>
                                 </div>
@@ -284,7 +284,7 @@ use App\LikeDislike;
                 </div>
                 <div>
                    <!-- Asked date goes here-->
-                   <small class="text-muted pl-4" style="color:#5488c7;" data-toggle="tooltip" title="{{$question->created_at->toDayDateTimeString()}}">asked:
+                   <small class="text-muted pl-4" style="color:#5488c7;" data-toggle="tooltip" title="{{$question->created_at->toDayDateTimeString()}}">đã hỏi:
                             {{$question->created_at->diffForHumans()}}
                         </small>
                 </div>
@@ -438,10 +438,10 @@ use App\LikeDislike;
                         <div class="col-10 justify-content-sm-end">
 
                             <a href="{{asset('removebestanswer')}}/{{$bestAnswer->_id}}"><button type="button"
-                                    class="float-right btn btn-warning">Remove Best Answer</button></a>
+                                    class="float-right btn btn-warning">Gỡ câu trả lời hay nhất</button></a>
                                    {{--  <input type="text" id="remove_bestanswer_id" value="{{$bestAnswer->_id}}" hidden>
                                    <button type="button" id="remove_bestanswer_button" 
-                                    class="float-right btn btn-warning">Remove Best Answer
+                                    class="float-right btn btn-warning">Câu trả lời hay nhất
                                    </button> --}}
                         </div>
                     @endif
@@ -530,10 +530,10 @@ use App\LikeDislike;
                             @if (Auth::check() and(Auth::user()->id==$question->user_id))                  
                                 <div class='col-10 justify-content-sm-end'>
                                     <a href="{{asset('bestanswer')}}/{{$answer->_id}}"><button type="button"
-                                            class="float-right btn btn-success">Best Answer</button></a>
+                                            class="float-right btn btn-success">Câu trả lời hay nhất</button></a>
                                     {{-- <input type="text" id="vote_bestanswer_id" value="{{$answer->id}}" hidden>
                                     <button type="button" id="vote_bestanswer_button" 
-                                            class="float-right btn btn-success">Best Answer</button> --}}
+                                            class="float-right btn btn-success">Câu trả lời hay nhất</button> --}}
                                 </div>
                             @endif
                         </div>
@@ -574,7 +574,7 @@ use App\LikeDislike;
                         </div>
                     </div>
                 </div>
-                <button onclick="checkContent()" type="button" class="btn btn-primary float-right mb-3">Answer</button>
+                <button onclick="checkContent()" type="button" class="btn btn-primary float-right mb-3">Trả lời</button>
             </form>
         </div>
     </div>

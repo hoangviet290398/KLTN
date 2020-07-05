@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Question;
 use App\User;
 use App\Category;
+use App\Answer;
 use App\User_Question_Answer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -101,11 +102,60 @@ class HomeController extends Controller
 	}
 
 	public function searchIndex(Request $request){
-		$keyword = $request->keyword;
 		$limit=\Config::get('constants.options.ItemNumberPerPage');
-		$all_question = Question::whereRaw(array('$text'=>array('$search'=> $keyword)))->get()->count();
-		$questions = Question::whereRaw(array('$text'=>array('$search'=> $keyword)))->paginate($limit)->appends(request()->query());
+		$keyword = $request->keyword;
+		$key_word_array = explode(' ', $keyword);
+		// var_dump($key_word_array);
+		// die;
+		$word = [];
+		$syntax = [];
+		$sample_syntax = ['tag:', 'user:', 'answers:', 'title:', 'body:'];
+		foreach($key_word_array as $key => $value){
+			foreach($sample_syntax as $sam){
+				if(strpos($value, $sam) !== false){
+					array_push($syntax, $value);
+					//$syntax[$sam] = str_replace($sam, '', $value);
+				}
+			}
+		}
+		$raw_keyword = implode(' ', array_diff($key_word_array, $syntax));
+		// var_dump($raw_keyword);
+		// die;
+		// var_dump($syntax);	
+		// die;
+		//$category_id = Category::where('name','Python')->first()->_id;
+		// var_dump($category_id);
+		// die;
+		$all_question = Question::whereRaw(array('$text'=>array('$search'=> $keyword)))->where('category_id', '5edde2b80d2728638833ae28')->get()->count();
+		// $result = $all_question::where('category_id', $category_id)->get();
+		// var_dump($all_question);
+		// die;
+		if($syntax){
+			foreach($syntax as $key => $value){
+				if(strpos($value, 'tag:') !== false){
+					$value = str_replace('tag:','',$value);
+					$category_id = Category::where('name',$value)->first();
+					if($category_id){
+						$questions = Question::where('category_id', $category_id->_id)->whereRaw(array('$text'=>array('$search'=> $raw_keyword)))->paginate($limit)->appends(request()->query());
+					}else{
+						$questions = Question::whereRaw(array('$text'=>array('$search'=> $keyword)))->paginate($limit)->appends(request()->query());
+					}
+					
+				}
+			}
+		}else{
+			$answers = Answer::whereRaw(array('$text'=>array('$search'=> $raw_keyword)))->get();
+			$question_key = [];
+			foreach($answers as $key => $value){
+				array_push($question_key, $value->question_id);
+			}
+			
+			$questions = Question::whereRaw(array('$text'=>array('$search'=> $raw_keyword)))->orWhereIn('_id', $question_key)->paginate($limit)->appends(request()->query());
+		}
+		
 
+		
+		
 		$topMembers = User::all();
 		$categories = Category::all();
 		

@@ -41,11 +41,11 @@
                                             @if(isset($keyword))
                                             <input id="search" name="keyword" class="form-control form-control-sm"
                                                 type="search" placeholder="Nhập từ khóa tìm kiếm..." title="enter your keyword"
-                                                autocomplete="off" value="{{$keyword}}">
+                                                autocomplete="off" value="{{$keyword}}" required>
                                             @else
                                             <input id="search" name="keyword" class="form-control form-control-sm"
                                                 type="search" placeholder="Nhập từ khóa tìm kiếm..." title="enter your keyword"
-                                                autocomplete="off">
+                                                autocomplete="off" required>
                                             @endif
                                             <div id="result_list" class="scrollbar scrollbar-lady-lips dropdown-menu">
                                             </div>

@@ -143,6 +143,7 @@ class UserController extends Controller
     public function personalInfomation($id)
 	{
         $user = User::find($id);
+        
         if(empty($user)) return back();
 
 		$questions = $user->questions;
@@ -150,6 +151,7 @@ class UserController extends Controller
 		$totalLike = $questions->sum('total_like')+$answers->sum('total_like');
 		$totalDislike = $questions->sum('total_dislike')+$answers->sum('total_dislike');
         $totalAccepted = 0;
+       
 		foreach($answers as $answer){
 			$totalAccepted+=$answer->question->where('best_answer_id',$answer->_id)->count();
 		}

@@ -1,25 +1,21 @@
-
-<?php
-    $url = explode("/",$question->url)[4];
-?>
-
 <ul class="list-group list-group-flush">
     <li class="list-group-item">
         <div class="row">
             <div class="col-2">
                 <div class="card border-success mt-1 mb-4 mx-3" style="">
                     <div class="card-body text-success">
-                        <p class="card-text text-center">0 <br>trả lời</br></p>
+                        <p class="card-text text-center">{{ $question->total_answer}} <br>trả lời</br></p>
                     </div>
                 </div>
             </div>
             <div class="col-10">
-                <a href="/topic/{{ $url}}" class="">{{ $question->title }}
+                <a href="/topic/{{ $question->_id}}" class="">{{ $question->title }}
                 </a>
 
-                <p class="card-text">{{ $value->body }}</p>
-                <footer class="blockquote-footer text-right">đã hỏi: June 26th, 2019 at 17:02 bởi <cite
-                        title="Source Title"><a href="">Quy Tran</a></cite>
+                <p class="card-text pv-archiveText1">{{ strip_tags($question->content) }}</p>
+                <footer class="blockquote-footer text-right">
+                    đã hỏi: {{$question->created_at->toDayDateTimeString()}} bởi <cite
+                        title="Source Title"><a href="">{{ $question->user->fullname}}</a></cite>
                 </footer>
 
             </div>

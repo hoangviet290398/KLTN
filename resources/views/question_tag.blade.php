@@ -43,7 +43,7 @@ use Carbon\Carbon;
 					</div>
 				</form> --}}
 				<br/>
-				<h5 class="text-left">{{number_format($questions->count())}} kết quả</h5>
+				<h5 class="text-left">{{number_format($questions->total())}} kết quả</h5>
 			</div>
 			<div class="card-body p-0">
 				@if($questions->count()==0)

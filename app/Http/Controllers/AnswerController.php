@@ -16,6 +16,9 @@ class AnswerController extends Controller
 	private $startIdEdit = 28;
 	private $startIdAdd = 23;
 
+	// private $startIdEdit = 33;
+	// private $startIdAdd = 28;
+
 	public function store(AnswerRequest $request)
 	{
 		$id = substr($request->header('referer'),$this->startIdAdd);

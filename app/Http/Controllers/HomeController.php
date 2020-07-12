@@ -44,7 +44,7 @@ class HomeController extends Controller
 	public function noAnswers()
 	{
 		$limit=\Config::get('constants.options.ItemNumberPerPage');
-		$questions = Question::where('total_answer', 0)->orderBy('created_at', 'desc')->paginate($limit);
+		$questions = Question::where('total_answer', '0')->orderBy('created_at', 'desc')->paginate($limit);
 		$questions->setPath('/');
 
 		$topMembers = User::all();
@@ -105,11 +105,14 @@ class HomeController extends Controller
 		$limit=\Config::get('constants.options.ItemNumberPerPage');
 		$keyword = $request->keyword;
 		$key_word_array = explode(' ', $keyword);
+		$topMembers = User::all();
+
+		$categories = Category::all();
 		// var_dump($key_word_array);
 		// die;
 		$word = [];
 		$syntax = [];
-		$sample_syntax = ['tag:', 'user:', 'answers:', 'title:', 'body:'];
+		$sample_syntax = ['tag:', 'user:', 'answers:', 'hasaccepted:', 'is:', 'views:'];
 		foreach($key_word_array as $key => $value){
 			foreach($sample_syntax as $sam){
 				if(strpos($value, $sam) !== false){
@@ -118,6 +121,8 @@ class HomeController extends Controller
 				}
 			}
 		}
+		// var_dump($syntax);
+		// die;
 		$raw_keyword = implode(' ', array_diff($key_word_array, $syntax));
 		// var_dump($raw_keyword);
 		// die;
@@ -134,13 +139,107 @@ class HomeController extends Controller
 			foreach($syntax as $key => $value){
 				if(strpos($value, 'tag:') !== false){
 					$value = str_replace('tag:','',$value);
-					$category_id = Category::where('name',$value)->first();
-					if($category_id){
-						$questions = Question::where('category_id', $category_id->_id)->whereRaw(array('$text'=>array('$search'=> $raw_keyword)))->paginate($limit)->appends(request()->query());
+					$tag = Category::where('name',$value)->first();
+					if($tag){
+						if($raw_keyword !== ''){
+							$questions = Question::where('category_id', $tag->_id)->whereRaw(array('$text'=>array('$search'=> $raw_keyword)))->paginate($limit)->appends(request()->query());
+						}else{
+							$questions = Question::where('category_id', $tag->_id)->paginate($limit)->appends(request()->query());
+							return view('question_tag',compact('questions','topMembers', 'categories','tag'));
+						}
+						
 					}else{
 						$questions = Question::whereRaw(array('$text'=>array('$search'=> $keyword)))->paginate($limit)->appends(request()->query());
 					}
 					
+				}elseif(strpos($value, 'user:') !== false){
+					$value = str_replace('user:','',$value);
+					$user = ($value == 'me') ? (Auth::user()->_id) : (User::where('_id',$value)->first()->_id);
+					if($user){
+						if($raw_keyword !== ''){
+							$questions = Question::where('user_id', $user)->whereRaw(array('$text'=>array('$search'=> $raw_keyword)))->paginate($limit)->appends(request()->query());
+						}else{
+							$questions = Question::where('user_id', $user)->paginate($limit)->appends(request()->query());
+						}
+						
+					}else{
+						$questions = Question::whereRaw(array('$text'=>array('$search'=> $keyword)))->paginate($limit)->appends(request()->query());
+					}
+				}elseif(strpos($value, 'answers:') !== false){
+					$value = (int)(str_replace('answers:','',$value));
+					
+					if(is_numeric($value)){
+						if($raw_keyword !== ''){
+							$questions = Question::where('total_answer','>=', $value)->whereRaw(array('$text'=>array('$search'=> $raw_keyword)))->paginate($limit)->appends(request()->query());
+						}else{
+							$questions = Question::where('total_answer','>=', $value)->paginate($limit)->appends(request()->query());
+						}
+						
+					}else{
+						$questions = Question::whereRaw(array('$text'=>array('$search'=> $keyword)))->paginate($limit)->appends(request()->query());
+					}
+				}elseif(strpos($value, 'hasaccepted:') !== false){
+					$value = str_replace('hasaccepted:','',$value);
+					if($value){
+						if($value == 'yes'){
+							$search_condition = Question::where('best_answer_id', '<>', null);
+						}elseif($value == 'no'){
+							$search_condition = Question::where('best_answer_id', '=', null);
+						}else{
+							$search_condition = Question::where('best_answer_id', '<>', null)->orWhere('best_answer_id', '=', null);
+						}
+						if($raw_keyword !== ''){
+							$questions = $search_condition->whereRaw(array('$text'=>array('$search'=> $raw_keyword)))->paginate($limit)->appends(request()->query());
+						}else{
+							$questions = $search_condition->paginate($limit)->appends(request()->query());
+						}
+						
+					}else{
+						$questions = Question::whereRaw(array('$text'=>array('$search'=> $keyword)))->paginate($limit)->appends(request()->query());
+					}
+				}elseif(strpos($value, 'is:') !== false){
+					$value = str_replace('is:','',$value);
+					
+					if($value){
+						if($raw_keyword !== ''){
+							if($value == 'question'){
+								$questions = Question::whereRaw(array('$text'=>array('$search'=> $raw_keyword)))->paginate($limit)->appends(request()->query());
+							}elseif($value == 'answer'){
+								$answers = Answer::whereRaw(array('$text'=>array('$search'=> $raw_keyword)))->get();
+								$question_key = [];
+								foreach($answers as $key => $value){
+									array_push($question_key, $value->question_id);
+								}
+								$questions = Question::whereIn('_id', $question_key)->paginate($limit)->appends(request()->query());
+							}else{
+								$questions = Question::whereRaw(array('$text'=>array('$search'=> $raw_keyword)))->paginate($limit)->appends(request()->query());
+							}	
+						}else{
+							if($value == 'question'){
+								$questions = Question::whereRaw(array('$text'=>array('$search'=> $keyword)))->paginate($limit)->appends(request()->query());
+							}elseif($value == 'answer'){
+								$questions = Answer::whereRaw(array('$text'=>array('$search'=> $keyword)))->paginate($limit)->appends(request()->query());
+							}else{
+								$questions = Question::whereRaw(array('$text'=>array('$search'=> $keyword)))->paginate($limit)->appends(request()->query());
+							}	
+						}
+						
+					}else{
+						$questions = Question::whereRaw(array('$text'=>array('$search'=> $keyword)))->paginate($limit)->appends(request()->query());
+					}
+				}elseif(strpos($value, 'views:') !== false){
+					$value = (int)(str_replace('views:','',$value));
+					
+					if(is_numeric($value)){
+						if($raw_keyword !== ''){
+							$questions = Question::where('total_view','>=', $value)->whereRaw(array('$text'=>array('$search'=> $raw_keyword)))->paginate($limit)->appends(request()->query());
+						}else{
+							$questions = Question::where('total_view','>=', $value)->paginate($limit)->appends(request()->query());
+						}
+						
+					}else{
+						$questions = Question::whereRaw(array('$text'=>array('$search'=> $keyword)))->paginate($limit)->appends(request()->query());
+					}
 				}
 			}
 		}else{
@@ -153,6 +252,8 @@ class HomeController extends Controller
 			$questions = Question::whereRaw(array('$text'=>array('$search'=> $raw_keyword)))->orWhereIn('_id', $question_key)->paginate($limit)->appends(request()->query());
 		}
 		
+		// var_dump($questions);
+		// die;
 
 		
 		

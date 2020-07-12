@@ -226,10 +226,18 @@ pre {
 .pv-archiveText1 {
     text-overflow: ellipsis;
     overflow: hidden;
-    width: 90%;
+    width: 100%;
     line-height: 25px;
     -webkit-line-clamp: 3;
     height: 75px;
     display: -webkit-box;
     -webkit-box-orient: vertical;
+}
+
+#advance_search_tutorial .table th, #advance_search_tutorial .table td{
+    line-height: normal;
+}
+
+#advance_search_tutorial .table tbody tr{
+    height: 30px;
 }

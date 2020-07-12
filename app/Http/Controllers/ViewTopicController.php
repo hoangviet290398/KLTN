@@ -9,6 +9,7 @@ use App\LikeDislike;
 use App\Notification;
 use App\User;
 use App\Category;
+use Session;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 
@@ -35,6 +36,14 @@ class ViewTopicController extends Controller
         {
             $bestAnswer= $question->bestAnswer;
             $bestAnswer->content = $parsedown->setMarkupEscaped(true)->text($bestAnswer->content);
+        }
+
+        $sessionKey = 'question_' . $id;
+        $sessionView = Session::get($sessionKey);
+        $post = Question::findOrFail($id);
+        if (!$sessionView) { //nếu chưa có session
+            Session::put($sessionKey, 1); //set giá trị cho session
+            $post->increment('total_view');
         }
         
         $categories = Category::all();

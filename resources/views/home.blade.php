@@ -33,7 +33,7 @@
                     </li>
                 </ul>
                 <br/>
-                <h5 class="text-left">{{number_format($questions->count())}} câu hỏi</h5>
+                <h5 class="text-left">{{number_format($questions->total())}} câu hỏi</h5>
             </div>
 
             <div class="card-body p-0">

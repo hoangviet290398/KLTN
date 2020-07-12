@@ -13,27 +13,48 @@ use Carbon\Carbon;
 		@include('layout.leftpanel')
 		<div class="card col-7">
 			<div class="card-header text-left" style="background-color: white">
-				{{-- <ul class="nav nav-pills font-weight-bold" >
-					<li class="nav-item">
-						<a class="nav-link active" data-toggle="pill" href="#home">Câu hỏi gần đây</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" data-toggle="pill" href="#menu1">Hot</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" data-toggle="pill" href="#menu1">Nhiều câu trả lời nhất</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" data-toggle="pill" href="#menu1">Chưa có câu trả lời</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" data-toggle="pill" href="#menu1">Tuần</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" data-toggle="pill" href="#menu2">Tháng</a>
-					</li>
-				</ul> --}}
-				<h2>Kết quả cho "{{$keyword}}"</h2>
+				<div class="row">
+					<div class="col-8">
+						<h2>Kết quả cho "{{$keyword}}"</h2>
+					</div>
+					<div class="col-4" style="text-align:end">
+						<a data-toggle="collapse" aria-expanded="false" href="#advance_search_tutorial" class="text-decoration-none">Advanced Search Tips</a>
+					</div>
+				</div>
+				<div class="collapse" id="advance_search_tutorial">
+				
+				   <table class="table">
+					  <thead>
+					    <tr>
+					      <th>Search type</th>
+					      <th>Search syntax</th>
+					    </tr>
+					  </thead>
+					  <tbody>
+					    <tr>
+					      <td>Tags</td>
+					      <td>tag:python</td>
+					    </tr>
+					    <tr>
+					      <td>Author</td>
+					      <td>user:1234<br/>user:me (yours)</td>
+					    </tr>
+					    <tr>
+					      <td>Answers</td>
+					      <td>answers:3 (3+)<br/>answers:0 (none)<br/>hasaccepted:yes<br/>hasaccepted:no</td>
+					    </tr>
+					    <tr>
+					      <td>Views</td>
+					      <td>views:50 (50+)</td>
+					    </tr>
+					    <tr>
+					      <td>Types</td>
+					      <td>is:question<br/>is:answer</td>
+					    </tr>
+					  </tbody>
+					</table>
+				 
+				</div>
 				<form action="{{ route('searchIndex') }}" method="get">
 					<div class="input-group mb-4">
 						<input type="search" name="keyword" placeholder="" aria-describedby="button-addon5" class="form-control" value="{{$keyword}}">
@@ -43,7 +64,7 @@ use Carbon\Carbon;
 					</div>
 				</form>
 				<br/>
-				<h5 class="text-left">{{number_format($all_question)}} kết quả</h5>
+				<h5 class="text-left">{{number_format($questions->total())}} kết quả</h5>
 
 			</div>
 			<div class="card-body p-0">

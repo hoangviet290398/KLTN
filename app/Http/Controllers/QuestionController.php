@@ -14,6 +14,7 @@ class QuestionController extends Controller
 {
 	private $typeFiles = array('application/x-rar-compressed', 'application/octet-stream', 'application/zip', 'application/x-rar', 'application/x-zip-compressed', 'multipart/x-zip', 'application/x-compressed');
 	private $startIdInUrl = 27;
+	//private $startIdInUrl = 32;
 
 	public function create()
 	{
@@ -33,6 +34,7 @@ class QuestionController extends Controller
 		$question->total_dislike = 0;
 		$question->total_answer = 0;
 		$question->attachment_path = null;
+		$question->total_view = 0;
 		$question->save();
 		if($request->hasFile('attachment')) {
 			$typeFiles = $this->typeFiles;
@@ -112,12 +114,16 @@ class QuestionController extends Controller
 
 	public function similarQuestions(Request $request){
 		$keyword = $request->keyword;
-		$client = new Client();
-		$res = $client->get('http://172.17.0.1:5000/getsearchresults?query='.$keyword.'&num_results=5');
-		$response =json_decode($res->getBody()->getContents('results'));
+		$fullText = Question::whereRaw(array('$text'=>array('$search'=> $keyword)))->project(['score'=>['$meta'=>'textScore']])->orderBy('score', ['$meta' => "textScore"])->take(10)->get();
+		// var_dump($fullText);
+		// die;
+		//array('score'=>array('$meta'=> 'textScore'))
+		// $client = new Client();
+		// $res = $client->get('http://172.17.0.1:5000/getsearchresults?query='.$keyword.'&num_results=5');
+		// $response =json_decode($res->getBody()->getContents('results'));
 		
-		$similar_questions = $response->results;
-		$recommend_question_id = [];
+		// $similar_questions = $response->results;
+		// $recommend_question_id = [];
 
 
 		// foreach($similar_questions as $key => $value){
@@ -126,7 +132,7 @@ class QuestionController extends Controller
 		// $limit=\Config::get('constants.options.ItemNumberPerPage');
 		// $questions = Question::whereIn('_id', $recommend_question_id)->get();
 		// //$question = json_decode($value);
-		foreach($similar_questions as $question){
+		foreach($fullText as $question){
 			echo view('layout.similar_questions_list',compact('question'));
 		}
 	}

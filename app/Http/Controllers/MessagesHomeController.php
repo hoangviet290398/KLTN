@@ -110,5 +110,14 @@ class MessagesHomeController extends Controller
         $data = ['from_user' => $from_user, 'to_user' => $to_user,'message'=>$message]; // sending from and to user id when pressed enter
         $pusher->trigger('my-channel', 'my-event', $data);
     }
-    
+
+    public function ajaxSearchUserForChat(Request $request){
+        $user_name = $request->user_name;
+        $users = User::whereRaw(array('$text'=>array('$search'=> $user_name)))->get();
+        if($users->count()<=0) return "";
+
+        foreach($users as $user){
+            echo view('layout.searchuserforchat',compact('user'));
+        }
+    }
 }

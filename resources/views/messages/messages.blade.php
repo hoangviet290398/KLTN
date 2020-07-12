@@ -10,6 +10,33 @@
     <script src="https://js.pusher.com/6.0/pusher.min.js"></script>
 
     <script>
+        $( document ).ready(function() {
+            $('#searchUsersForChat').keyup(function() {
+                var user_name = $(this).val();
+                console.log(user_name);
+                if (user_name != '') {
+                    $.ajax({
+                        url: "{{ route('ajaxSearchUserForChat') }}",
+                        method: "GET",
+                        data: {
+                            user_name
+                        },
+                        success: function(data) {
+                            if (data != "") {
+                                $('#result_user_list').empty();
+                                $('#result_user_list').html(data);
+                                $('#result_user_list').show();
+                            } else {
+                                $('#result_user_list').hide();
+                            }
+                        }
+                    })
+                } else {
+                    $('#result_user_list').hide();
+                }
+            });
+        });
+        
     //show unread message notification
     function unreadMessage(id) {
         //isMessageRead = $("#messageNotification").attr('data-userId');
@@ -24,6 +51,7 @@
     var forwardReceiverName = localStorage.getItem('receiverName');
     console.log('foID' + forwardId);
     localStorage.clear();
+
     </script>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <style>
@@ -41,6 +69,10 @@
         color: #ffffff;
         font-size: 12px;
     }
+    #result_user_list{
+        border: 1px solid black;
+
+    }
     </style>
 </head>
 
@@ -51,21 +83,28 @@
             <div class="col-3 px-0 border-right">
                 <div class="bg-white">
 
-                    <div class="px-4 py-2  ">
+                    <div class="px-4 py-2">
                         <div class="row px-2 align-center">
                             <a href="/" style="color:#0275d8"><i class="fa fa-arrow-left fa-2x pr-2 pt-2"></i></a>
                             @if(is_file('storage/avatars/'.Auth::user()->avatar))
-                            <img src="{{ asset('storage/avatars')}}/{{Auth::user()->avatar}}" alt="user" width="50"
-                                class="rounded-circle">
+                            <img src="{{ asset('storage/avatars')}}/{{Auth::user()->avatar}}" alt="user" style="width: 50px; height: 50px;" class="rounded-circle">
                             @else
-                            <img src="{{Auth::user()->avatar}}" alt="user" width="50" class="rounded-circle">
+                            <img src="{{Auth::user()->avatar}}" alt="user" style="width: 50px; height: 50px;" class="rounded-circle">
                             @endif
                             <p class="h4 mb-0 px-2 py-3">{{Auth::user()->fullname}} (bạn)</p>
                         </div>
 
                     </div>
+                    <div class="form-group px-4">
+                        <input id="searchUsersForChat" type="search" placeholder="Tìm người dùng" aria-describedby="button-addon" class="border-primary" style="width: 100%">
+                        <div id="result_user_list" class="scrollbar scrollbar-lady-lips">
+                          
+                        </div>
+                        
+                    </div>
+                    
                     <div id="usersBox" class="messages-box">
-                        <div class="list-group rounded-0">
+                        <div class="list-group rounded-0 px-4">
 
                             @foreach($users as $user)
                             <a id="{{$user->id}}" data-receiverName="{{$user->fullname}}"

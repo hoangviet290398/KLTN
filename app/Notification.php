@@ -10,7 +10,7 @@ class Notification extends Eloquent
      * Array contain actions below:
      * answer like dislike vote
      */
-    static public $action = array('answer'=>'answer','like'=>'like','dislike'=>'dislike','accept'=>'accept','deleted'=>'deleted');
+    static public $action = array('answer'=>'answer','upvote'=>'upvote','downvote'=>'downvote','accept'=>'accept','deleted'=>'deleted');
 
     /**
      * Array of targets:

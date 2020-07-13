@@ -241,3 +241,20 @@ pre {
 #advance_search_tutorial .table tbody tr{
     height: 30px;
 }
+
+.up_vote, .down_vote, .view_icon, .reply_icon{
+    color:#BBC0C4;
+}
+.up_vote_checked, .down_vote_checked{
+    color: #0678F4;
+}
+.up_vote_checked:hover, .down_vote_checked:hover{
+    cursor: pointer;
+}
+.up_vote:hover, .down_vote:hover{
+    cursor: pointer;
+}
+
+.icon_text{
+    color:#787878;
+}

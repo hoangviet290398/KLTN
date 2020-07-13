@@ -5,6 +5,7 @@ use App\Question;
 use Illuminate\Http\Request;
 use App\Category;
 use App\Answer;
+use App\User;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\AddTopicRequest;
 use Illuminate\Support\Facades\Storage;
@@ -35,6 +36,7 @@ class QuestionController extends Controller
 		$question->total_answer = 0;
 		$question->attachment_path = null;
 		$question->total_view = 0;
+		$question->score = 0;
 		$question->save();
 		if($request->hasFile('attachment')) {
 			$typeFiles = $this->typeFiles;
@@ -50,6 +52,9 @@ class QuestionController extends Controller
 				return redirect()->back();
 			}
 		}
+		$user = User::find(Auth::user()->_id);
+		$user->reputation_score += 10;
+		$user->save();
 		$id = $question->_id;
 
 		return redirect()->route('viewTopic', ['id' => $id]);

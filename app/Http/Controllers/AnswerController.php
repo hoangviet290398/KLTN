@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Answer;
 use Illuminate\Http\Request;
 use App\Question;
+use App\User;
 use App\Notification;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Collection;
@@ -34,6 +35,7 @@ class AnswerController extends Controller
 		$answer->total_like = 0;
 		$answer->total_dislike = 0;
 		$answer->attachment_path = null;
+		$answer->score = 0;
 		$answer->save();
 
 		if($request->hasFile('attachment')) {
@@ -56,6 +58,10 @@ class AnswerController extends Controller
 		{
 			return redirect()->route('viewTopic', ['id' => $answer->question_id]);
 		}
+
+		$user = User::find(Auth::user()->_id);
+		$user->reputation_score += 15;
+		$user->save();
 
 		(new UserController)->createNotification($question->user, Notification::$target['question'], Notification::$action['answer'],  $question->_id);
 

@@ -25,6 +25,7 @@ class SignUpController extends Controller
 		$user->about_me = null;
 		$user->admin = 0;
 		$user->new_notification = 0;
+		$user->reputation_score = 0;
 		$user->save();		
 		return redirect()->route('signInIndex');
 	}

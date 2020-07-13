@@ -18,6 +18,14 @@ class ViewTopicController extends Controller
 
     public function view($id)
     {
+        $sessionKey = 'question_' . $id;
+        $sessionView = Session::get($sessionKey);
+        $post = Question::findOrFail($id);
+        if (!$sessionView) { //nếu chưa có session
+            Session::put($sessionKey, 1); //set giá trị cho session
+            $post->increment('total_view');
+        }
+
         $question = Question::find($id);
         if(empty($question)) return redirect()->back();
 
@@ -36,14 +44,6 @@ class ViewTopicController extends Controller
         {
             $bestAnswer= $question->bestAnswer;
             $bestAnswer->content = $parsedown->setMarkupEscaped(true)->text($bestAnswer->content);
-        }
-
-        $sessionKey = 'question_' . $id;
-        $sessionView = Session::get($sessionKey);
-        $post = Question::findOrFail($id);
-        if (!$sessionView) { //nếu chưa có session
-            Session::put($sessionKey, 1); //set giá trị cho session
-            $post->increment('total_view');
         }
         
         $categories = Category::all();
@@ -66,6 +66,9 @@ class ViewTopicController extends Controller
 
             }else
             {
+                $user = User::find($answer->user->id);
+                $user->reputation_score += 30;
+                $user->save();
                 (new UserController)->createNotification($answer->user, Notification::$target['answer'], Notification::$action['accept'],  $question->_id);
             }
         }       
@@ -77,12 +80,17 @@ class ViewTopicController extends Controller
     {
        
         $question = Answer::find($id_answer)->question;
+        $answer = Answer::find($id_answer);
         if (Auth::user()->id==$question->user_id)
         {            
             $question->best_answer_id = null;
             echo var_dump($question->best_answer_id);
 
             $question->save();
+
+            $user = User::find($answer->user_id);
+            $user->reputation_score -= 30;
+            $user->save();
         }
         
 
@@ -91,14 +99,14 @@ class ViewTopicController extends Controller
     
     public function checkLike($post_id,$post_type,$user_id)
     {
-        $user_liked=LikeDislike::where('user_id',$user_id)->where('post_id', $post_id)->where('action', "Like")->where('post_type',$post_type)->first();
+        $user_liked=LikeDislike::where('user_id',$user_id)->where('post_id', $post_id)->where('action', "Upvote")->where('post_type',$post_type)->first();
 
         return $user_liked;
     }
 
     public function checkDislike($post_id,$post_type,$user_id)
     {
-        $user_disliked=LikeDislike::where('user_id',$user_id)->where('post_id', $post_id)->where('action', "Dislike")->where('post_type',$post_type)->first();
+        $user_disliked=LikeDislike::where('user_id',$user_id)->where('post_id', $post_id)->where('action', "Downvote")->where('post_type',$post_type)->first();
 
         return $user_disliked;
     }
@@ -107,6 +115,7 @@ class ViewTopicController extends Controller
     {
         $post_id = $request->question_id;
         $post_type = $request->post_type;
+        $vote = $request->vote;
         $user_liked    =$this->checkLike($post_id,$post_type,Auth::user()->id);
         $user_disliked =$this->checkDislike($post_id,$post_type,Auth::user()->id);
         
@@ -114,40 +123,40 @@ class ViewTopicController extends Controller
             if ($post_type =='Question')
             {
                 $question= Question::find($post_id);    
-                $question->total_like += 1;
+                $question->score = $vote;
                 $question->save();
                 if(Auth::user()->id == $question->user->id)
                 {
 
                 }else
                 {
-                    (new UserController)->createNotification($question->user, Notification::$target['question'], Notification::$action['like'],  $question->_id);
+                    (new UserController)->createNotification($question->user, Notification::$target['question'], Notification::$action['upvote'],  $question->_id);
                 }
             }
             else
             {
                 $answer= Answer::find($post_id);       
-                $answer->total_like += 1;
+                $answer->score = $vote;
                 $answer->save();
                 if(Auth::user()->id == $answer->user->id)
                 {
 
                 }else{
-                    (new UserController)->createNotification($answer->user, Notification::$target['answer'], Notification::$action['like'],  $answer->question_id);   
+                    (new UserController)->createNotification($answer->user, Notification::$target['answer'], Notification::$action['upvote'],  $answer->question_id);   
                 }         
             }            
-            $this->addLikeDislike($post_id,$post_type,Auth::user(),"Like");            
+            $this->addLikeDislike($post_id,$post_type,Auth::user(),"Upvote");            
             if ($user_disliked)
             {   
 
                 if ($post_type =='Question')
                 {         
-                    $question->total_dislike -= 1;
+                    $question->score = $vote;
                     $question->save();
                 }
                 else
                 {            
-                    $answer->total_dislike -= 1;
+                    $answer->score = $vote;
                     $answer->save();
                 }
                 $user_disliked->delete();
@@ -158,13 +167,13 @@ class ViewTopicController extends Controller
             if ($post_type =='Question')
             {
                 $question= Question::find($post_id);    
-                $question->total_like -= 1;
+                $question->score = $vote;
                 $question->save();
             }
             else
             {   
                 $answer= Answer::find($post_id);       
-                $answer->total_like -= 1;
+                $answer->score = $vote;
                 $answer->save();
             }                
             $user_liked->delete();
@@ -179,6 +188,7 @@ class ViewTopicController extends Controller
     {
         $post_id = $request->question_id;
         $post_type = $request->post_type;
+        $vote = $request->vote;
         $user_liked=$this->checkLike($post_id,$post_type,Auth::user()->id);
         $user_disliked=$this->checkDislike($post_id,$post_type,Auth::user()->id);
         if (!$user_disliked)
@@ -186,38 +196,38 @@ class ViewTopicController extends Controller
             if ($post_type =='Question')
             {
                 $question= Question::find($post_id);          
-                $question->total_dislike += 1;
+                $question->score = $vote;
                 $question->save();
                 if(Auth::user()->id == $question->user->id)
                 {
 
                 }else{
-                    (new UserController)->createNotification($question->user, Notification::$target['question'], Notification::$action['dislike'],  $question->_id);
+                    (new UserController)->createNotification($question->user, Notification::$target['question'], Notification::$action['downvote'],  $question->_id);
                 }
             }
             else
             {
                 $answer= Answer::find($post_id);              
-                $answer->total_dislike += 1;
+                $answer->score = $vote;
                 $answer->save();
                 if(Auth::user()->id == $answer->user->id)
                 {
 
                 }else{
-                    (new UserController)->createNotification($answer->user, Notification::$target['answer'], Notification::$action['dislike'],  $answer->question_id);
+                    (new UserController)->createNotification($answer->user, Notification::$target['answer'], Notification::$action['downvote'],  $answer->question_id);
                 }
             }
-            $this->addLikeDislike($post_id,$post_type,Auth::user(),"Dislike"); 
+            $this->addLikeDislike($post_id,$post_type,Auth::user(),"Downvote"); 
             if ($user_liked)
             {   
                 if ($post_type =='Question')
                 {         
-                    $question->total_like -= 1;
+                    $question->score = $vote;
                     $question->save();
                 }
                 else
                 {            
-                    $answer->total_like -= 1;
+                    $answer->score = $vote;
                     $answer->save();
                 }
                 $user_liked->delete();
@@ -228,13 +238,13 @@ class ViewTopicController extends Controller
             if ($post_type =='Question')
             {
                 $question= Question::find($post_id);          
-                $question->total_dislike -= 1;
+                $question->score = $vote;
                 $question->save();
             }
             else
             {
                 $answer= Answer::find($post_id);            
-                $answer->total_dislike -= 1;
+                $answer->score = $vote;
                 $answer->save();
             }
 

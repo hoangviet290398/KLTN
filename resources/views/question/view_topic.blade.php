@@ -26,29 +26,39 @@ use App\LikeDislike;
         }
     }
 
-    $('#large_like').click('#like_button', function () {
+    $('#question_up_vote').click(function () {
             var question_id = $(this).data("value");
             var post_type = "Question";
-          
+            var is_checked_up = $('#question_up_vote').data('checked');
+            var is_checked_down = $('#question_down_vote').data('checked');
+            if(is_checked_up == '1'){
+                var vote = parseInt($('#question_vote_count').text()) - 1;
+                $('#question_up_vote').data('checked','0');
+                $('#question_up_vote').css('color', '#BBC0C4');
+            }else{
+                if(is_checked_down == '1'){
+                    var vote = parseInt($('#question_vote_count').text()) + 1;
+                    $('#question_down_vote').data('checked','0');
+                    $('#question_up_vote').data('checked','1');
+                    $('#question_down_vote').css('color', '#BBC0C4')
+                    $('#question_up_vote').css('color', '#0678F4')
+                }else{
+                    var vote = parseInt($('#question_vote_count').text()) + 1;
+                    $('#question_up_vote').data('checked','1');
+                    $('#question_up_vote').css('color', '#0678F4')
+                }
+            }
+            $('#question_vote_count').text(vote);
             if (question_id != '') {
                 $.ajax({
                     url: "{{ route('like') }}",
                     method: "GET",
                     data: {
                         question_id,
-                        post_type
+                        post_type,
+                        vote
                     },
                     success: function (data) {
-                        data = $.parseJSON(data);
-                        
-                        if(data.status == true){
-                                                            
-                            $("#large_like").load(location.href + " #large_like"); 
-                            $("#large_dislike").load(location.href + " #large_dislike");                                                                                            
-                        }
-                        else{
-                            
-                        }
                     }
                 })
             }
@@ -57,30 +67,28 @@ use App\LikeDislike;
             }
         });
 
-    $('#large_dislike').click('#dislike_button', function () {
+    $('#question_down_vote').click(function () {
             var question_id = $(this).data("value");
             var post_type = "Question";
-            console.log(question_id);
-          
+            var is_checked = $('#question_down_vote').data('checked');
+            if(is_checked == '1'){
+                var vote = parseInt($('#question_vote_count').text()) + 1;
+                $('#question_down_vote').css('color', '#BBC0C4')
+            }else{
+                var vote = parseInt($('#question_vote_count').text()) - 1;
+                $('#question_down_vote').css('color', '#0678F4')
+            }
+            $('#question_vote_count').text(vote);
             if (question_id != '') {
                 $.ajax({
                     url: "{{ route('dislike') }}",
                     method: "GET",
                     data: {
                         question_id,
-                        post_type
+                        post_type,
+                        vote
                     },
                     success: function (data) {
-                        data = $.parseJSON(data);
-                        
-                        if(data.status == true){
-                                                            
-                            $("#large_dislike").load(location.href + " #large_dislike");
-                            $("#large_like").load(location.href + " #large_like");                                                                                              
-                        }
-                        else{
-                            
-                        }
                     }
                 })
             }
@@ -169,8 +177,8 @@ use App\LikeDislike;
                         
                         if(data.status == true){
                                                             
-                            $("#large_like_answer").load(location.href + " #large_like_answer"); 
-                            $("#large_dislike_answer").load(location.href + " #large_dislike_answer");                                                                                            
+                            $("#question_vote_count").load(location.href + " #question_vote_count"); 
+                            $("#question_vote_count").load(location.href + " #question_vote_count");                                                                                            
                         }
                         else{
                             
@@ -291,7 +299,7 @@ use App\LikeDislike;
                 <br>
             </div>
             <!-- End Username, Date, Edit, Delete Block -->
-
+           
             <!-- Start Question Title Block -->
             <div class="col-sm-12">
                 <h3 class="text-primary font-weight-bold d-flex justify-content-sm-between">
@@ -303,9 +311,23 @@ use App\LikeDislike;
             <!-- End Question Title Block -->
 
 
-
+            <div class="col-sm-1" style="text-align:center">
+                @if(Auth::check())
+                     <i class="fa fa-caret-up fa-3x <?php echo (LikeDislike::where('post_id',$question->id)->where('user_id',Auth::user()->id)->where('action','Upvote')->count()!= 0) ? 'up_vote_checked' : 'up_vote'?>" id="question_up_vote" data-value="{{$question->id}}" <?php echo (LikeDislike::where('post_id',$question->id)->where('user_id',Auth::user()->id)->where('action','Upvote')->count()!= 0) ? 'data-checked="1"' : 'data-checked="0"'?>></i>
+                     <h5 class="icon_text" id="question_vote_count">{{$question->score}}</h5>
+                     <i class="fa fa-caret-down fa-3x <?php echo (LikeDislike::where('post_id',$question->id)->where('user_id',Auth::user()->id)->where('action','Downvote')->count()!= 0) ? 'down_vote_checked' : 'down_vote'?>" id="question_down_vote" data-value="{{$question->id}}" <?php echo (LikeDislike::where('post_id',$question->id)->where('user_id',Auth::user()->id)->where('action','Downvote')->count()!= 0) ? 'data-checked="1"' : 'data-checked="0"'?>></i>
+                 @else
+                     <i class="fa fa-caret-up fa-3x up_vote"></i>
+                     <h5 class="icon_text" id="question_vote_count">{{$question->score}}</h5>
+                     <i class="fa fa-caret-down fa-3x down_vote"></i>
+                     <i class="fa fa-eye view_icon"></i>
+                     <h6 class="icon_text">{{number_format($question->total_view)}}</h6>
+                     <i class="fa fa-reply reply_icon"></i>
+                     <h6 class="icon_text">{{number_format($question->total_answer)}}</h6>
+                 @endif
+            </div>
             <!-- Start Question Content Block -->
-            <div class="col-sm-12 px-3" id="big">
+            <div class="col-sm-11 px-3" id="big">
                 <div class="image-markdown">{!! html_entity_decode($question->content) !!}</div>
                 @if($question->attachment_path)
                 <b class="badge badge-warning">Attachment:</b>
@@ -313,45 +335,6 @@ use App\LikeDislike;
                     href="{{asset('storage/files/'.$question->attachment_path)}}"><i>{{$question->attachment_path}}</i></a>
 
                 @endif
-                <div class="row" id="large"
-                    style="width: 500px; color:#787878; font-size: 20px; margin-bottom: 10px; margin-left: 5px;">
-                    <div class="col-xs" style="width:70px" id="large_like" data-value="{{$question->id}}">
-                        @if (Auth::check())
-                            @if(LikeDislike::where('post_id',$question->id)->where('user_id',Auth::user()->id)->where('action','Like')->count()!= 0)
-                           
-                                {{-- <input type="text" id="question_id" value="{{$question->id}}" hidden> --}}
-                               <i class="fa fa-thumbs-up" style="color: blue;" id="like_button"></i>
-                                {{$question->total_like}}
-                            @else
-                                <i class="fa fa-thumbs-up" style="color: #787878;" id="like_button"></i>
-                                {{$question->total_like}}
-                            @endif
-
-                        @else
-                            <i class="fa fa-thumbs-up" style="color:#787878"></i>
-                            {{$question->total_like}}
-                        @endif
-                    </div>
-                    <div class="col-xs" style="width:70px" id="large_dislike" data-value="{{$question->id}}">
-                        @if (Auth::check())
-
-                            @if(LikeDislike::where('post_id',$question->id)->where('user_id',Auth::user()->id)->where('action','Dislike')->count()!= 0)
-                             <i class="fa fa-thumbs-down" style="color: red;" id="dislike_button"></i>
-                                {{$question->total_dislike}}
-                            @else
-                                <i class="fa fa-thumbs-down" style="color: #787878;" id="dislike_button"></i>
-                                {{$question->total_dislike}}
-                            @endif
-
-                        @else
-                            <i class="fa fa-thumbs-down" style="color:#787878"></i>
-                            {{$question->total_dislike}}
-                        @endif
-                    </div>
-                    <div class="col-xs" style="width:70px">
-                        <i class="fa fa-comment"></i> {{$question->total_answer}}
-                    </div>
-                </div>
             </div>
             <!-- End Question Content Block -->
         </div>
@@ -370,7 +353,7 @@ use App\LikeDislike;
         <!-- Start Best Answer Block -->
         @if ($bestAnswer!=null)
         <div class="row px-3 pt-3">
-            <div class="col-1">
+            <div class="col-1" style="text-align:center;">                
                 @if(is_file('storage/avatars/'.$bestAnswer->user->avatar))
                 <a href="/personalinfomation/{{ $bestAnswer->user->_id }}" class="text-decoration-none"><img src="{{ asset('storage/avatars')}}/{{$bestAnswer->user->avatar}}" class="user-avatar rounded-circle align-middle"></a>
                 @else
@@ -378,9 +361,14 @@ use App\LikeDislike;
                 @endif
                 <br>
                 <br>
+                <i class="fa fa-caret-up fa-3x up_vote"></i>
+                <h5 class="icon_text">2</h5>
+                <i class="fa fa-caret-down fa-3x down_vote"></i>
+
                 <div class="d-flex" style="justify-content :center; align-items:center;  font-size:200%; color:#66ad1f">
                     <i class="fa fa-check" aria-hidden="true"></i>
                 </div>
+                       
             </div>
             <div class="col-sm-11">
                 <div class="float-left">
@@ -434,8 +422,10 @@ use App\LikeDislike;
                             {{$bestAnswer->total_dislike}}
                         @endif
                     </div>
-                    @if (Auth::check() and (Auth::user()->id==$question->user_id))
-                        <div class="col-10 justify-content-sm-end">
+                    
+                </div>
+                @if (Auth::check() and (Auth::user()->id==$question->user_id))
+                        <div class="col-10 justify-content-sm-end" style="float: right">
 
                             <a href="{{asset('removebestanswer')}}/{{$bestAnswer->_id}}"><button type="button"
                                     class="float-right btn btn-warning">Gỡ câu trả lời hay nhất</button></a>
@@ -445,7 +435,6 @@ use App\LikeDislike;
                                    </button> --}}
                         </div>
                     @endif
-                </div>
             </div>
         </div>
         <hr>
@@ -457,7 +446,7 @@ use App\LikeDislike;
 
             @if (($bestAnswer==null) or (($bestAnswer!=null) and ($answer->_id!=$bestAnswer->_id)))
                 <div class="row px-3 pt-3">
-                    <div class="col-sm-1">
+                    <div class="col-sm-1" style="text-align:center">
                         @if(is_file('storage/avatars/'.$answer->user->avatar))
                          <a href="/personalinfomation/{{ $answer->user->_id }}" class="text-decoration-none"><img src="{{asset('storage/avatars')}}/{{$answer->user->avatar}}"
                             class="user-avatar rounded-circle align-middle"></a>
@@ -472,6 +461,11 @@ use App\LikeDislike;
                                 <i class="fa fa-check" aria-hidden="true"></i>
                             </div>
                         @endif
+                      
+                        <i class="fa fa-caret-up fa-3x up_vote"></i>
+                        <h5 class="icon_text">2</h5>
+                        <i class="fa fa-caret-down fa-3x down_vote"></i>
+                       
                     </div>
                     <div class="col-sm-11">
                         <div class="float-left">
@@ -527,16 +521,17 @@ use App\LikeDislike;
                                         {{$answer->total_dislike}}
                                 @endif
                             </div>
-                            @if (Auth::check() and(Auth::user()->id==$question->user_id))                  
-                                <div class='col-10 justify-content-sm-end'>
+                            
+                        </div>
+                        @if (Auth::check() and(Auth::user()->id==$question->user_id) and ($question->best_answer_id == null))                  
+                                <div class='col-10 justify-content-sm-end' style="float: right">
                                     <a href="{{asset('bestanswer')}}/{{$answer->_id}}"><button type="button"
                                             class="float-right btn btn-success">Câu trả lời hay nhất</button></a>
                                     {{-- <input type="text" id="vote_bestanswer_id" value="{{$answer->id}}" hidden>
                                     <button type="button" id="vote_bestanswer_button" 
                                             class="float-right btn btn-success">Câu trả lời hay nhất</button> --}}
                                 </div>
-                            @endif
-                        </div>
+                        @endif
                     </div>
                 </div>
                 <hr>

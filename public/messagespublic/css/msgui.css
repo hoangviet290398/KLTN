@@ -35,14 +35,14 @@ body {
 }
 
 .messages-box {
-    min-height: 91.75vh;
-    max-height: 91.75vh;
+    min-height: 82.5vh;
+    max-height: 82.5vh;
     overflow-y: scroll;
 }
 
 .chat-box {
-    min-height: 83vh;
-    max-height: 83vh;
+    min-height: 78vh;
+    max-height: 78vh;
     overflow-y: scroll;
 }
 

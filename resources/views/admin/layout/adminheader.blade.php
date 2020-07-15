@@ -13,7 +13,7 @@
             </button>
 
             <!-- Topbar Search -->
-           {{--  <form class="d-none d-sm-inline-block form-inline my-2 my-md-0 navbar-search">
+            {{--  <form class="d-none d-sm-inline-block form-inline my-2 my-md-0 navbar-search">
                 <div class="input-group">
                     <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
                         aria-label="Search" aria-describedby="basic-addon2">
@@ -53,7 +53,7 @@
 
                 <!-- Nav Item - Alerts -->
                 <li class="nav-item dropdown no-arrow mx-1">
-                   {{--  <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
+                    {{--  <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-bell fa-fw"></i>
                         <!-- Counter - Alerts -->
@@ -104,7 +104,7 @@
 
                 <!-- Nav Item - Messages -->
                 <li class="nav-item dropdown no-arrow mx-1">
-                   {{--  <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
+                    {{--  <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-envelope fa-fw"></i>
                         <!-- Counter - Messages -->
@@ -168,16 +168,20 @@
 
                 @if(Auth::check() && Auth::user()->admin == 1)
                 <!-- Nav Item - User Information -->
+
                 <li class="nav-item dropdown no-arrow">
+
                     <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
                         <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->fullname }}</span>
-                        <img class="img-profile rounded-circle" src="{{ asset('storage/avatars')}}/{{Auth::user()->avatar}}">
+                        <img class="img-profile rounded-circle"
+                            src="{{ asset('storage/avatars')}}/{{Auth::user()->avatar}}">
                     </a>
+
                     <!-- Dropdown - User Information -->
                     <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                         aria-labelledby="userDropdown">
-                       {{--  <a class="dropdown-item" href="#">
+                        {{--  <a class="dropdown-item" href="#">
                             <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                             Profile
                         </a>
@@ -191,12 +195,12 @@
                         </a> --}}
                         <div class="dropdown-divider"></div>
                         <form action="{{ route('logOut') }}" method="post">
-                        @csrf
-                        <button type="submit" class="dropdown-item">
-                             <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                            Đăng xuất
-                        </button>
-                       
+                            @csrf
+                            <button type="submit" class="dropdown-item">
+                                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                Đăng xuất
+                            </button>
+
                         </form>
                     </div>
                 </li>
@@ -209,9 +213,9 @@
 
         <div class="mt-2">
 
-           <!-- Body goes here -->
-           @include('admin.adminusers')
-           @include('admin.adminquestions')
+            <!-- Body goes here -->
+            @include('admin.adminusers')
+            @include('admin.adminquestions')
         </div>
 
 

@@ -2,8 +2,7 @@
         <div class="bg-gray px-4 py-2 bg-white border-bottom">
             <!-- Receiver name -->
             <div class="row">
-                <img src="https://res.cloudinary.com/mhmd/image/upload/v1564960395/avatar_usae7z.svg" alt="user"
-                    width="60" class="rounded-circle">
+                
                 <p id="target_name" class="h4 mb-0 px-2 py-3"></p>
             </div>
         </div>

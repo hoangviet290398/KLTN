@@ -8,7 +8,7 @@
 
 
 
-    <div class="mt-1 d-flex justify-content-center">
+    <div class="mt-1 d-flex justify-content-center" style="overflow-x:hidden">
         @include('layout.leftpanel')
         <div class="card col-7">
             <div class="card-header text-center" style="background-color: white">

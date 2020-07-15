@@ -95,7 +95,7 @@
                         </div>
 
                     </div>
-                    <div class="form-group px-4">
+                    <div class="form-group pl-4 pr-2">
                         <input id="searchUsersForChat" type="search" placeholder="Tìm người dùng" aria-describedby="button-addon" class="border-primary" style="width: 100%">
                         <div id="result_user_list" class="scrollbar scrollbar-lady-lips">
                           
@@ -104,7 +104,7 @@
                     </div>
                     
                     <div id="usersBox" class="messages-box">
-                        <div class="list-group rounded-0 px-4">
+                        <div class="list-group rounded-0">
 
                             @foreach($users as $user)
                             <a id="{{$user->id}}" data-receiverName="{{$user->fullname}}"
@@ -157,7 +157,7 @@
                                                 </script>
                                                 @endif
                                                 @endif
-                                                <p class="col-3 mb-0 text-small ">
+                                                <p class="col-4 mb-0 text-small ">
                                                     {{date("F d", strtotime($latestMessage['created_at']))}}</p>
                                             </div>
                                             @endif
@@ -178,11 +178,11 @@
             </div>
             <!-- Chat Box-->
 
-            <div id="UserChatBox" style="display:none" class="col-6 px-0 border-right">
+            <div id="UserChatBox" style="display:none" class="col-5 px-0 border-right">
                 @include('messages.chatbox')
 
             </div>
-            <div id="UserProfile" class="col-3" style="display:none">
+            <div id="UserProfile" class="col-4" style="display:none">
                 @include('messages.user_profile')
             </div>
             <div id="welcomeToMessage" style="display:block" class="col-9">

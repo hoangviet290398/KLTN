@@ -41,11 +41,11 @@
                 <div class="row px-3 pt-3">
                     @if(is_file('storage/avatars/'.$question->user->avatar))
                     <div class="col-sm-1"><a href="/personalinfomation/{{ $question->user->_id }}" class="text-decoration-none"><img src="{{ asset('storage/avatars')}}/{{$question->user->avatar}}"
-                            class="img-fluid rounded-circle align-middle user-avatar"></a></div>
+                            class="rounded-circle align-middle user-avatar"></a></div>
                     <div class="col-sm-11">
                     @else
                        <div class="col-sm-1"><a href="/personalinfomation/{{ $question->user->_id }}" class="text-decoration-none"><img src="{{$question->user->avatar}}"
-                            class="img-fluid rounded-circle align-middle user-avatar"></a></div>
+                            class="rounded-circle align-middle user-avatar"></a></div>
                         <div class="col-sm-11">
                     @endif
                         <a href="/personalinfomation/{{ $question->user->_id }}" class="text-decoration-none">

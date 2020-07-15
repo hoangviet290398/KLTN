@@ -7,7 +7,7 @@ use App\LikeDislike;
 
 @section('js')
 <script>
-$(document).ready(function(){
+
     $('#fileUpload').fileinput({
         allowedFileExtensions: ['zip', 'rar'],
         theme: 'fa',
@@ -278,10 +278,12 @@ $(document).ready(function(){
         });
     var answer_id = localStorage.getItem('answerID');
     localStorage.clear();
-    
-    $('html, body').animate({
-        scrollTop: $("#answer_"+answer_id).offset().top - 100
-    }, 1000);
+    if(answer_id){
+        $('html, body').animate({
+            scrollTop: $("#answer_"+answer_id).offset().top - 100
+        }, 1000);
+    }
+   
 
     var containers = document.getElementsByClassName("image-markdown");
     for (index_container = 0; index_container < containers.length; index_container++) {
@@ -290,12 +292,12 @@ $(document).ready(function(){
             imgs[index_img].setAttribute("class", "h-100 w-100");
         }
     }
-})
+
 </script>
 @endsection
 
 @section('content')
-<div class="mt-1 d-flex justify-content-center" >
+<div class="mt-1 d-flex justify-content-center" style="overflow-x:hidden" >
 @include('layout.leftpanel')
 <div class="card col-7">
 

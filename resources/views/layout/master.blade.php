@@ -176,6 +176,7 @@
     $("#switch_tab a").click(function(e){
             e.preventDefault();
             $(this).tab('show');
+            $('#tab_title').text($(this).attr('title'));
         });
 
     function showAnswer(answer_id) {

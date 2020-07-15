@@ -24,6 +24,7 @@ body {
 
 .user-avatar {
     width: 40px;
+    height: 40px!important;
     display: inline-block;
     margin-right: 20px;
     box-sizing: border-box;
@@ -234,27 +235,37 @@ pre {
     -webkit-box-orient: vertical;
 }
 
-#advance_search_tutorial .table th, #advance_search_tutorial .table td{
+#advance_search_tutorial .table th,
+#advance_search_tutorial .table td {
     line-height: normal;
 }
 
-#advance_search_tutorial .table tbody tr{
+#advance_search_tutorial .table tbody tr {
     height: 30px;
 }
 
-.up_vote, .down_vote, .view_icon, .reply_icon{
-    color:#BBC0C4;
+.up_vote,
+.down_vote,
+.view_icon,
+.reply_icon {
+    color: #BBC0C4;
 }
-.up_vote_checked, .down_vote_checked{
+
+.up_vote_checked,
+.down_vote_checked {
     color: #0678F4;
 }
-.up_vote_checked:hover, .down_vote_checked:hover{
-    cursor: pointer;
-}
-.up_vote:hover, .down_vote:hover{
+
+.up_vote_checked:hover,
+.down_vote_checked:hover {
     cursor: pointer;
 }
 
-.icon_text{
-    color:#787878;
+.up_vote:hover,
+.down_vote:hover {
+    cursor: pointer;
+}
+
+.icon_text {
+    color: #787878;
 }

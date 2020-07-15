@@ -34,7 +34,7 @@ class ViewTopicController extends Controller
         $bestAnswer=null;
         $parsedown = new \Parsedown();
         $question->content = $parsedown->setMarkupEscaped(true)->text($question->content);
-        $topMembers = User::all();
+        $topMembers = User::where('admin',0)->orderBy('reputation_score', 'desc')->take(10)->get();
         
         foreach ($answers as $answer) 
         {

@@ -20,7 +20,7 @@ class HomeController extends Controller
 		$questions = Question::orderBy('created_at', 'desc')->paginate($limit);
 		$questions->setPath('/');
 
-		$topMembers = User::all();
+		$topMembers = User::where('admin',0)->orderBy('reputation_score', 'desc')->take(10)->get();
 
 		$categories = Category::all();
 
@@ -35,7 +35,7 @@ class HomeController extends Controller
 		$questions = Question::orderBy('total_answer', 'desc')->paginate($limit);
 		$questions->setPath('/');
 
-		$topMembers = User::all();
+		$topMembers = User::where('admin',0)->orderBy('reputation_score', 'desc')->take(10)->get();
 		$categories = Category::all();
 		
 		return view('home_most_answered',compact('questions','topMembers','categories'));
@@ -44,10 +44,10 @@ class HomeController extends Controller
 	public function noAnswers()
 	{
 		$limit=\Config::get('constants.options.ItemNumberPerPage');
-		$questions = Question::where('total_answer', '0')->orderBy('created_at', 'desc')->paginate($limit);
+		$questions = Question::where('total_answer', 0)->orderBy('created_at', 'desc')->paginate($limit);
 		$questions->setPath('/');
 
-		$topMembers = User::all();
+		$topMembers = User::where('admin',0)->orderBy('reputation_score', 'desc')->take(10)->get();
 		$categories = Category::all();
 		
 		return view('home_no_answers',compact('questions','topMembers','categories'));
@@ -60,7 +60,7 @@ class HomeController extends Controller
 		$questions = Question::where('created_at','>=', Carbon::now()->startOfWeek())->orderBy('created_at', 'desc')->paginate($limit);
 	
 
-		$topMembers = User::all();
+		$topMembers = User::where('admin',0)->orderBy('reputation_score', 'desc')->take(10)->get();
 		$categories = Category::all();
 		
 		return view('home_week',compact('questions','topMembers','categories'));
@@ -73,7 +73,7 @@ class HomeController extends Controller
 		$questions = Question::where('created_at','>=', Carbon::now()->startOfMonth())->orderBy('created_at', 'desc')->paginate($limit);
 	
 
-		$topMembers = User::all();
+		$topMembers = User::where('admin',0)->orderBy('reputation_score', 'desc')->take(10)->get();
 		$categories = Category::all();
 		
 		return view('home_month',compact('questions','topMembers','categories'));
@@ -86,7 +86,7 @@ class HomeController extends Controller
 		$questions = Question::where('created_at','>=', Carbon::now()->startOfYear())->orderBy('created_at', 'desc')->paginate($limit);
 	
 
-		$topMembers = User::all();
+		$topMembers = User::where('admin',0)->orderBy('reputation_score', 'desc')->take(10)->get();
 		$categories = Category::all();
 		
 		return view('home_year',compact('questions','topMembers','categories'));
@@ -105,7 +105,7 @@ class HomeController extends Controller
 		$limit=\Config::get('constants.options.ItemNumberPerPage');
 		$keyword = $request->keyword;
 		$key_word_array = explode(' ', $keyword);
-		$topMembers = User::all();
+		$topMembers = User::where('admin',0)->orderBy('reputation_score', 'desc')->take(10)->get();
 
 		$categories = Category::all();
 		// var_dump($key_word_array);
@@ -250,16 +250,7 @@ class HomeController extends Controller
 			}
 			
 			$questions = Question::whereRaw(array('$text'=>array('$search'=> $raw_keyword)))->orWhereIn('_id', $question_key)->paginate($limit)->appends(request()->query());
-		}
-		
-		// var_dump($questions);
-		// die;
-
-		
-		
-		$topMembers = User::all();
-		$categories = Category::all();
-		
+		}	
 		return view('question.search_result',compact('questions','keyword','topMembers','categories','all_question'));
 	}
 
@@ -269,7 +260,7 @@ class HomeController extends Controller
 		$questions = Question::where('category_id',$id)->orderBy('created_at', 'desc')->paginate($limit);
 		$questions->setPath('/');
 
-		$topMembers = User::all();
+		$topMembers = User::where('admin',0)->orderBy('reputation_score', 'desc')->take(10)->get();
 
 		$categories = Category::all();
 
@@ -283,7 +274,7 @@ class HomeController extends Controller
 	public function allUsers()
 	{
 		$limit = 20;
-		$users = User::where('admin',0)->orderBy('created_at', 'desc')->paginate($limit);
+		$users = User::where('admin',0)->orderBy('reputation_score', 'desc')->paginate($limit);
 		$users->setPath('/');
 
 		return view('user.all_users',compact('users'));
@@ -294,7 +285,7 @@ class HomeController extends Controller
 		$limit = 20;
 		$keyword = $request->keyword;
 		
-		$users = User::whereRaw(array('$text'=>array('$search'=> $keyword)))->where('admin',0)->orderBy('created_at', 'desc')->paginate($limit);
+		$users = User::whereRaw(array('$text'=>array('$search'=> $keyword)))->where('admin',0)->orderBy('reputation_score', 'desc')->paginate($limit);
 	
 		$users->setPath('/');
 		

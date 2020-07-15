@@ -24,10 +24,10 @@
             <div class="media w-50 mb-3">
             @if(is_file('storage/avatars/'.$message->user->avatar))
                 <img src="{{ asset('storage/avatars')}}/{{$message->user->avatar}}" alt="user"
-                    width="50" class="rounded-circle">
+                    width="50" height="50" class="rounded-circle">
             @else
             <img src="{{$message->user->avatar}}" alt="user"
-                    width="50" class="rounded-circle">
+                    width="50" height="50" class="rounded-circle">
             @endif
                 <div class="media-body ml-3">
                     <div class="bg-light rounded py-2 px-3 mb-2">
@@ -65,7 +65,7 @@
 // objDiv.scrollTop = objDiv.scrollHeight;
 
 
-$(document).on("keypress", function() {
-    $("#typing-area").focus();
-});
+// $(document).on("keypress", function() {
+//     $("#typing-area").focus();
+// });
     </script>

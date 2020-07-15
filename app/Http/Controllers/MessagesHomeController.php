@@ -116,8 +116,82 @@ class MessagesHomeController extends Controller
         $users = User::whereRaw(array('$text'=>array('$search'=> $user_name)))->get();
         if($users->count()<=0) return "";
 
+        $user_auth = Auth::user();
+
+		// count how many message are unread from the selected user
+		// $users = DB::select("select users._id, users.fullname, users.avatar, users.email, count(is_read) as unread 
+		// from users LEFT  JOIN  messages ON users._id = messages.from_user and is_read = 0 and messages.to_user = " . $user->id . "
+		// where users._id != " . $user->id . " 
+        // group by users._id, users.fullname, users.avatar, users.email");
+        
+        if(Auth::check())
+        {
+            $users = User::whereRaw(array('$text'=>array('$search'=> $user_name)))->where('_id','!=',$user_auth->id)->get();
+            // $messages=Message::all();
+            // $userProfile=User::where('_id','=',$user_auth->id)->get();
+            
+            
+            $my_id=$user_auth->id;
+            
+            
+            foreach($users as $receiver) {
+                $receiver_id=$receiver->_id;
+                $latestMessage = Message::where(function ($query) use ($receiver_id, $my_id) {
+                $query->where('from_user', $receiver_id)->where('to_user', $my_id);
+                })->oRwhere(function ($query) use ($receiver_id, $my_id) {
+                $query->where('from_user', $my_id)->where('to_user', $receiver_id);
+                })->orderBy('created_at', 'desc')->get()->take(1);      
+            
+                $json_merge[]=array(json_decode($latestMessage,true));
+            }
+
+            $latestUserMessages=$json_merge;
+
         foreach($users as $user){
-            echo view('layout.searchuserforchat',compact('user'));
+            echo view('layout.search_user_message',compact('user', 'latestUserMessages'));
+            }
+        }
+    }
+
+    public function ajaxSearchUserForChat1(Request $request){
+        $user_name = $request->user_name;
+        $users = User::all();
+        if($users->count()<=0) return "";
+
+        $user_auth = Auth::user();
+
+		// count how many message are unread from the selected user
+		// $users = DB::select("select users._id, users.fullname, users.avatar, users.email, count(is_read) as unread 
+		// from users LEFT  JOIN  messages ON users._id = messages.from_user and is_read = 0 and messages.to_user = " . $user->id . "
+		// where users._id != " . $user->id . " 
+        // group by users._id, users.fullname, users.avatar, users.email");
+        
+        if(Auth::check())
+        {
+            $users = User::where('_id','!=',$user_auth->id)->get();
+            // $messages=Message::all();
+            // $userProfile=User::where('_id','=',$user_auth->id)->get();
+            
+            
+            $my_id=$user_auth->id;
+            
+            
+            foreach($users as $receiver) {
+                $receiver_id=$receiver->_id;
+                $latestMessage = Message::where(function ($query) use ($receiver_id, $my_id) {
+                $query->where('from_user', $receiver_id)->where('to_user', $my_id);
+                })->oRwhere(function ($query) use ($receiver_id, $my_id) {
+                $query->where('from_user', $my_id)->where('to_user', $receiver_id);
+                })->orderBy('created_at', 'desc')->get()->take(1);      
+            
+                $json_merge[]=array(json_decode($latestMessage,true));
+            }
+
+            $latestUserMessages=$json_merge;
+
+        foreach($users as $user){
+            echo view('layout.search_user_message',compact('user', 'latestUserMessages'));
+            }
         }
     }
 }

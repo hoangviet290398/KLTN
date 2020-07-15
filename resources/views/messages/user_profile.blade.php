@@ -1,10 +1,10 @@
 <div id="userProfile" class="text-center">
     <div class="card-body pt-5 border-bottom">
     @if(is_file('storage/avatars/'.$userProfile[0]->avatar))
-        <img src="{{ asset('storage/avatars')}}/{{$userProfile[0]->avatar}}" alt="user" width="160"
+        <img src="{{ asset('storage/avatars')}}/{{$userProfile[0]->avatar}}" alt="user" width="160" height="160"
             class="rounded-circle ">
     @else
-    <img src="{{$userProfile[0]->avatar}}" alt="user" width="160"
+    <img src="{{$userProfile[0]->avatar}}" alt="user" width="160" height="160"
             class="rounded-circle ">
     @endif
         <h2 class="card-title pt-3" ><strong>{{$userProfile[0]->fullname}}</strong></h4>

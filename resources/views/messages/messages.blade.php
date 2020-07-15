@@ -13,7 +13,6 @@
         $( document ).ready(function() {
             $('#searchUsersForChat').keyup(function() {
                 var user_name = $(this).val();
-                console.log(user_name);
                 if (user_name != '') {
                     $.ajax({
                         url: "{{ route('ajaxSearchUserForChat') }}",
@@ -23,16 +22,31 @@
                         },
                         success: function(data) {
                             if (data != "") {
-                                $('#result_user_list').empty();
-                                $('#result_user_list').html(data);
-                                $('#result_user_list').show();
+                                $('#all_user_message').empty();
+                                $('#all_user_message').html(data);
+                                $('#all_user_message').show();
                             } else {
-                                $('#result_user_list').hide();
+                                $('#all_user_message').hide();
                             }
                         }
                     })
                 } else {
-                    $('#result_user_list').hide();
+                    $.ajax({
+                        url: "{{ route('ajaxSearchUserForChat1') }}",
+                        method: "GET",
+                        data: {
+                            user_name
+                        },
+                        success: function(data) {
+                            if (data != "") {
+                                $('#all_user_message').empty();
+                                $('#all_user_message').html(data);
+                                $('#all_user_message').show();
+                            } else {
+                                $('#all_user_message').hide();
+                            }
+                        }
+                    })
                 }
             });
         });
@@ -104,7 +118,7 @@
                     </div>
                     
                     <div id="usersBox" class="messages-box">
-                        <div class="list-group rounded-0">
+                        <div class="list-group rounded-0" id="all_user_message">
 
                             @foreach($users as $user)
                             <a id="{{$user->id}}" data-receiverName="{{$user->fullname}}"
@@ -114,10 +128,10 @@
 
                                 <div class="media">
                                     @if(is_file('storage/avatars/'.$user->avatar))
-                                    <img src="{{ asset('storage/avatars')}}/{{$user->avatar}}" alt="user" width="65"
+                                    <img src="{{ asset('storage/avatars')}}/{{$user->avatar}}" alt="user" width="65" height="65"
                                         class="rounded-circle">
                                     @else
-                                    <img src="{{$user->avatar}}" alt="user" width="65" class="rounded-circle">
+                                    <img src="{{$user->avatar}}" alt="user" width="65" height="65" class="rounded-circle">
                                     @endif
                                     <div class="media-body ml-4">
                                         <div id="userInboxName"

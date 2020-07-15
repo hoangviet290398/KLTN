@@ -53,16 +53,16 @@
             <div class="col-sm-12 pt-4">
                 <div class="row">
                     <div class="col-sm-9 pt-2">
-                        <h5>Câu hỏi gần đây</h5>
+                        <h5 id="tab_title">Câu hỏi gần đây</h5>
                     </div>
                     <div class="col-sm-3 pl-5 pb-2">
                         <div class="bg-light" style="">
                             <ul id="switch_tab" class="nav nav-pills font-weight-bold">
                                 <li class="nav-item">
-                                    <a class="nav-link active" href="#question_area">Câu hỏi</a>
+                                    <a class="nav-link active" href="#question_area" title="Câu hỏi gần đây">Câu hỏi</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#answer_area">Trả lời</a>
+                                    <a class="nav-link" href="#answer_area" title="Câu trả lời gần đây">Trả lời</a>
                                 </li>
 
                             </ul>
@@ -123,7 +123,7 @@
                                     </th>
 
                                     <td><span class="badge badge-info">{{$answer->question->category->name}}</span></td>
-                                    <th class="text-right">{{$question->created_at->toDayDateTimeString()}}</th>
+                                    <th class="text-right">{{$answer->created_at->toDayDateTimeString()}}</th>
 
                                 </tr>
                                 @endforeach

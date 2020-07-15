@@ -26,7 +26,8 @@
                                 @foreach($users as $user)
                                 <div class="col-sm-3 text-center py-2">
                                     <div class="card border-left-success shadow h-100 py-2">
-                                        <div id="{{$user->_id}}" class="forward-id card-body" data-receiverName="{{$user->fullname}}">
+                                        <div id="{{$user->_id}}" class="forward-id card-body"
+                                            data-receiverName="{{$user->fullname}}">
                                             <div class="row no-gutters align-items-center">
                                                 <div class="col-sm-4 pr-2">
                                                     @if(is_file('storage/avatars/'.$user->avatar))
@@ -43,7 +44,7 @@
 
                                                 </div>
                                                 <div class="col-sm-7">
-                                                    <div class="h5 font-weight-bold text-primary text-uppercase mb-1">
+                                                    <div class="h6 font-weight-bold text-primary text-uppercase mb-1">
                                                         <a href="/personalinfomation/{{ $user->_id }}">
                                                             {{$user->fullname}}
                                                         </a>
@@ -52,8 +53,11 @@
                                                     </div>
                                                     <div class="mb-0  text-muted">{{$user->answers->count()}} trả lời
                                                     </div>
-                                                    <a href="/messages" style="color:blue"><i
-                                                            class="fa fa-envelope" onclick="sendMessage();"></i></a>
+                                                    <div class="mb-0  text-muted"> <strong>{{$user->reputation_score}} danh tiếng</strong>
+
+                                                    </div>
+                                                    <a href="/messages" style="color:blue"><i class="fa fa-envelope"
+                                                            onclick="sendMessage();"></i></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -71,15 +75,16 @@
                 </div>
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
                 <script>
-                var receiver_id='';
-                var receiver_name='';
+                var receiver_id = '';
+                var receiver_name = '';
+
                 function sendMessage() {
                     $('.forward-id').click(function() {
-                        
+
                         receiver_id = $(this).attr('id');
-                        receiver_name=$(this).attr('data-receiverName');
-                        localStorage.setItem('receiverID',receiver_id );
-                        localStorage.setItem('receiverName',receiver_name);
+                        receiver_name = $(this).attr('data-receiverName');
+                        localStorage.setItem('receiverID', receiver_id);
+                        localStorage.setItem('receiverName', receiver_name);
                     });
                 }
                 </script>

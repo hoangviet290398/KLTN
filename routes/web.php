@@ -53,6 +53,11 @@ Route::get('ajaxsearchuserforchat',[
 	'uses' => 'MessagesHomeController@ajaxSearchUserForChat'
 ]);
 
+Route::get('ajaxsearchuserforchat1',[
+	'as' => 'ajaxSearchUserForChat1',
+	'uses' => 'MessagesHomeController@ajaxSearchUserForChat1'
+]);
+
 Route::get('similarquestions',[
 	'as' => 'similarQuestions',
 	'uses' => 'QuestionController@similarQuestions'

@@ -10,7 +10,7 @@ class AboutUsController extends Controller
 {
     public function aboutUs()
 	{
-		$topMembers = User::all();
+		$topMembers = User::where('admin',0)->orderBy('reputation_score', 'desc')->take(10)->get();
 
 		$categories = Category::all();
 

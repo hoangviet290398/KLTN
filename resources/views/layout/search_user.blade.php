@@ -23,6 +23,7 @@
                     </div>
                     <div class="mb-0 text-muted">{{$user->questions->count()}} Questions</div>
                     <div class="mb-0  text-muted">{{$user->answers->count()}} Answers</div>
+                    <div class="mb-0  text-muted"> <strong>{{$user->reputation_score}} danh tiếng</strong></div>
                     <a href="/messages" style="color:blue"><i class="fa fa-envelope" onclick="sendMessage();"></i></a>
                 </div>
             </div>

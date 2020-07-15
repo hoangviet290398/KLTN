@@ -42,16 +42,16 @@
 
         </div>
         <!-- Typing area -->
-        <form action="#" class="">
+     
             <div class="input-group pl-4 pr-2 py-3">
                 <input id="typing-area" type="text" placeholder="Type a message" aria-describedby="button-addon2"
                     autofocus class="form-control rounded-0 border-0 py-4 bg-light">
                 <div class="input-group-append pl-1">
-                    <button id="button-addon2" type="submit" class="btn btn-link" onClick="sendMessageOnClick();"><i
+                    <button id="button-addon2" class="btn btn-link" onClick="sendMessageOnClick();"><i
                             class="fa fa-paper-plane"></i></button>
                 </div>
             </div>
-        </form>
+      
 
     </div>
 

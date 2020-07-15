@@ -177,6 +177,10 @@
             e.preventDefault();
             $(this).tab('show');
         });
+
+    function showAnswer(answer_id) {
+        localStorage.setItem('answerID',answer_id.getAttribute('data-answer'));
+    }
     </script>
 </body>
 @include('layout.footer')

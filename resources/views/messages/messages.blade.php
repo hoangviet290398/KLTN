@@ -362,7 +362,6 @@
                 error: function(jqXHR, status, err) {},
                 complete: function() {
                     //scrollToBottomFunc();
-
                 }
 
             })
@@ -370,6 +369,13 @@
         }
 
     }
+    $('body').on('keyup', '#typing-area', function(e) {
+        // check if enter key is pressed and message is not null also receiver is selected
+        if (e.keyCode == 13) {
+            sendMessageOnClick();
+        }
+    });
+
     $(document).on('keyup', '.input-group input', function(e) {
         message = $(this).val();
         // check if enter key is pressed and message is not null also receiver is selected

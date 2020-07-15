@@ -1,4 +1,4 @@
-<div class="col-1 ml-1" style="background-color: #dfe4ea;">
+<div class="col-sm-2 pl-5" style="background-color: #dfe4ea;">
 	<div>
 		<a href="{{ route('homePage') }}"><h6 class="font-weight-bold mt-4 left-panel"><i class="fa fa-home mr-3 "></i>Trang chủ</h6></a>
 	</div>

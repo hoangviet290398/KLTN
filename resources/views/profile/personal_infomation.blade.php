@@ -101,7 +101,7 @@
                         </table>
                     </div>
 
-                    <div class="tab-pane fade show active" id="answer_area">
+                    <div class="tab-pane fade" id="answer_area" >
                         <table class="table table-hover">
                             <thead>
                                 <tr>
@@ -109,20 +109,20 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($questions_by_user as $question)
+                                @foreach($answers_by_user as $answer)
                                 <tr style="line-height: 20px;">
                                     <th>
                                         <div class="card border-success" style="">
                                             <div class="card-body text-success">
-                                                <p class="card-text text-center">{{number_format($question->score)}}</p>
+                                                <p class="card-text text-center">{{number_format($answer->score)}}</p>
                                             </div>
                                         </div>
                                     </th>
-                                    <th style="max-width: 350px;">
-                                        <a class="text-decoration-none" href="{{asset('topic')}}/{{ $question->id }}">{{$question->title}}</a><br>
+                                    <th style="max-width: 350px;" class="answer_block_id">
+                                        <a class="text-decoration-none" href="{{asset('topic')}}/{{ $answer->question->id }}"  data-answer="{{$answer->_id}}" onclick="showAnswer(this);">{{$answer->question->title}}</a><br>
                                     </th>
 
-                                    <td><span class="badge badge-info">{{$question->category->name}}</span></td>
+                                    <td><span class="badge badge-info">{{$answer->question->category->name}}</span></td>
                                     <th class="text-right">{{$question->created_at->toDayDateTimeString()}}</th>
 
                                 </tr>

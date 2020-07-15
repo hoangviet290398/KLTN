@@ -7,6 +7,7 @@ use App\LikeDislike;
 
 @section('js')
 <script>
+$(document).ready(function(){
     $('#fileUpload').fileinput({
         allowedFileExtensions: ['zip', 'rar'],
         theme: 'fa',
@@ -275,136 +276,12 @@ use App\LikeDislike;
                alert('false');
             }
         });
-
-    $('#large_like_bestanswer').click('#like_bestanswer_button', function () {
-            var question_id = $(this).data("value");
-            var post_type = "Answer";
-            
-            if (question_id != '') {
-                $.ajax({
-                    url: "{{ route('like') }}",
-                    method: "GET",
-                    data: {
-                        question_id,
-                        post_type
-                    },
-                    success: function (data) {
-                        data = $.parseJSON(data);
-                        
-                        if(data.status == true){
-                                                            
-                            $("#large_like_bestanswer").load(location.href + " #large_like_bestanswer"); 
-                            $("#large_dislike_bestanswer").load(location.href + " #large_dislike_bestanswer");                                                                                            
-                        }
-                        else{
-                            
-                        }
-                    }
-                })
-            }
-            else{
-               alert('false');
-            }
-        });
-
-    $('#large_dislike_bestanswer').click('#dislike_bestanswer_button', function () {
-            var question_id = $(this).data("value");
-            var post_type = "Answer";
-          
-            if (question_id != '') {
-                $.ajax({
-                    url: "{{ route('dislike') }}",
-                    method: "GET",
-                    data: {
-                        question_id,
-                        post_type
-                    },
-                    success: function (data) {
-                        data = $.parseJSON(data);
-                        
-                        if(data.status == true){
-                                                            
-                            $("#large_dislike_bestanswer").load(location.href + " #large_dislike_bestanswer"); 
-                            $("#large_like_bestanswer").load(location.href + " #large_like_bestanswer");                                                                                            
-                        }
-                        else{
-                            
-                        }
-                    }
-                })
-            }
-            else{
-               alert('false');
-            }
-        });
-
-
-    $('#large_like_answer').click('#like_answer_button', function () {
-            var question_id = $(this).data("value");
-            var post_type = "Answer";
-            console.log(question_id);
-            if (question_id != '') {
-                $.ajax({
-                    url: "{{ route('like') }}",
-                    method: "GET",
-                    data: {
-                        question_id,
-                        post_type
-                    },
-                    success: function (data) {
-                        data = $.parseJSON(data);
-                        
-                        if(data.status == true){
-                                                            
-                            $("#question_vote_count").load(location.href + " #question_vote_count"); 
-                            $("#question_vote_count").load(location.href + " #question_vote_count");                                                                                            
-                        }
-                        else{
-                            
-                        }
-                    }
-                })
-            }
-            else{
-               alert('false');
-            }
-        });
-
-    $('#large_dislike_answer').click('#dislike_answer_button', function () {
-            var question_id = $(this).data("value");
-            var post_type = "Answer";
-            console.log(question_id);
-            if (question_id != '') {
-                $.ajax({
-                    url: "{{ route('dislike') }}",
-                    method: "GET",
-                    data: {
-                        question_id,
-                        post_type
-                    },
-                    success: function (data) {
-                        data = $.parseJSON(data);
-                        
-                        if(data.status == true){
-                                                            
-                            $("#large_dislike_answer").load(location.href + " #large_dislike_answer"); 
-                            $("#large_like_answer").load(location.href + " #large_like_answer");                                                                                            
-                        }
-                        else{
-                            
-                        }
-                    }
-                })
-            }
-            else{
-               alert('false');
-            }
-        });
-
-    // 
-
-
-
+    var answer_id = localStorage.getItem('answerID');
+    localStorage.clear();
+    
+    $('html, body').animate({
+        scrollTop: $("#answer_"+answer_id).offset().top - 100
+    }, 1000);
 
     var containers = document.getElementsByClassName("image-markdown");
     for (index_container = 0; index_container < containers.length; index_container++) {
@@ -413,7 +290,7 @@ use App\LikeDislike;
             imgs[index_img].setAttribute("class", "h-100 w-100");
         }
     }
-
+})
 </script>
 @endsection
 
@@ -471,7 +348,7 @@ use App\LikeDislike;
                 </div>
                 <div>
                    <!-- Asked date goes here-->
-                   <small class="text-muted pl-4" style="color:#5488c7;" data-toggle="tooltip" title="{{$question->created_at->toDayDateTimeString()}}">đã hỏi:
+                   <small class="text-muted" style="color:#5488c7;" data-toggle="tooltip" title="{{$question->created_at->toDayDateTimeString()}}">đã hỏi:
                             {{$question->created_at->diffForHumans()}}
                         </small>
                 </div>
@@ -535,7 +412,7 @@ use App\LikeDislike;
 
         <!-- Start Best Answer Block -->
         @if ($bestAnswer!=null)
-        <div class="row px-3 pt-3">
+        <div class="row px-3 pt-3" id="answer_<?php echo $bestAnswer->_id?>">
             <div class="col-1" style="text-align:center;">                
                 @if(is_file('storage/avatars/'.$bestAnswer->user->avatar))
                 <a href="/personalinfomation/{{ $bestAnswer->user->_id }}" class="text-decoration-none"><img src="{{ asset('storage/avatars')}}/{{$bestAnswer->user->avatar}}" class="user-avatar rounded-circle align-middle"></a>
@@ -601,7 +478,7 @@ use App\LikeDislike;
         @foreach($answers as $answer)
 
             @if (($bestAnswer==null) or (($bestAnswer!=null) and ($answer->_id!=$bestAnswer->_id)))
-                <div class="row px-3 pt-3 answer_block_1">
+                <div class="row px-3 pt-3 answer_block_1" id="answer_<?php echo $answer->_id?>">
                     <div class="col-sm-1 answer_block_2" style="text-align:center">
                         @if(is_file('storage/avatars/'.$answer->user->avatar))
                          <a href="/personalinfomation/{{ $answer->user->_id }}" class="text-decoration-none"><img src="{{asset('storage/avatars')}}/{{$answer->user->avatar}}"

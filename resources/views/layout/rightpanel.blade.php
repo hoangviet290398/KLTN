@@ -1,4 +1,4 @@
-<div class="card ml-2 col-sm-3">
+<div class="card ml-1 col-sm-3">
 
     <div class="card-header text-center" style="background-color: white">
         @if(Auth::check())

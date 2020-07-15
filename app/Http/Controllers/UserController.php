@@ -156,9 +156,10 @@ class UserController extends Controller
 			$totalAccepted+=$answer->question->where('best_answer_id',$answer->_id)->count();
 		}
 
-        $questions_by_user = Question::where('user_id', $id)->orderBy('created_at', 'desc')->take(15)->get();
+        $questions_by_user = Question::where('user_id', $id)->orderBy('score', 'desc')->take(15)->get();
+        $answers_by_user = Answer::where('user_id', $id)->orderBy('score', 'desc')->take(15)->get();
 
-		return view('profile.personal_infomation',compact('user','totalVote','totalAccepted','questions_by_user'));
+		return view('profile.personal_infomation',compact('user','totalVote','totalAccepted','questions_by_user', 'answers_by_user'));
 	}
 
   

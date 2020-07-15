@@ -142,21 +142,23 @@ class UserController extends Controller
     
     public function personalInfomation($id)
 	{
+        $limit=\Config::get('constants.options.ItemNumberPerPage');
         $user = User::find($id);
         
         if(empty($user)) return back();
 
 		$questions = $user->questions;
 		$answers = $user->answers;
-		$totalLike = $questions->sum('total_like')+$answers->sum('total_like');
-		$totalDislike = $questions->sum('total_dislike')+$answers->sum('total_dislike');
+		$totalVote = $questions->sum('score')+$answers->sum('score');
         $totalAccepted = 0;
        
 		foreach($answers as $answer){
 			$totalAccepted+=$answer->question->where('best_answer_id',$answer->_id)->count();
 		}
 
-		return view('profile.personal_infomation',compact('user','totalLike','totalDislike','totalAccepted'));
+        $questions_by_user = Question::where('user_id', $id)->orderBy('created_at', 'desc')->take(15)->get();
+
+		return view('profile.personal_infomation',compact('user','totalVote','totalAccepted','questions_by_user'));
 	}
 
   

@@ -113,7 +113,7 @@ class ViewTopicController extends Controller
 
     public function like(Request $request)
     {
-        $post_id = $request->question_id;
+        $post_id = $request->post_id;
         $post_type = $request->post_type;
         $vote = $request->vote;
         $user_liked    =$this->checkLike($post_id,$post_type,Auth::user()->id);
@@ -125,6 +125,9 @@ class ViewTopicController extends Controller
                 $question= Question::find($post_id);    
                 $question->score = $vote;
                 $question->save();
+                $user = User::find($question->user_id);
+                $user->reputation_score += 5;
+                $user->save();
                 if(Auth::user()->id == $question->user->id)
                 {
 
@@ -138,6 +141,9 @@ class ViewTopicController extends Controller
                 $answer= Answer::find($post_id);       
                 $answer->score = $vote;
                 $answer->save();
+                $user = User::find($answer->user_id);
+                $user->reputation_score += 5;
+                $user->save();
                 if(Auth::user()->id == $answer->user->id)
                 {
 
@@ -153,11 +159,17 @@ class ViewTopicController extends Controller
                 {         
                     $question->score = $vote;
                     $question->save();
+                    $user = User::find($question->user_id);
+                    $user->reputation_score += 5;
+                    $user->save();
                 }
                 else
                 {            
                     $answer->score = $vote;
                     $answer->save();
+                    $user = User::find($answer->user_id);
+                    $user->reputation_score += 5;
+                    $user->save();
                 }
                 $user_disliked->delete();
             }
@@ -169,12 +181,18 @@ class ViewTopicController extends Controller
                 $question= Question::find($post_id);    
                 $question->score = $vote;
                 $question->save();
+                $user = User::find($question->user_id);
+                $user->reputation_score -= 5;
+                $user->save();
             }
             else
             {   
                 $answer= Answer::find($post_id);       
                 $answer->score = $vote;
                 $answer->save();
+                $user = User::find($answer->user_id);
+                $user->reputation_score -= 5;
+                $user->save();
             }                
             $user_liked->delete();
         }
@@ -186,7 +204,7 @@ class ViewTopicController extends Controller
 
     public function dislike(Request $request)
     {
-        $post_id = $request->question_id;
+        $post_id = $request->post_id;
         $post_type = $request->post_type;
         $vote = $request->vote;
         $user_liked=$this->checkLike($post_id,$post_type,Auth::user()->id);
@@ -198,6 +216,9 @@ class ViewTopicController extends Controller
                 $question= Question::find($post_id);          
                 $question->score = $vote;
                 $question->save();
+                $user = User::find($question->user_id);
+                $user->reputation_score -= 5;
+                $user->save();
                 if(Auth::user()->id == $question->user->id)
                 {
 
@@ -210,6 +231,9 @@ class ViewTopicController extends Controller
                 $answer= Answer::find($post_id);              
                 $answer->score = $vote;
                 $answer->save();
+                $user = User::find($answer->user_id);
+                $user->reputation_score -= 5;
+                $user->save();
                 if(Auth::user()->id == $answer->user->id)
                 {
 
@@ -224,11 +248,17 @@ class ViewTopicController extends Controller
                 {         
                     $question->score = $vote;
                     $question->save();
+                    $user = User::find($question->user_id);
+                    $user->reputation_score -= 5;
+                    $user->save();
                 }
                 else
                 {            
                     $answer->score = $vote;
                     $answer->save();
+                    $user = User::find($answer->user_id);
+                    $user->reputation_score -= 5;
+                    $user->save();
                 }
                 $user_liked->delete();
             }
@@ -240,12 +270,18 @@ class ViewTopicController extends Controller
                 $question= Question::find($post_id);          
                 $question->score = $vote;
                 $question->save();
+                $user = User::find($question->user_id);
+                $user->reputation_score += 5;
+                $user->save();
             }
             else
             {
                 $answer= Answer::find($post_id);            
                 $answer->score = $vote;
                 $answer->save();
+                $user = User::find($answer->user_id);
+                $user->reputation_score += 5;
+                $user->save();
             }
 
             $user_disliked->delete();

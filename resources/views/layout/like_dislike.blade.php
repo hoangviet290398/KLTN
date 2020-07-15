@@ -1,14 +1,14 @@
 <div class="row col-sm-12 bg-light py-3" style="">
     <div class="col-sm-3 px-1">
         <div class="border rounded text-muted bg-white text-center px-1">
-            <i class="fa fa-thumbs-up"></i>
-            {{$question->total_like}} thích
+            <i class="fa fa-check-square"></i>
+            {{$question->score}} vote
         </div>
     </div>
     <div class="col-sm-3 px-1">
         <div class="border rounded text-muted bg-white text-center">
-            <i class="fa fa-thumbs-down"></i>
-            {{$question->total_dislike}} không thích
+            <i class="fa fa-eye"></i>
+            {{$question->total_view}} lượt xem
         </div>
     </div>
 

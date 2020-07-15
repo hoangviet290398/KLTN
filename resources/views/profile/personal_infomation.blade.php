@@ -9,13 +9,13 @@
                 @if(is_file('storage/avatars/'.$user->avatar))
                 <div class="col-sm-3">
                     <img src="{{ asset('storage/avatars') }}/{{ $user->avatar }}" class="w-100" alt="">
-                    <h5 class="text-center pt-3"><strong>1234</strong> Danh tiếng</h5>
+                    <h5 class="text-center pt-3"><strong>{{$user->reputation_score}}</strong> Danh tiếng</h5>
 
                 </div>
                 @else
                 <div class="col-sm-3">
                     <img src="{{ $user->avatar }}" class="w-100" alt="">
-                    <h5 class="text-center text-muted pt-3"><strong>1234</strong> Danh tiếng</h5>
+                    <h5 class="text-center text-muted pt-3"><strong>{{$user->reputation_score}}</strong> Danh tiếng</h5>
 
                 </div>
                 @endif
@@ -36,7 +36,7 @@
                         </div>
                         <div class="col-sm-7">
                             <ul>
-                                <strong>{{ $totalLike }}</strong>
+                                <strong>{{ $totalVote }}</strong>
                                 <p>vote</p>
                                 <strong>{{ $totalAccepted }}</strong>
                                 <p>câu trả lời được chấp thuận</p>
@@ -57,61 +57,81 @@
                     </div>
                     <div class="col-sm-3 pl-5 pb-2">
                         <div class="bg-light" style="">
-                            <ul class="nav nav-pills font-weight-bold">
+                            <ul id="switch_tab" class="nav nav-pills font-weight-bold">
                                 <li class="nav-item">
-                                    <a class="nav-link active" href="">Câu hỏi</a>
+                                    <a class="nav-link active" href="#question_area">Câu hỏi</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="">Trả lời</a>
+                                    <a class="nav-link" href="#answer_area">Trả lời</a>
                                 </li>
 
                             </ul>
                         </div>
                     </div>
                 </div>
-                <table class="table table-hover">
-                    <thead>
-                        <tr>
+                <div class="tab-content">
+                    <div class="tab-pane fade show active" id="question_area">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
 
-                        </tr>
-                    </thead>
-                    <tbody>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($questions_by_user as $question)
+                                <tr style="line-height: 20px;">
+                                    <th>
+                                        <div class="card border-success" style="">
+                                            <div class="card-body text-success">
+                                                <p class="card-text text-center">{{number_format($question->score)}}</p>
+                                            </div>
+                                        </div>
+                                    </th>
+                                    <th style="max-width: 350px;">
+                                        <a class="text-decoration-none" href="{{asset('topic')}}/{{ $question->id }}">{{$question->title}}</a><br>
+                                    </th>
 
-                        <tr style="line-height: 20px;">
-                            <th>
-                                <div class="card border-success" style="">
-                                    <div class="card-body text-success">
-                                        <p class="card-text text-center">0</p>
-                                    </div>
-                                </div>
-                            </th>
-                            <th style="max-width: 350px;">
-                                THIS IS A QUESTION TITLESDASDSDSDDDDDDDDDDDDDDDD<br>
-                            </th>
+                                    <td><span class="badge badge-info">{{$question->category->name}}</span></td>
+                                    <th class="text-right">{{$question->created_at->toDayDateTimeString()}}</th>
 
-                            <td><span class="badge badge-info">Python</span></td>
-                            <th class="text-right">Wed, Jun 10, 2020 9:43 AM</th>
+                                </tr>
+                                @endforeach
 
-                        </tr>
-                        <tr style="line-height: 20px;">
-                            <th>
-                                <div class="card border-success" style="">
-                                    <div class="card-body text-success">
-                                        <p class="card-text text-center">0</p>
-                                    </div>
-                                </div>
-                            </th>
-                            <th style="max-width: 350px;">
-                                THIS IS A QUESTION TITLESDASDSDSDDDDDDDDDDDDDDDD<br>
-                            </th>
+                            </tbody>
+                        </table>
+                    </div>
 
-                            <td><span class="badge badge-info">Python</span></td>
-                            <th class="text-right">Wed, Jun 10, 2020 9:43 AM</th>
+                    <div class="tab-pane fade show active" id="answer_area">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
 
-                        </tr>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($questions_by_user as $question)
+                                <tr style="line-height: 20px;">
+                                    <th>
+                                        <div class="card border-success" style="">
+                                            <div class="card-body text-success">
+                                                <p class="card-text text-center">{{number_format($question->score)}}</p>
+                                            </div>
+                                        </div>
+                                    </th>
+                                    <th style="max-width: 350px;">
+                                        <a class="text-decoration-none" href="{{asset('topic')}}/{{ $question->id }}">{{$question->title}}</a><br>
+                                    </th>
 
-                    </tbody>
-                </table>
+                                    <td><span class="badge badge-info">{{$question->category->name}}</span></td>
+                                    <th class="text-right">{{$question->created_at->toDayDateTimeString()}}</th>
+
+                                </tr>
+                                @endforeach
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
 
             </div>
         </div>

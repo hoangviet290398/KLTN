@@ -172,6 +172,11 @@
         $("#unread_notification").remove();
     }
     @endif
+
+    $("#switch_tab a").click(function(e){
+            e.preventDefault();
+            $(this).tab('show');
+        });
     </script>
 </body>
 @include('layout.footer')

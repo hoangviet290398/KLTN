@@ -69,7 +69,7 @@
                     <div class="alert alert-danger">{{$errors->first()}}</div>
                     @endif
                     <div class="form-group">
-                        <button type="submit" class="btn btn-primary w-100 font-weight-bold">Đăng ký</button>
+                        <button type="submit" class="btn btn-primary w-100 font-weight-bold">Đăng nhập</button>
                     </div>
                     <div class="text-center">
                         Chưa có tài khoản? <a href="{{ route('signUp' )}}">Đăng ký</a>

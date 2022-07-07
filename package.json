@@ -24,7 +24,7 @@
     },
     "dependencies": {
         "laravel-echo": "^1.7.0",
-        "moment": "^2.25.3",
+        "moment": "^2.29.4",
         "mongodb": "^3.5.7",
         "pusher-js": "^6.0.2"
     }
